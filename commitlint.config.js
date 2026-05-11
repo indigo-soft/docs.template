@@ -1,6 +1,8 @@
 // noinspection JSUnusedLocalSymbols
 
-module.exports = {
+import {execSync} from 'node:child_process';
+
+export default {
     extends: ['@commitlint/config-conventional'],
     rules: {
         // Scope is REQUIRED
@@ -30,7 +32,7 @@ module.exports = {
         'subject-case': [1, 'always', 'lower-case'], // lowercase
         'subject-empty': [2, 'never'], // Subject is required
         'subject-full-stop': [2, 'never', '.'], // No period at the end
-        'subject-max-length': [2, 'always', 72], // Max 72 characters
+        'subject-max-length': [2, 'always', 120], // Max 120 characters
 
         // Body validation
         'body-leading-blank': [1, 'always'], // Blank line before body
@@ -47,7 +49,6 @@ module.exports = {
             rules: {
                 'branch-name-format': (parsed, when = 'always', value = {}) => {
                     // Get the current branch name
-                    const {execSync} = require('child_process');
                     let branchName;
 
                     try {
