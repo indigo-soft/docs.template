@@ -1,0 +1,31 @@
+# Normalize all text files to LF in the repository and on checkout
+* text=auto eol=lf
+
+# Windows-specific scripts and project files may use CRLF
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+*.ps1  text eol=crlf
+
+# Binary files: never modify line endings
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.svgz binary
+*.ico  binary
+*.pdf  binary
+*.woff binary
+*.woff2 binary
+*.ttf  binary
+*.otf  binary
+*.eot  binary
+*.zip  binary
+*.tar  binary
+*.gz   binary
+*.7z   binary
+*.rar  binary
+*.jar  binary
+*.exe  binary
+*.so   binary
+*.class binary
