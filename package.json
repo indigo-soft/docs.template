@@ -27,6 +27,8 @@
   "scripts": {
     "prepare": "lefthook install && pnpm prepare:scripts",
     "prepare:scripts": "find scripts -name '*.sh' -exec chmod +x {} +",
+    "type-check": "tsc --noEmit",
+    "test": "node --test",
     "release": "bash scripts/release/release.sh",
     "release:dry": "bash scripts/release/release.sh --dry",
     "release:patch": "bash scripts/release/release.sh --type=patch",
