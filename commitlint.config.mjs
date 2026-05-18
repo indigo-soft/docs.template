@@ -1,4 +1,4 @@
-import {execSync} from 'node:child_process';
+import { execSync } from 'node:child_process';
 
 export default {
     rules: {
@@ -13,17 +13,17 @@ export default {
             2,
             'always',
             [
-                'feat',     // New feature
-                'fix',      // Bug fix
-                'docs',     // Documentation only
-                'style',    // Formatting, missing semi colons, etc
+                'feat', // New feature
+                'fix', // Bug fix
+                'docs', // Documentation only
+                'style', // Formatting, missing semi colons, etc
                 'refactor', // Code change that neither fixes a bug nor adds a feature
-                'perf',     // Performance improvement
-                'test',     // Adding tests
-                'chore',    // Maintenance
-                'ci',       // CI/CD changes
-                'build',    // Build system changes
-                'revert',   // Revert a previous commit
+                'perf', // Performance improvement
+                'test', // Adding tests
+                'chore', // Maintenance
+                'ci', // CI/CD changes
+                'build', // Build system changes
+                'revert', // Revert a previous commit
             ],
         ],
 
