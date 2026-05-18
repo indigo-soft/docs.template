@@ -1,0 +1,13 @@
+{
+    // https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+    "default": true,
+    "MD013": {
+        "line_length": 120,
+        "heading_line_length": 120,
+        "code_block_line_length": 120,
+        "tables": false
+    },
+    "MD029": false,
+    "MD033": false,
+    "MD041": false
+}
