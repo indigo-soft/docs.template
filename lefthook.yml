@@ -5,27 +5,27 @@ colors: true
 
 # Pre-commit — format and lint only staged files
 pre-commit:
-    # Sequential: format first so ESLint sees prettier-formatted code
     parallel: false
     commands:
         format:
             glob: "src/**/*.{ts,tsx,js,jsx,json,md,prisma,css,scss}"
-            run: npx prettier --write {staged_files}
-            # Re-stage files changed by prettier
+            run: node node_modules/prettier/bin/prettier.cjs --write {staged_files}
             stage_fixed: true
+            fail_text: "❌ FORMATTING — Prettier found issues. Run: node node_modules/prettier/bin/prettier.cjs --write ."
 
         lint:
             glob: "src/**/*.{ts,tsx,js,jsx}"
-            run: npx eslint --fix {staged_files}
-            # Re-stage files auto-fixed by eslint
+            run: node node_modules/eslint/bin/eslint.js --fix {staged_files}
             stage_fixed: true
+            fail_text: "❌ LINT — ESLint found issues. Run: node node_modules/eslint/bin/eslint.js --fix src/"
 
 # Commit-msg — validate commit message format
 commit-msg:
     parallel: false
     commands:
         commitlint:
-            run: npx commitlint --edit {1}
+            run: node node_modules/@commitlint/cli/cli.js --edit {1} --verbose
+            fail_text: "❌ COMMIT REJECTED — invalid commit message format.\n   Format: <type>(<scope>): <description>\n   Example: feat(auth): add JWT token refresh\n   See: docs/guides/git-workflow.md"
 
 # Pre-push — full checks before pushing
 pre-push:
@@ -33,9 +33,11 @@ pre-push:
     commands:
         typecheck:
             run: pnpm type-check
+            fail_text: "❌ TYPE ERRORS — fix TypeScript errors before pushing. Run: pnpm type-check"
 
         test:
             run: pnpm test
+            fail_text: "❌ TESTS FAILED — fix failing tests before pushing. Run: pnpm test"
             skip:
                 - merge
                 - rebase

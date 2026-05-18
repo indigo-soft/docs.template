@@ -1,15 +1,14 @@
-// noinspection JSUnusedLocalSymbols
-
 import {execSync} from 'node:child_process';
 
 export default {
-    extends: ['@commitlint/config-conventional'],
     rules: {
         // Scope is REQUIRED
-        'scope-empty': [2, 'never'], // ERROR if the scope is missing
-        'scope-case': [2, 'always', 'kebab-case'], // scope must be kebab-case
+        'scope-empty': [2, 'never'],
+        'scope-case': [2, 'always', 'kebab-case'],
 
         // Type validation
+        'type-case': [2, 'always', 'lower-case'],
+        'type-empty': [2, 'never'],
         'type-enum': [
             2,
             'always',
@@ -29,17 +28,17 @@ export default {
         ],
 
         // Subject validation
-        'subject-case': [1, 'always', 'lower-case'], // lowercase
-        'subject-empty': [2, 'never'], // Subject is required
-        'subject-full-stop': [2, 'never', '.'], // No period at the end
-        'subject-max-length': [2, 'always', 120], // Max 120 characters
+        'subject-case': [1, 'always', 'lower-case'],
+        'subject-empty': [2, 'never'],
+        'subject-full-stop': [2, 'never', '.'],
+        'subject-max-length': [2, 'always', 120],
 
         // Body validation
-        'body-leading-blank': [1, 'always'], // Blank line before body
-        'body-max-line-length': [2, 'always', 100], // Max 100 characters per line
+        'body-leading-blank': [1, 'always'],
+        'body-max-line-length': [2, 'always', 100],
 
         // Footer validation
-        'footer-leading-blank': [1, 'always'], // Blank line before footer
+        'footer-leading-blank': [1, 'always'],
 
         // Branch naming validation (custom rule)
         'branch-name-format': [2, 'always'],
@@ -48,7 +47,6 @@ export default {
         {
             rules: {
                 'branch-name-format': (parsed, when = 'always', value = {}) => {
-                    // Get the current branch name
                     let branchName;
 
                     try {
@@ -56,21 +54,14 @@ export default {
                             encoding: 'utf8',
                         }).trim();
                     } catch (error) {
-                        // If not in a git repository or detached HEAD
                         return [true];
                     }
 
-                    // Allow the main branch
                     if (branchName === 'main' || branchName === 'master') {
                         return [true];
                     }
 
-                    // Branch naming pattern: <type>/<issue-number>-<short-description>
-                    // - Type: feature, fix, docs, refactor, test, chore, perf
-                    // - Issue number: minimum 4 digits (0001-9999+)
-                    // - Description: kebab-case
                     const branchPattern = /^(feature|fix|docs|refactor|test|chore|perf)\/[0-9]{4,}-[a-z0-9-]+$/;
-
                     const isValid = branchPattern.test(branchName);
 
                     if (!isValid) {
@@ -94,10 +85,9 @@ Rules:
 ❌ Invalid examples:
   • feature/my-feature (missing issue number)
   • feature/1-bug-fix (issue number < 4 digits)
-  • feature/123-new-feature (issue number < 4 digits)
 
 ⚠️  If you don't have an issue yet, create one first!
-See: docs/guides/git-workflow.md for more details`,
+See: docs/guides/git-workflow.md`,
                         ];
                     }
 
