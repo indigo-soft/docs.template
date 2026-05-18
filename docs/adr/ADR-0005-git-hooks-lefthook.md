@@ -65,35 +65,35 @@ colors: true
 
 # pre-commit: format and lint staged files
 pre-commit:
-    parallel: false # sequential: format first, then lint
-    commands:
-        format:
-            glob: 'src/**/*.{ts,tsx,js,jsx,json,md,css,scss}'
-            run: npx prettier --write {staged_files}
-            stage_fixed: true
+  parallel: false # sequential: format first, then lint
+  commands:
+    format:
+      glob: 'src/**/*.{ts,tsx,js,jsx,json,md,css,scss}'
+      run: npx prettier --write {staged_files}
+      stage_fixed: true
 
-        lint:
-            glob: 'src/**/*.{ts,tsx,js,jsx}'
-            run: npx eslint --fix {staged_files}
-            stage_fixed: true
+    lint:
+      glob: 'src/**/*.{ts,tsx,js,jsx}'
+      run: npx eslint --fix {staged_files}
+      stage_fixed: true
 
 # commit-msg: validate commit message
 commit-msg:
-    commands:
-        commitlint:
-            run: npx commitlint --edit {1}
+  commands:
+    commitlint:
+      run: npx commitlint --edit {1}
 
 # pre-push: full checks before pushing
 pre-push:
-    commands:
-        typecheck:
-            run: pnpm type-check
+  commands:
+    typecheck:
+      run: pnpm type-check
 
-        test:
-            run: pnpm test --bail --passWithNoTests
-            skip:
-                - merge
-                - rebase
+    test:
+      run: pnpm test --bail --passWithNoTests
+      skip:
+        - merge
+        - rebase
 ```
 
 ### Installation
@@ -102,9 +102,9 @@ Lefthook installs hooks via the `prepare` script in `package.json`:
 
 ```json
 {
-    "scripts": {
-        "prepare": "lefthook install"
-    }
+  "scripts": {
+    "prepare": "lefthook install"
+  }
 }
 ```
 

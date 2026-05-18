@@ -82,13 +82,13 @@ dependency issues early, and its workspace support is first-class.
 
 ```json
 {
-    "engines": {
-        "node": ">=24.0.0",
-        "pnpm": ">=10.0.0"
-    },
-    "scripts": {
-        "preinstall": "npx only-allow pnpm"
-    }
+  "engines": {
+    "node": ">=24.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm"
+  }
 }
 ```
 
@@ -98,8 +98,8 @@ The `preinstall` script blocks accidental use of `npm install` or `yarn`.
 
 ```yaml
 packages:
-    - 'apps/*'
-    - 'packages/*'
+  - 'apps/*'
+  - 'packages/*'
 ```
 
 ## Consequences

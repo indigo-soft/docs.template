@@ -78,29 +78,29 @@ only a GitHub Actions workflow file needs to be added.
 
 ```json
 {
-    "git": {
-        "commit": true,
-        "commitMessage": "chore(release): v${version}",
-        "tag": true,
-        "tagName": "v${version}",
-        "push": true,
-        "requireCleanWorkingDir": true
-    },
-    "github": {
-        "release": true,
-        "releaseName": "Release v${version}",
-        "tokenRef": "GITHUB_TOKEN"
-    },
-    "npm": {
-        "publish": false,
-        "version": true
-    },
-    "plugins": {
-        "@release-it/conventional-changelog": {
-            "preset": "conventionalcommits",
-            "infile": "CHANGELOG.md"
-        }
+  "git": {
+    "commit": true,
+    "commitMessage": "chore(release): v${version}",
+    "tag": true,
+    "tagName": "v${version}",
+    "push": true,
+    "requireCleanWorkingDir": true
+  },
+  "github": {
+    "release": true,
+    "releaseName": "Release v${version}",
+    "tokenRef": "GITHUB_TOKEN"
+  },
+  "npm": {
+    "publish": false,
+    "version": true
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": "conventionalcommits",
+      "infile": "CHANGELOG.md"
     }
+  }
 }
 ```
 
@@ -108,13 +108,13 @@ only a GitHub Actions workflow file needs to be added.
 
 ```json
 {
-    "scripts": {
-        "release": "bash scripts/release/release.sh",
-        "release:dry": "bash scripts/release/release.sh --dry",
-        "release:patch": "bash scripts/release/release.sh --type=patch",
-        "release:minor": "bash scripts/release/release.sh --type=minor",
-        "release:major": "bash scripts/release/release.sh --type=major"
-    }
+  "scripts": {
+    "release": "bash scripts/release/release.sh",
+    "release:dry": "bash scripts/release/release.sh --dry",
+    "release:patch": "bash scripts/release/release.sh --type=patch",
+    "release:minor": "bash scripts/release/release.sh --type=minor",
+    "release:major": "bash scripts/release/release.sh --type=major"
+  }
 }
 ```
 
@@ -161,7 +161,7 @@ When ready, add a workflow file. The `.release-it.json` config requires no chang
 # .github/workflows/release.yml
 - run: npx release-it --ci
   env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## Related ADRs

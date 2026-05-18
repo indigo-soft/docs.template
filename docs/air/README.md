@@ -84,9 +84,9 @@ An AIR is a prompt for the team to discuss the conflict explicitly, not resolve 
 1. Fill in the **Decision taken** section.
 2. Update each **affected ADR** — add to its Related section:
 
-    ```markdown
-    - Conflict resolved by: [AIR-00N](../air/done-air-00N-....md) — one-line summary
-    ```
+   ```markdown
+   - Conflict resolved by: [AIR-00N](../air/done-air-00N-....md) — one-line summary
+   ```
 
 3. Change the AIR status to `Resolved`.
 4. Rename the file: `air-00N-...md` → `done-air-00N-...md`

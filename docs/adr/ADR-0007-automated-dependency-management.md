@@ -93,19 +93,19 @@ Example group configuration:
 
 ```json
 {
-    "packageRules": [
-        {
-            "groupName": "TypeScript",
-            "matchPackageNames": ["typescript", "@typescript-eslint/*"],
-            "automerge": true,
-            "minimumReleaseAge": "3 days"
-        },
-        {
-            "matchUpdateTypes": ["major"],
-            "automerge": false,
-            "labels": ["major-update", "needs-review"]
-        }
-    ]
+  "packageRules": [
+    {
+      "groupName": "TypeScript",
+      "matchPackageNames": ["typescript", "@typescript-eslint/*"],
+      "automerge": true,
+      "minimumReleaseAge": "3 days"
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "labels": ["major-update", "needs-review"]
+    }
+  ]
 }
 ```
 
@@ -114,25 +114,25 @@ Example group configuration:
 ```yaml
 version: 2
 updates:
-    - package-ecosystem: 'github-actions'
-      directory: '/'
-      schedule:
-          interval: 'weekly'
-          day: 'monday'
-          time: '09:00'
-          timezone: 'Europe/Kyiv'
-      groups:
-          github-actions:
-              patterns: ['*']
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'Europe/Kyiv'
+    groups:
+      github-actions:
+        patterns: ['*']
 ```
 
 ### GitHub Actions trigger (`.github/workflows/renovate.yml`)
 
 ```yaml
 on:
-    schedule:
-        - cron: '0 2 * * *' # nightly at 02:00 UTC
-    workflow_dispatch: # manual trigger
+  schedule:
+    - cron: '0 2 * * *' # nightly at 02:00 UTC
+  workflow_dispatch: # manual trigger
 ```
 
 ## One-time setup

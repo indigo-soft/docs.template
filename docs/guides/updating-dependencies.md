@@ -101,8 +101,8 @@ Or pin to a version range:
 
 ```json
 {
-    "matchPackageNames": ["some-package"],
-    "allowedVersions": "< 3.0.0"
+  "matchPackageNames": ["some-package"],
+  "allowedVersions": "< 3.0.0"
 }
 ```
 

@@ -10,10 +10,10 @@ what this repository is, how it is structured, what commands are available, and 
 
 1. Read `docs/context/project.md` — use all known facts silently, do not re-ask them.
 2. Check if `AGENTS.md` already exists in the project root:
-    - **If yes** — read it fully. Identify any project-specific sections (custom rules, non-standard
-      patterns, domain-specific restrictions). These must be preserved and integrated into the new file.
-      Use the docs.template structure as the base; merge existing content into it.
-    - **If no** — generate from scratch using the structure below.
+   - **If yes** — read it fully. Identify any project-specific sections (custom rules, non-standard
+     patterns, domain-specific restrictions). These must be preserved and integrated into the new file.
+     Use the docs.template structure as the base; merge existing content into it.
+   - **If no** — generate from scratch using the structure below.
 
 ## Questions to ask
 

@@ -79,9 +79,9 @@ package.json            ← release scripts and dev dependencies
 ## Tooling and workflows
 
 - **Lefthook** manages git hooks — configured in `lefthook.yml`:
-    - `pre-commit`: formats and lints staged files
-    - `commit-msg`: runs commitlint to validate message format
-    - `pre-push`: runs typecheck and tests
+  - `pre-commit`: formats and lints staged files
+  - `commit-msg`: runs commitlint to validate message format
+  - `pre-push`: runs typecheck and tests
 - **commitlint** validates commit messages and branch names — config in `commitlint.config.js`.
 - **release-it** handles versioning and changelog — config in `scripts/.release-it.json`.
 

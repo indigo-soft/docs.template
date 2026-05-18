@@ -17,10 +17,10 @@ Before asking any questions, silently gather context in this order:
    in the project root; read any that exist.
 3. **Inspect source code structure** — list top-level directories, then inspect the primary
    source directory (e.g. `src/`, `app/`, `packages/`):
-    - List subdirectories and key files
-    - Read entry point(s) (e.g. `bin/console`, `main.ts`, `index.php`, `app.py`)
-    - Read 2–3 representative source files to understand patterns
-      (e.g. one controller/command, one service, one model/entity)
+   - List subdirectories and key files
+   - Read entry point(s) (e.g. `bin/console`, `main.ts`, `index.php`, `app.py`)
+   - Read 2–3 representative source files to understand patterns
+     (e.g. one controller/command, one service, one model/entity)
 4. **Check for config files** — `composer.json`, `package.json`, `pyproject.toml`, etc.
    to discover dependencies and scripts.
 

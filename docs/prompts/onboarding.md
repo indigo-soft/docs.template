@@ -11,13 +11,13 @@ Run this prompt first, before any other prompt in `docs/prompts/`.
 ## Instructions for Claude
 
 1. Read existing project files first (silently):
-    - `README.md`, `AGENTS.md`, `composer.json`, `package.json`, `pyproject.toml` — extract
-      as many facts as possible before asking questions.
+   - `README.md`, `AGENTS.md`, `composer.json`, `package.json`, `pyproject.toml` — extract
+     as many facts as possible before asking questions.
 2. Ask questions below one group at a time — only what is not already known from files.
 3. After all answers are collected:
-    - Generate `docs/context/project.md`
-    - Set up Node.js tooling (see section below)
-    - Show the user `docs/checklists/new-project.md`
+   - Generate `docs/context/project.md`
+   - Set up Node.js tooling (see section below)
+   - Show the user `docs/checklists/new-project.md`
 
 ## Questions
 
@@ -64,34 +64,34 @@ Do NOT include `"type": "module"` unless the project has JS/TS source files that
 
 ```json
 {
-    "name": "{project-name}",
-    "version": "0.1.0",
-    "description": "{short description}",
-    "private": true,
-    "homepage": "{repository-url}#readme",
-    "bugs": { "url": "{repository-url}/issues" },
-    "repository": { "type": "git", "url": "git+{repository-url}.git" },
-    "license": "MIT",
-    "author": "github.com/{org}",
-    "scripts": {
-        "init": "pnpm exec lefthook install && find scripts -name '*.sh' -exec chmod +x {} +",
-        "release": "bash scripts/release/release.sh",
-        "release:dry": "bash scripts/release/release.sh --dry",
-        "release:patch": "bash scripts/release/release.sh --type=patch",
-        "release:minor": "bash scripts/release/release.sh --type=minor",
-        "release:major": "bash scripts/release/release.sh --type=major"
-    },
-    "engines": {
-        "node": ">=24.0.0",
-        "pnpm": ">=10.0.0"
-    },
-    "devDependencies": {
-        "@commitlint/cli": "^21.0.0",
-        "@commitlint/config-conventional": "^21.0.0",
-        "@release-it/conventional-changelog": "^11.0.0",
-        "lefthook": "^2.1.6",
-        "release-it": "^20.0.1"
-    }
+  "name": "{project-name}",
+  "version": "0.1.0",
+  "description": "{short description}",
+  "private": true,
+  "homepage": "{repository-url}#readme",
+  "bugs": { "url": "{repository-url}/issues" },
+  "repository": { "type": "git", "url": "git+{repository-url}.git" },
+  "license": "MIT",
+  "author": "github.com/{org}",
+  "scripts": {
+    "init": "pnpm exec lefthook install && find scripts -name '*.sh' -exec chmod +x {} +",
+    "release": "bash scripts/release/release.sh",
+    "release:dry": "bash scripts/release/release.sh --dry",
+    "release:patch": "bash scripts/release/release.sh --type=patch",
+    "release:minor": "bash scripts/release/release.sh --type=minor",
+    "release:major": "bash scripts/release/release.sh --type=major"
+  },
+  "engines": {
+    "node": ">=24.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^21.0.0",
+    "@commitlint/config-conventional": "^21.0.0",
+    "@release-it/conventional-changelog": "^11.0.0",
+    "lefthook": "^2.1.6",
+    "release-it": "^20.0.1"
+  }
 }
 ```
 

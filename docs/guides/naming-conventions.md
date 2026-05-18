@@ -80,15 +80,15 @@ class CreateTaskDto {}
 ```typescript
 // PascalCase
 interface Task {
-    id: string;
-    title: string;
+  id: string;
+  title: string;
 }
 
 type TaskStatus = 'NEW' | 'IN_PROGRESS' | 'DONE';
 
 type ApiResponse<T> = {
-    data: T;
-    error?: string;
+  data: T;
+  error?: string;
 };
 ```
 
@@ -100,7 +100,7 @@ function createDraft() {}
 async function fetchTasks() {}
 
 class Service {
-    async handleTaskCreated() {}
+  async handleTaskCreated() {}
 }
 ```
 
@@ -137,9 +137,9 @@ const maxRetries = 3;
 ```typescript
 // PascalCase name, UPPER_SNAKE_CASE or PascalCase values
 enum TaskStatus {
-    NEW = 'NEW',
-    IN_PROGRESS = 'IN_PROGRESS',
-    DONE = 'DONE',
+  NEW = 'NEW',
+  IN_PROGRESS = 'IN_PROGRESS',
+  DONE = 'DONE',
 }
 ```
 

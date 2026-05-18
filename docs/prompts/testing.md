@@ -33,10 +33,10 @@ Only ask questions for what cannot be inferred from the above.
 1. **What types of tests should exist?**
    Always ask about: unit, integration.
    Ask about the following only if the project has the relevant layer:
-    - E2E — if the project has a web UI or public HTTP API
-    - Contract — if the project communicates with external APIs it does not own
-    - Snapshot — if the project renders UI components
-    - Performance — if latency or throughput is a documented requirement
+   - E2E — if the project has a web UI or public HTTP API
+   - Contract — if the project communicates with external APIs it does not own
+   - Snapshot — if the project renders UI components
+   - Performance — if latency or throughput is a documented requirement
 
 2. **Is there a coverage requirement?** What threshold?
 3. **What is intentionally NOT tested and why?**
@@ -134,5 +134,5 @@ Rules:
 
 1. Mark `testing.md` as done in `docs/checklists/new-project.md`.
 2. Append to `docs/context/decisions.md`:
-    - Which test types were chosen and why
-    - Any tech debt surfaced during test setup (private methods, DI violations, etc.)
+   - Which test types were chosen and why
+   - Any tech debt surfaced during test setup (private methods, DI violations, etc.)
