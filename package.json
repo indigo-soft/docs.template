@@ -26,7 +26,11 @@
     },
     "scripts": {
         "init": "pnpm exec lefthook install && find scripts -name '*.sh' -exec chmod +x {} +",
+        "lint": "markdownlint-cli2 \"**/*.md\" \"#node_modules/**\" \"#reports/**\" \"#CHANGELOG.md\"",
+        "lint:fix": "markdownlint-cli2 --fix \"**/*.md\" \"#node_modules/**\" \"#reports/**\" \"#CHANGELOG.md\"",
         "type-check": "tsc --noEmit",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
         "test": "node --test",
         "release": "bash scripts/release/release.sh",
         "release:dry": "bash scripts/release/release.sh --dry",
@@ -45,6 +49,8 @@
         "@commitlint/cli": "^21.0.0",
         "@commitlint/config-conventional": "^21.0.0",
         "lefthook": "^2.1.6",
+        "markdownlint-cli2": "^0.22.1",
+        "prettier": "^3.8.3",
         "typescript": "^6.0.3"
     }
 }

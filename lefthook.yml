@@ -8,16 +8,16 @@ pre-commit:
     parallel: false
     commands:
         format:
-            glob: "src/**/*.{ts,tsx,js,jsx,json,md,prisma,css,scss}"
+            glob: 'src/**/*.{ts,tsx,js,jsx,json,md,prisma,css,scss}'
             run: node node_modules/@commitlint/cli/cli.js --edit {1} --verbose
             stage_fixed: true
-            fail_text: "❌ FORMATTING — Prettier found issues. Run: node node_modules/prettier/bin/prettier.cjs --write ."
+            fail_text: '❌ FORMATTING — Prettier found issues. Run: node node_modules/prettier/bin/prettier.cjs --write .'
 
         lint:
-            glob: "src/**/*.{ts,tsx,js,jsx}"
+            glob: 'src/**/*.{ts,tsx,js,jsx}'
             run: node node_modules/eslint/bin/eslint.js --fix {staged_files}
             stage_fixed: true
-            fail_text: "❌ LINT — ESLint found issues. Run: node node_modules/eslint/bin/eslint.js --fix src/"
+            fail_text: '❌ LINT — ESLint found issues. Run: node node_modules/eslint/bin/eslint.js --fix src/'
 
 # Commit-msg — validate commit message format
 commit-msg:
