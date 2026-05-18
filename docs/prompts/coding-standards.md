@@ -7,41 +7,55 @@ e.g. `docs/en/guides/coding-standards.md`) for this project.
 
 ## Prerequisites
 
-Read `docs/context/project.md` before asking anything.
-Stack, language, and tooling already known from context should not be asked again.
+Before asking any questions, silently gather context in this order:
+
+1. **Read `docs/context/project.md`** — language, stack, tooling.
+2. **Read existing formatter and linter config files** — check for and read all that exist:
+
+   | Config file | Tool |
+   |-------------|------|
+   | `.php-cs-fixer.dist.php` / `.php-cs-fixer.php` | PHP CS Fixer |
+   | `phpstan.neon` / `phpstan.neon.dist` | PHPStan |
+   | `psalm.xml` | Psalm |
+   | `.eslintrc*` / `eslint.config.*` | ESLint |
+   | `.prettierrc*` / `prettier.config.*` | Prettier |
+   | `pyproject.toml` / `ruff.toml` | Ruff / Black |
+   | `.golangci.yml` | golangci-lint |
+   | `commitlint.config.*` | commitlint |
+   | `.editorconfig` | EditorConfig |
+
+3. **Read `package.json` / `composer.json` / `pyproject.toml`** — check `scripts` section
+   for lint, format, fix, test commands.
+4. **Read `lefthook.yml`** — understand which checks run at which git hook stage.
+5. **Inspect source code** — read 2–3 representative files to identify:
+   - Actual naming conventions used in the codebase
+   - PHPDoc / JSDoc / docstring patterns
+   - Import ordering
+   - Any patterns explicitly forbidden in comments or AGENTS.md
+
+Only ask questions for information that cannot be inferred from config files or source code.
 
 ## Questions to ask
 
-### Language & runtime
+Ask only what remains unknown after the inspection above:
 
-1. **What is the primary language and version?**
-   (e.g. TypeScript 5.x, PHP 8.3, Python 3.12, Go 1.22)
-2. **Are there secondary languages in the repo?**
-   (e.g. shell scripts, SQL migrations, YAML configs)
+### Language & runtime
+1. **Secondary languages in the repo?**
+   (e.g. shell scripts, SQL migrations, YAML configs — if not obvious from project structure)
 
 ### Formatting & linting
-
-3. **What formatter is used, and is it enforced automatically?**
-   (e.g. Prettier via Lefthook pre-commit, Black on save)
-4. **What linter is used?**
-   (e.g. ESLint with which config, PHPStan level, Ruff, golangci-lint)
-5. **Are there any custom lint rules or rule overrides worth documenting?**
+2. **Are there custom lint rules or overrides worth documenting?**
+   (Only if not self-evident from the config files)
 
 ### Code style decisions
-
-6. **Naming conventions** — any project-specific rules beyond language defaults?
-   (e.g. "event handlers prefixed with `handle`", "interfaces suffixed with `Interface`")
-7. **File and folder naming** — what case is used?
-   (e.g. kebab-case files, PascalCase React components)
-8. **Import ordering** — is it enforced? Any grouping rules?
-9. **Comment style** — JSDoc / PHPDoc / docstrings required for public APIs?
+3. **Naming conventions** — any project-specific rules beyond what's visible in source code?
+4. **Comment style** — PHPDoc / JSDoc / docstrings required for public APIs?
+   (Only if not clear from existing source files)
 
 ### Architecture-level coding rules
-
-10. **Are there forbidden patterns?**
-    (e.g. "no `any` in TypeScript", "no raw SQL outside repository layer", "no business logic in controllers")
-11. **Error handling conventions?**
-    (e.g. always use custom exception classes, never swallow errors silently)
+5. **Are there forbidden patterns not visible in source code or AGENTS.md?**
+6. **Error handling conventions?**
+   (Only if not documented elsewhere)
 
 ## Output
 
@@ -59,18 +73,22 @@ Generate `docs/guides/coding-standards.md` with sections:
 ## Documentation & Comments
 ## Forbidden Patterns
 ## Error Handling
-## Enforcement (how rules are checked — CI, hooks, IDE)
+## Enforcement
 ```
 
 Rules:
-
-- Include concrete examples for every rule (good ✅ / bad ❌ pattern pairs where useful).
-- Link to config files where relevant (e.g. `See eslint.config.js for full rule set`).
+- Extract concrete rules directly from config files — do not paraphrase vaguely.
+  E.g. "PHPStan level 1 (`phpstan.neon.dist`)" not "we use static analysis".
+- Include ✅ / ❌ code examples for every non-obvious rule.
+- Link to config files where relevant (e.g. `See .php-cs-fixer.dist.php for full rule set`).
+- If a violation exists in the current codebase, document it as **tech debt to fix**,
+  never as an "exception" or "known pattern". Be explicit: "this must be fixed".
 - Write in English.
 - Respect `.editorconfig` formatting rules.
 
 ## After completion
 
 1. Mark `coding-standards.md` as done in `docs/checklists/new-project.md`.
-2. Append to `docs/context/decisions.md` any non-obvious standards choices
-   (e.g. why a specific rule was added or an exception was made).
+2. Append to `docs/context/decisions.md`:
+   - Any non-obvious standards choices
+   - Any tech debt violations found in source code during inspection
