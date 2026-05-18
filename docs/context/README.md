@@ -7,7 +7,7 @@
 ## Files
 
 | File           | Purpose                                                  | Updated by                           |
-|----------------|----------------------------------------------------------|--------------------------------------|
+| -------------- | -------------------------------------------------------- | ------------------------------------ |
 | `project.md`   | Core project facts (stack, team, infra)                  | Onboarding prompt, manually          |
 | `decisions.md` | Append-only log of decisions (ADR-level and below)       | Claude after each significant change |
 | `sessions/`    | Optional per-session summaries for long working sessions | Claude at end of session             |
@@ -15,6 +15,7 @@
 ## How to use
 
 **At the start of a new session**, tell Claude:
+
 > "Read docs/context/project.md and decisions.md to get up to speed."
 
 **When running any prompt** from `docs/prompts/`, Claude reads `project.md` automatically.

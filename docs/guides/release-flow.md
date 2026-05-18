@@ -17,7 +17,7 @@ wrapped in a custom pre-release check script.
 ## Prerequisites
 
 | Tool   | Minimum version |
-|--------|-----------------|
+| ------ | --------------- |
 | `node` | ≥ 24.0.0        |
 | `pnpm` | ≥ 10.0.0        |
 | `git`  | any recent      |
@@ -34,7 +34,7 @@ GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx
 > **⚠️ Use `npm run`, not `pnpm run`** to avoid `ELIFECYCLE` noise on non-zero exit codes.
 
 | Command                 | Description                                                             |
-|-------------------------|-------------------------------------------------------------------------|
+| ----------------------- | ----------------------------------------------------------------------- |
 | `npm run release:dry`   | Preview only — runs checks and shows what would happen, no changes made |
 | `npm run release:patch` | Bump patch version (`X.Y.Z+1`) — bug fixes                              |
 | `npm run release:minor` | Bump minor version (`X.Y+1.0`) — new features                           |
@@ -43,7 +43,7 @@ GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx
 
 ## Typical Workflow
 
-```
+```text
 1. Merge all feature branches → main (via Pull Request)
 2. Ensure CHANGELOG.md is not empty and all commits are pushed
 3. npm run release:dry       ← verify everything looks correct
@@ -53,28 +53,28 @@ GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx
 
 ## Conventional Commits → Version Bump
 
-| Commit type                 | CHANGELOG section          | Bump    |
-|-----------------------------|----------------------------|---------|
+| Commit type                 | CHANGELOG section           | Bump    |
+| --------------------------- | --------------------------- | ------- |
 | `feat`                      | ✨ Features                 | `minor` |
-| `fix`                       | 🐛 Bug Fixes               | `patch` |
+| `fix`                       | 🐛 Bug Fixes                | `patch` |
 | `perf`                      | ⚡ Performance Improvements | `patch` |
 | `revert`                    | ⏪ Reverts                  | `patch` |
-| `docs`                      | 📚 Documentation           | —       |
-| `chore`                     | 🔧 Miscellaneous Chores    | —       |
-| `feat!` / `BREAKING CHANGE` | 💥 Breaking Changes        | `major` |
+| `docs`                      | 📚 Documentation            | —       |
+| `chore`                     | 🔧 Miscellaneous Chores     | —       |
+| `feat!` / `BREAKING CHANGE` | 💥 Breaking Changes         | `major` |
 
 ## Pre-Release Checks
 
 The script validates the following before any release starts:
 
-| # | Check                   | What it verifies                        |
-|---|-------------------------|-----------------------------------------|
-| 1 | Dependencies            | `git`, `node`, `pnpm` are installed     |
-| 2 | Clean working directory | No unstaged or staged changes           |
-| 3 | Correct branch          | You are on `main` or `master`           |
-| 4 | Commits pushed          | No local commits ahead of `origin`      |
-| 5 | Lockfile in sync        | Lock file matches `package.json`        |
-| 6 | CHANGELOG exists        | `CHANGELOG.md` is present and non-empty |
+| #   | Check                   | What it verifies                        |
+| --- | ----------------------- | --------------------------------------- |
+| 1   | Dependencies            | `git`, `node`, `pnpm` are installed     |
+| 2   | Clean working directory | No unstaged or staged changes           |
+| 3   | Correct branch          | You are on `main` or `master`           |
+| 4   | Commits pushed          | No local commits ahead of `origin`      |
+| 5   | Lockfile in sync        | Lock file matches `package.json`        |
+| 6   | CHANGELOG exists        | `CHANGELOG.md` is present and non-empty |
 
 If any check fails, the script exits with a descriptive error. No changes are made.
 
@@ -87,7 +87,7 @@ If any check fails, the script exits with a descriptive error. No changes are ma
 ## Configuration Files
 
 | File                         | Purpose                        |
-|------------------------------|--------------------------------|
+| ---------------------------- | ------------------------------ |
 | `scripts/.release-it.json`   | `release-it` configuration     |
 | `scripts/release/release.sh` | Main release entry-point       |
 | `scripts/release/checks.sh`  | Pre-release check functions    |
@@ -97,7 +97,7 @@ If any check fails, the script exits with a descriptive error. No changes are ma
 ## Troubleshooting
 
 | Symptom                         | Cause                                  | Fix                              |
-|---------------------------------|----------------------------------------|----------------------------------|
+| ------------------------------- | -------------------------------------- | -------------------------------- |
 | `Permission denied` on `.sh`    | Scripts not executable                 | `npm run prepare`                |
 | `CHANGELOG.md is empty`         | No content in file                     | Add at least a placeholder line  |
 | `pnpm-lock.yaml is out of sync` | `package.json` changed without install | `pnpm install`                   |

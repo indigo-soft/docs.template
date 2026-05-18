@@ -65,15 +65,15 @@ colors: true
 
 # pre-commit: format and lint staged files
 pre-commit:
-    parallel: false           # sequential: format first, then lint
+    parallel: false # sequential: format first, then lint
     commands:
         format:
-            glob: "src/**/*.{ts,tsx,js,jsx,json,md,css,scss}"
+            glob: 'src/**/*.{ts,tsx,js,jsx,json,md,css,scss}'
             run: npx prettier --write {staged_files}
             stage_fixed: true
 
         lint:
-            glob: "src/**/*.{ts,tsx,js,jsx}"
+            glob: 'src/**/*.{ts,tsx,js,jsx}'
             run: npx eslint --fix {staged_files}
             stage_fixed: true
 

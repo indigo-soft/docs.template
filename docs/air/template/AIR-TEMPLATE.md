@@ -23,7 +23,7 @@ List all ADRs involved in the conflict. Use relative paths
 -->
 
 | ADR                                            | Title            | Status after resolution                      |
-|------------------------------------------------|------------------|----------------------------------------------|
+| ---------------------------------------------- | ---------------- | -------------------------------------------- |
 | [ADR-XXXX](../adr/ADR-XXXX-first-decision.md)  | First ADR title  | Accepted — unchanged / clarified             |
 | [ADR-YYYY](../adr/ADR-YYYY-second-decision.md) | Second ADR title | Accepted — updated to account for constraint |
 
@@ -88,7 +88,7 @@ Be honest — the goal is to document the analysis, not to sell the chosen optio
 
 **Status:** [✅ Chosen | ❌ Rejected | ⏳ Deferred]
 
-### Path C: [Option name] *(optional)*
+### Path C: [Option name] _(optional)_
 
 **Pros:**
 
@@ -112,7 +112,7 @@ Structure:
 3. Whether this sets a precedent for similar future situations
 -->
 
-*Decision not yet made.*
+_Decision not yet made._
 
 ## Consequences
 

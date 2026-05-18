@@ -96,7 +96,7 @@ from `docs/adr/template/ADR-TEMPLATE.md` if it exists, otherwise use this struct
 
 After creating the file, add an entry to `docs/adr/INDEX.md`:
 
-```
+```text
 | ADR-{NUMBER} | {Title} | {status} | {date} |
 ```
 
@@ -110,7 +110,7 @@ Rules:
 
 Append to `docs/context/decisions.md`:
 
-```
+```text
 ## {YYYY-MM-DD} — ADR-{NUMBER}: {Title}
 **Summary:** {one sentence decision summary}
 **Full record:** docs/adr/ADR-{NUMBER}-{kebab-case-title}.md

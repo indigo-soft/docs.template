@@ -10,7 +10,7 @@ Full list of Architecture Decision Records.
 ## Tooling & Workflow
 
 | #                                                       | Title                                                   | Status   | Date       |
-|---------------------------------------------------------|---------------------------------------------------------|----------|------------|
+| ------------------------------------------------------- | ------------------------------------------------------- | -------- | ---------- |
 | [ADR-0001](ADR-0001-git-workflow-branching-strategy.md) | Git Workflow and Branching Strategy                     | Accepted | 2026-05-11 |
 | [ADR-0002](ADR-0002-package-manager-pnpm.md)            | Package Manager (pnpm)                                  | Accepted | 2026-05-11 |
 | [ADR-0003](ADR-0003-native-development-no-docker.md)    | Native Development without Docker                       | Accepted | 2026-05-11 |
@@ -23,6 +23,6 @@ Full list of Architecture Decision Records.
 
 ## Archive (Superseded ADRs)
 
-| # | Title | Superseded by |
-|---|-------|---------------|
-| — | —     | —             |
+| #   | Title | Superseded by |
+| --- | ----- | ------------- |
+| —   | —     | —             |

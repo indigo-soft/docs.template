@@ -10,7 +10,7 @@ We use **GitHub Flow**:
 - **Feature branches** — short-lived; one per task
 - **Pull Requests** — mandatory before merging into `main`
 
-```
+```text
 main (protected)
   ├── feature/0001-implement-auth
   ├── fix/0042-connection-timeout
@@ -22,12 +22,12 @@ main (protected)
 
 ### Format
 
-```
+```text
 <type>/<issue-number>-<short-description>
 ```
 
 | Rule          | Detail                                                          |
-|---------------|-----------------------------------------------------------------|
+| ------------- | --------------------------------------------------------------- |
 | Issue number  | **Required.** Minimum 4 digits (pad with zeros: `0001`, `0042`) |
 | Type          | `feature`, `fix`, `docs`, `refactor`, `test`, `chore`, `perf`   |
 | Description   | kebab-case, lowercase, English, 3–5 words                       |
@@ -63,9 +63,9 @@ git checkout -b feature/0001-my-feature
 
 We follow [Conventional Commits](https://www.conventionalcommits.org/).
 
-### Format
+### Format (Body)
 
-```
+```text
 <type>(<scope>): <subject>
 
 [optional body]
@@ -76,11 +76,11 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/).
 ### Rules
 
 | Field     | Rule                                                                                                           |
-|-----------|----------------------------------------------------------------------------------------------------------------|
+| --------- | -------------------------------------------------------------------------------------------------------------- |
 | `type`    | Required. One of: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`, `ci`, `build`, `revert` |
 | `scope`   | **Required.** kebab-case. Must match project scopes from `docs/context/project.md`                             |
 | `subject` | Required. Max 72 chars. Lowercase. Imperative mood. No trailing period                                         |
-| `body`    | Optional. Explain *why*, not *what*. Blank line before                                                         |
+| `body`    | Optional. Explain _why_, not _what_. Blank line before                                                         |
 | `footer`  | Optional. `Closes #123`, `BREAKING CHANGE: ...`                                                                |
 
 ### Commit scopes
@@ -150,7 +150,7 @@ git push --force-with-lease
 
 Same format as a commit message:
 
-```
+```text
 feat(auth): add JWT authentication
 ```
 

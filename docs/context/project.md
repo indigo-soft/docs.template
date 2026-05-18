@@ -8,7 +8,7 @@
 
 - **Name:** {project name}
 - **Description:** {one or two sentences — what the project does and for whom}
-- **Repository:** {https://github.com/org/repo}
+- **Repository:** {<https://github.com/org/repo>}
 - **Primary language(s):** {e.g. TypeScript, PHP, Python}
 
 ## Tech Stack

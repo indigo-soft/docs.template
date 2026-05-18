@@ -8,10 +8,10 @@ Full list of Architecture Issue Records.
 
 ## Open
 
-*No open AIRs.*
+_No open AIRs._
 
 ## Resolved
 
-| # | Conflict | Affected ADRs | Resolved |
-|---|----------|---------------|----------|
-| — | —        | —             | —        |
+| #   | Conflict | Affected ADRs | Resolved |
+| --- | -------- | ------------- | -------- |
+| —   | —        | —             | —        |

@@ -3,7 +3,7 @@
 Two tools split the responsibility for keeping dependencies up to date:
 
 | Tool           | Scope                                 | Schedule                      |
-|----------------|---------------------------------------|-------------------------------|
+| -------------- | ------------------------------------- | ----------------------------- |
 | **Renovate**   | npm packages (`package.json`)         | Every 3 days (nightly CI run) |
 | **Dependabot** | GitHub Actions (`.github/workflows/`) | Weekly (every Monday)         |
 
@@ -22,7 +22,7 @@ Renovate runs nightly via GitHub Actions. On each run it:
 ### ✅ Automatic (no action needed)
 
 | Update type                         | What happens                        |
-|-------------------------------------|-------------------------------------|
+| ----------------------------------- | ----------------------------------- |
 | **patch** (e.g. `1.2.3` → `1.2.4`)  | PR opened → CI passes → auto-merged |
 | **minor** (e.g. `1.2.0` → `1.3.0`)  | PR opened → CI passes → auto-merged |
 | **GitHub Actions** (via Dependabot) | PR opened → CI passes → auto-merged |
@@ -33,7 +33,7 @@ Renovate runs nightly via GitHub Actions. On each run it:
 ### 🔍 Manual review required
 
 | Update type                    | Why                       | Label                          |
-|--------------------------------|---------------------------|--------------------------------|
+| ------------------------------ | ------------------------- | ------------------------------ |
 | **major** (e.g. `1.x` → `2.x`) | Breaking changes possible | `major-update`, `needs-review` |
 | Any update that **breaks CI**  | Tests or lint fail        | PR stays open                  |
 | `pnpm-lock.yaml` conflicts     | Manual rebase needed      | —                              |
@@ -101,8 +101,8 @@ Or pin to a version range:
 
 ```json
 {
-  "matchPackageNames": ["some-package"],
-  "allowedVersions": "< 3.0.0"
+    "matchPackageNames": ["some-package"],
+    "allowedVersions": "< 3.0.0"
 }
 ```
 
@@ -119,7 +119,7 @@ renovate --platform=github --token=$RENOVATE_TOKEN your-org/your-repo
 ## Configuration files
 
 | File                             | Purpose                                              |
-|----------------------------------|------------------------------------------------------|
+| -------------------------------- | ---------------------------------------------------- |
 | `renovate.json`                  | Renovate config (groups, schedule, auto-merge rules) |
 | `.github/dependabot.yml`         | Dependabot config (GitHub Actions only)              |
 | `.github/workflows/renovate.yml` | Nightly Renovate trigger                             |

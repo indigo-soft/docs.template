@@ -73,14 +73,14 @@ Update the table in [INDEX.md](INDEX.md).
 
 ## ADR Lifecycle
 
-```
+```text
 Proposed → Accepted → Deprecated → Superseded
            ↓
          Rejected
 ```
 
 | Status         | Meaning                                 |
-|----------------|-----------------------------------------|
+| -------------- | --------------------------------------- |
 | **Proposed**   | Under discussion, decision not yet made |
 | **Accepted**   | Decision made and in effect             |
 | **Deprecated** | Outdated but still used in code         |
@@ -104,7 +104,7 @@ Files in `archive/` are never deleted — only moved.
 
 ## File naming
 
-```
+```text
 ADR-XXXX-short-descriptive-title.md
 ```
 

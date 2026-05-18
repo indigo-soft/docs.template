@@ -62,7 +62,7 @@ commit messages, enabling automated changelog generation and semantic versioning
 
 ## Branch Naming
 
-```
+```text
 <type>/<issue-number>-<short-description>
 ```
 
@@ -84,7 +84,7 @@ fix/42-bug                   # fewer than 4 digits
 
 ## Commit Message Format
 
-```
+```text
 <type>(<scope>): <subject>
 
 [optional body]

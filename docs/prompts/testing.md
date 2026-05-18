@@ -22,25 +22,28 @@ Only ask questions for what cannot be inferred from the above.
 ## Questions to ask
 
 ### Testing stack
+
 1. **What testing framework is used?**
    (Only ask if not already in `composer.json` / `package.json`)
 2. **Are there different frameworks for different test types?**
    (e.g. Pest for unit, Playwright for E2E)
 
 ### Test types
-3. **What types of tests should exist?**
+
+1. **What types of tests should exist?**
    Always ask about: unit, integration.
    Ask about the following only if the project has the relevant layer:
-   - E2E — if the project has a web UI or public HTTP API
-   - Contract — if the project communicates with external APIs it does not own
-   - Snapshot — if the project renders UI components
-   - Performance — if latency or throughput is a documented requirement
+    - E2E — if the project has a web UI or public HTTP API
+    - Contract — if the project communicates with external APIs it does not own
+    - Snapshot — if the project renders UI components
+    - Performance — if latency or throughput is a documented requirement
 
-4. **Is there a coverage requirement?** What threshold?
-5. **What is intentionally NOT tested and why?**
+2. **Is there a coverage requirement?** What threshold?
+3. **What is intentionally NOT tested and why?**
 
 ### Test data
-6. **Is there a `samples/` or `fixtures/` directory for integration tests?**
+
+1. **Is there a `samples/` or `fixtures/` directory for integration tests?**
    If not — should one be created?
 
 ## Setup actions (always run, no questions needed)
@@ -49,7 +52,7 @@ Only ask questions for what cannot be inferred from the above.
 
 For each confirmed test type, create the corresponding subdirectory:
 
-```
+```text
 tests/
     TestCase.php          ← base test case
     Unit/                 ← always
@@ -64,12 +67,14 @@ Adapt to the project's testing framework (Pest / PHPUnit / Vitest / Jest / pytes
 ### 3. Create stub tests — one per test type
 
 Stubs must:
+
 - **Pass without errors** out of the box (no false failures)
 - **Be functional, not empty** — test something real (a smoke assertion, a sanity check)
 - **Include a TODO comment** pointing to what a real test should cover
 - **Not modify any files or state** — use `--dry-run`, in-memory data, or read-only fixtures
 
 **PHP/Pest unit stub example:**
+
 ```php
 describe('ServiceName', function (): void {
     it('placeholder — replace with real unit test', function (): void {
@@ -80,6 +85,7 @@ describe('ServiceName', function (): void {
 ```
 
 **PHP/Pest integration stub example:**
+
 ```php
 use Symfony\Component\Process\Process;
 
@@ -101,7 +107,7 @@ describe('Console bootstrap', function (): void {
 
 Generate `docs/guides/testing.md` with sections:
 
-```
+```text
 # Testing Guide
 
 ## Testing Strategy
@@ -115,6 +121,7 @@ Generate `docs/guides/testing.md` with sections:
 ```
 
 Rules:
+
 - Include exact runnable commands for each script.
 - Provide one short example per test type showing what a good test looks like.
 - If a private method cannot be tested directly — document it as tech debt to fix,
@@ -127,5 +134,5 @@ Rules:
 
 1. Mark `testing.md` as done in `docs/checklists/new-project.md`.
 2. Append to `docs/context/decisions.md`:
-   - Which test types were chosen and why
-   - Any tech debt surfaced during test setup (private methods, DI violations, etc.)
+    - Which test types were chosen and why
+    - Any tech debt surfaced during test setup (private methods, DI violations, etc.)

@@ -10,10 +10,10 @@ what this repository is, how it is structured, what commands are available, and 
 
 1. Read `docs/context/project.md` — use all known facts silently, do not re-ask them.
 2. Check if `AGENTS.md` already exists in the project root:
-   - **If yes** — read it fully. Identify any project-specific sections (custom rules, non-standard
-     patterns, domain-specific restrictions). These must be preserved and integrated into the new file.
-     Use the docs.template structure as the base; merge existing content into it.
-   - **If no** — generate from scratch using the structure below.
+    - **If yes** — read it fully. Identify any project-specific sections (custom rules, non-standard
+      patterns, domain-specific restrictions). These must be preserved and integrated into the new file.
+      Use the docs.template structure as the base; merge existing content into it.
+    - **If no** — generate from scratch using the structure below.
 
 ## Questions to ask
 
@@ -44,23 +44,24 @@ Ask the user only what is not already known from `docs/context/project.md` or th
 Every project uses Node.js dev tooling regardless of the primary language (PHP, Python, Go, etc.).
 The following pnpm commands are always present in `AGENTS.md`:
 
-| Command | Description |
-|---------|-------------|
-| `pnpm install` | Install Node.js dev dependencies (commitlint, lefthook, release-it) |
-| `pnpm prepare` | Install lefthook git hooks |
-| `pnpm release:dry` | Preview release — no changes made |
-| `pnpm release:patch` | Release a patch version bump |
-| `pnpm release:minor` | Release a minor version bump |
-| `pnpm release:major` | Release a major version bump |
+| Command              | Description                                                         |
+| -------------------- | ------------------------------------------------------------------- |
+| `pnpm install`       | Install Node.js dev dependencies (commitlint, lefthook, release-it) |
+| `pnpm prepare`       | Install lefthook git hooks                                          |
+| `pnpm release:dry`   | Preview release — no changes made                                   |
+| `pnpm release:patch` | Release a patch version bump                                        |
+| `pnpm release:minor` | Release a minor version bump                                        |
+| `pnpm release:major` | Release a major version bump                                        |
 
 If `package.json` does not yet exist in the project, add a note:
+
 > ⚠️ `package.json` is not yet present — run the Node.js tooling setup first.
 
 ## Output
 
 Generate `AGENTS.md` in the project root with the following sections:
 
-```
+```text
 # AGENTS Guide
 
 ## What this repository is
@@ -73,6 +74,7 @@ Generate `AGENTS.md` in the project root with the following sections:
 ```
 
 Rules for the output:
+
 - Be concrete and specific — use actual file paths, command names, directory names.
 - Keep each bullet to one clear fact. No vague statements like "follow best practices".
 - "Available commands" must list the exact commands with short descriptions,

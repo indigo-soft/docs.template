@@ -124,11 +124,11 @@ See `docs/guides/release-flow.md` for the full guide.
 ### Commit type → version bump mapping
 
 | Commit type                 | CHANGELOG section   | Version bump |
-|-----------------------------|---------------------|--------------|
-| `feat`                      | ✨ Features          | `minor`      |
+| --------------------------- | ------------------- | ------------ |
+| `feat`                      | ✨ Features         | `minor`      |
 | `fix`                       | 🐛 Bug Fixes        | `patch`      |
-| `perf`                      | ⚡ Performance       | `patch`      |
-| `revert`                    | ⏪ Reverts           | `patch`      |
+| `perf`                      | ⚡ Performance      | `patch`      |
+| `revert`                    | ⏪ Reverts          | `patch`      |
 | `docs`                      | 📚 Documentation    | —            |
 | `chore`                     | 🔧 Chores           | —            |
 | `feat!` / `BREAKING CHANGE` | 💥 Breaking Changes | `major`      |
@@ -159,9 +159,9 @@ When ready, add a workflow file. The `.release-it.json` config requires no chang
 
 ```yaml
 # .github/workflows/release.yml
--   run: npx release-it --ci
-    env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+- run: npx release-it --ci
+  env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## Related ADRs

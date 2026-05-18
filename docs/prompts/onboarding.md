@@ -11,13 +11,13 @@ Run this prompt first, before any other prompt in `docs/prompts/`.
 ## Instructions for Claude
 
 1. Read existing project files first (silently):
-   - `README.md`, `AGENTS.md`, `composer.json`, `package.json`, `pyproject.toml` — extract
-     as many facts as possible before asking questions.
+    - `README.md`, `AGENTS.md`, `composer.json`, `package.json`, `pyproject.toml` — extract
+      as many facts as possible before asking questions.
 2. Ask questions below one group at a time — only what is not already known from files.
 3. After all answers are collected:
-   - Generate `docs/context/project.md`
-   - Set up Node.js tooling (see section below)
-   - Show the user `docs/checklists/new-project.md`
+    - Generate `docs/context/project.md`
+    - Set up Node.js tooling (see section below)
+    - Show the user `docs/checklists/new-project.md`
 
 ## Questions
 
@@ -101,7 +101,7 @@ Do NOT include `"type": "module"` unless the project has JS/TS source files that
 
 ### `.npmrc`
 
-```
+```properties
 shamefully-hoist=true
 node-linker=hoisted
 ```
@@ -173,6 +173,7 @@ Create or overwrite `docs/context/project.md`:
 
 ```markdown
 ## {YYYY-MM-DD} — Project onboarding completed
+
 **Stack:** {runtime} + {framework}
 **Deployment:** {target}
 **Node.js tooling:** created package.json / commitlint.config.js / lefthook.yml

@@ -16,13 +16,13 @@ prefix in the filename — open ones always appear first in a sorted listing.
 
 ### Open
 
-*No open AIRs.*
+_No open AIRs._
 
 ### Resolved
 
-| # | Conflict | Affected ADRs | Resolved |
-|---|----------|---------------|----------|
-| — | —        | —             | —        |
+| #   | Conflict | Affected ADRs | Resolved |
+| --- | -------- | ------------- | -------- |
+| —   | —        | —             | —        |
 
 ---
 
@@ -45,13 +45,13 @@ Create an AIR when:
 
 ## AIR Lifecycle
 
-```
+```text
 Open → Resolved
      ↘ Deferred
 ```
 
 | Status       | Meaning                                                                  |
-|--------------|--------------------------------------------------------------------------|
+| ------------ | ------------------------------------------------------------------------ |
 | **Open**     | Conflict identified; resolution not yet decided — needs attention        |
 | **Resolved** | Decision made, reflected in affected ADRs, file renamed to `done-`       |
 | **Deferred** | Resolution deliberately postponed, with an explicit condition to revisit |
@@ -83,9 +83,11 @@ An AIR is a prompt for the team to discuss the conflict explicitly, not resolve 
 
 1. Fill in the **Decision taken** section.
 2. Update each **affected ADR** — add to its Related section:
-   ```markdown
-   - Conflict resolved by: [AIR-00N](../air/done-air-00N-....md) — one-line summary
-   ```
+
+    ```markdown
+    - Conflict resolved by: [AIR-00N](../air/done-air-00N-....md) — one-line summary
+    ```
+
 3. Change the AIR status to `Resolved`.
 4. Rename the file: `air-00N-...md` → `done-air-00N-...md`
 5. Update the **Resolved** table above and in [INDEX.md](INDEX.md).
@@ -94,7 +96,7 @@ An AIR is a prompt for the team to discuss the conflict explicitly, not resolve 
 
 ## File naming
 
-```
+```text
 air-00N-short-conflict-description.md       ← open
 done-air-00N-short-conflict-description.md  ← resolved
 ```

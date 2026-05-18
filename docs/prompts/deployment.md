@@ -23,27 +23,32 @@ Only ask questions for information that cannot be inferred from the above.
 Ask only what remains unknown after the inspection above:
 
 ### Environments
+
 1. **What environments exist and what differs between them?**
    (e.g. local uses DEBUG=true, production uses DEBUG=false; staging has a separate DB)
 
 ### Setup process
+
 2. **What are the exact steps to set up the project from a fresh clone?**
    Ask separately for dev and production if they differ.
 3. **Are there dependencies that must be installed or running before the app starts?**
    (e.g. local database, message queue, external service)
 
 ### CI/CD pipeline
+
 4. **What triggers a deployment?**
    (e.g. merge to `main` → staging, push tag → production)
 5. **What does the pipeline do step by step?**
 6. **Are there manual approval gates?**
 
 ### Infrastructure
+
 7. **Where is the application hosted?**
 8. **How are secrets managed in production?**
    (e.g. `.env` file on server, GitHub Actions secrets, Vault)
 
 ### Rollback & verification
+
 9. **How is a bad deployment rolled back?**
 10. **Are there post-deploy checks or smoke tests?**
 
@@ -51,7 +56,7 @@ Ask only what remains unknown after the inspection above:
 
 Generate `docs/guides/deployment.md` with sections:
 
-```
+```text
 # Deployment Guide
 
 ## Environments
@@ -65,6 +70,7 @@ Generate `docs/guides/deployment.md` with sections:
 ```
 
 Rules:
+
 - Every setup process must be written as numbered steps with exact commands.
 - List all `.env` variables in a table: name, type, default, description.
 - If CI/CD does not exist yet, include a "not yet configured" note and a placeholder

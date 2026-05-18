@@ -6,12 +6,12 @@
 
 **Format:**
 
-```
+```text
 <type>/<issue-number>-<short-description>
 ```
 
 | Rule         | Detail                                                             |
-|--------------|--------------------------------------------------------------------|
+| ------------ | ------------------------------------------------------------------ |
 | Issue number | **Required.** Min 4 digits. Pad with zeros: `0001`, `0042`, `0123` |
 | Type         | `feature`, `fix`, `docs`, `refactor`, `test`, `chore`, `perf`      |
 | Description  | kebab-case, lowercase, English, 3–5 words                          |
@@ -43,7 +43,7 @@ Scopes are project-specific — defined in `docs/context/project.md`.
 
 Use **kebab-case** for all file and folder names unless the language ecosystem dictates otherwise.
 
-```
+```text
 # ✅
 user-authentication.service.ts
 create-task.dto.ts
@@ -57,7 +57,7 @@ KanbanBoard.tsx        # exception: React components (see below)
 
 **React / frontend components:** PascalCase file names are acceptable when the ecosystem convention requires it.
 
-```
+```text
 KanbanBoard.tsx
 TaskCard.tsx
 ```
@@ -175,13 +175,15 @@ Always name magic numbers:
 ```typescript
 // ❌
 setTimeout(() => {}, 3000);
-if (status === 200) {}
+if (status === 200) {
+}
 
 // ✅
 const RETRY_DELAY_MS = 3000;
 const HTTP_OK = 200;
 setTimeout(() => {}, RETRY_DELAY_MS);
-if (status === HTTP_OK) {}
+if (status === HTTP_OK) {
+}
 ```
 
 ---
@@ -242,7 +244,7 @@ PORT="3000"
 
 Lowercase, kebab-case, plural resource names:
 
-```
+```text
 GET    /tasks
 GET    /tasks/:id
 POST   /tasks
@@ -259,7 +261,7 @@ POST   /tasks/:id/archive
 
 Query parameters: camelCase:
 
-```
+```text
 GET /tasks?sortBy=createdAt&order=desc&perPage=20
 ```
 
@@ -267,7 +269,7 @@ GET /tasks?sortBy=createdAt&order=desc&perPage=20
 
 ## Tests
 
-```
+```text
 # File naming: *.spec.ts or *.test.ts
 user-auth.service.spec.ts
 kanban-board.test.tsx

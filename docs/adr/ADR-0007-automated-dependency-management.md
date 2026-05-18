@@ -30,7 +30,7 @@ Alternatives considered: Renovate, Dependabot, manual updates.
 Use **two tools with a clear split of responsibility**:
 
 | Tool           | Scope                                 | Schedule                      |
-|----------------|---------------------------------------|-------------------------------|
+| -------------- | ------------------------------------- | ----------------------------- |
 | **Renovate**   | npm packages (`package.json`)         | Every 3 days (nightly CI run) |
 | **Dependabot** | GitHub Actions (`.github/workflows/`) | Weekly (every Monday)         |
 
@@ -114,16 +114,16 @@ Example group configuration:
 ```yaml
 version: 2
 updates:
-    - package-ecosystem: "github-actions"
-      directory: "/"
+    - package-ecosystem: 'github-actions'
+      directory: '/'
       schedule:
-          interval: "weekly"
-          day: "monday"
-          time: "09:00"
-          timezone: "Europe/Kyiv"
+          interval: 'weekly'
+          day: 'monday'
+          time: '09:00'
+          timezone: 'Europe/Kyiv'
       groups:
           github-actions:
-              patterns: ["*"]
+              patterns: ['*']
 ```
 
 ### GitHub Actions trigger (`.github/workflows/renovate.yml`)
@@ -131,8 +131,8 @@ updates:
 ```yaml
 on:
     schedule:
-        - cron: "0 2 * * *"   # nightly at 02:00 UTC
-    workflow_dispatch:          # manual trigger
+        - cron: '0 2 * * *' # nightly at 02:00 UTC
+    workflow_dispatch: # manual trigger
 ```
 
 ## One-time setup

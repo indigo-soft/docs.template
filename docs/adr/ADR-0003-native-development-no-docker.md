@@ -82,7 +82,7 @@ The trade-offs (manual server setup, individual local installs) are one-time cos
 ## Production stack
 
 | Component           | Technology                                               |
-|---------------------|----------------------------------------------------------|
+| ------------------- | -------------------------------------------------------- |
 | Application runtime | PM2 (process manager)                                    |
 | Reverse proxy + SSL | Nginx + Let's Encrypt                                    |
 | Database            | Installed via system package manager, managed by systemd |

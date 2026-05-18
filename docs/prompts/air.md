@@ -98,7 +98,7 @@ from `docs/air/template/AIR-TEMPLATE.md` if it exists, otherwise use this struct
 
 After creating the file, add an entry to `docs/air/INDEX.md`:
 
-```
+```text
 | AIR-{NUMBER} | {Title} | {status} | {date} | {AI system} |
 ```
 
@@ -112,7 +112,7 @@ Rules:
 
 Append to `docs/context/decisions.md`:
 
-```
+```text
 ## {YYYY-MM-DD} — AIR-{NUMBER}: {Title}
 **Summary:** {one sentence on what was done and adopted}
 **Full record:** docs/air/AIR-{NUMBER}-{kebab-case-title}.md
