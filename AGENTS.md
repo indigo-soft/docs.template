@@ -11,7 +11,7 @@ conventions and documentation from day one — without writing 20 documents from
 
 ## Repository map
 
-```
+```text
 docs/
     context/            ← project memory (Claude reads this; humans browse it)
         project.md      ← core project facts from onboarding
@@ -53,7 +53,7 @@ package.json            ← release scripts and dev dependencies
 ## Available commands
 
 | Command              | Description                                                      |
-|----------------------|------------------------------------------------------------------|
+| -------------------- | ---------------------------------------------------------------- |
 | `pnpm install`       | Install dev dependencies (commitlint, lefthook, release-it)      |
 | `pnpm prepare`       | Install lefthook git hooks + make scripts executable             |
 | `pnpm release`       | Interactive release (auto-detects bump type from commits)        |
@@ -79,9 +79,9 @@ package.json            ← release scripts and dev dependencies
 ## Tooling and workflows
 
 - **Lefthook** manages git hooks — configured in `lefthook.yml`:
-    - `pre-commit`: formats and lints staged files
-    - `commit-msg`: runs commitlint to validate message format
-    - `pre-push`: runs typecheck and tests
+  - `pre-commit`: formats and lints staged files
+  - `commit-msg`: runs commitlint to validate message format
+  - `pre-push`: runs typecheck and tests
 - **commitlint** validates commit messages and branch names — config in `commitlint.config.js`.
 - **release-it** handles versioning and changelog — config in `scripts/.release-it.json`.
 

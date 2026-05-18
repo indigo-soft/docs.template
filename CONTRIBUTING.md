@@ -30,20 +30,22 @@ git push -u origin feature/0123-my-feature
 ### Детальний процес
 
 1. **Fork та Clone** (для зовнішніх контриб'юторів)
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/ai-workflow-assistant.git
-   cd ai-workflow-assistant
-   git remote add upstream https://github.com/ORIGINAL-OWNER/ai-workflow-assistant. git
-   ```
+
+    ```bash
+    git clone https://github.com/YOUR-USERNAME/ai-workflow-assistant.git
+    cd ai-workflow-assistant
+    git remote add upstream https://github.com/ORIGINAL-OWNER/ai-workflow-assistant. git
+    ```
 
 2. **Створіть гілку від main**
-   ```bash
-   git checkout main
-   git pull origin main
-   git checkout -b feature/0123-descriptive-name
-   ```
 
-   **⚠️ ВАЖЛИВО:** Номер issue є обов'язковим (мінімум 4 цифри з нулями спереду, якщо потрібно).
+    ```bash
+    git checkout main
+    git pull origin main
+    git checkout -b feature/0123-descriptive-name
+    ```
+
+    **⚠️ ВАЖЛИВО:** Номер issue є обов'язковим (мінімум 4 цифри з нулями спереду, якщо потрібно).
 
 3. **Зробіть зміни**
     - Пишіть код
@@ -51,48 +53,53 @@ git push -u origin feature/0123-my-feature
     - Оновлюйте документацію
 
 4. **Коміт за Conventional Commits**
-   ```bash
-   git add .
-   git commit -m "feat(module): add new feature"
-   ```
 
-   **Формат:**
-   ```
-   <type>(<scope>): <description>
+    ```bash
+    git add .
+    git commit -m "feat(module): add new feature"
+    ```
 
-   [optional body]
+    **Формат:**
 
-   [optional footer]
-   ```
+    ```text
+    <type>(<scope>): <description>
 
-   **⚠️ ВАЖЛИВО: Scope є ОБОВ'ЯЗКОВИМ!**
+    [optional body]
 
-   **Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+    [optional footer]
+    ```
 
-   **Scopes:** `architect`, `workflow`, `kanban`, `ui`, `database`, `api`, `deps`, `config`, тощо
+    **⚠️ ВАЖЛИВО: Scope є ОБОВ'ЯЗКОВИМ!**
 
-   **Приклади:**
-   ```bash
-   feat(architect): add draft creation service
-   fix(kanban): resolve drag and drop on mobile
-   docs(readme): update installation steps
-   test(workflow): add unit tests for branch creation
-   chore(deps): update prettier to 3.8.1
-   ```
+    **Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
-   **Назва гілки:**
-   ```bash
-   feature/0001-architect-agent
-   fix/0042-kanban-drag-drop
-   docs/0099-readme-update
-   ```
+    **Scopes:** `architect`, `workflow`, `kanban`, `ui`, `database`, `api`, `deps`, `config`, тощо
+
+    **Приклади:**
+
+    ```bash
+    feat(architect): add draft creation service
+    fix(kanban): resolve drag and drop on mobile
+    docs(readme): update installation steps
+    test(workflow): add unit tests for branch creation
+    chore(deps): update prettier to 3.8.1
+    ```
+
+    **Назва гілки:**
+
+    ```bash
+    feature/0001-architect-agent
+    fix/0042-kanban-drag-drop
+    docs/0099-readme-update
+    ```
 
 5. **Push та створіть PR**
-   ```bash
-   git push -u origin feature/0123-descriptive-name
-   ```
 
-   Потім відкрийте PR на GitHub.
+    ```bash
+    git push -u origin feature/0123-descriptive-name
+    ```
+
+    Потім відкрийте PR на GitHub.
 
 ## ✅ PR Checklist
 
@@ -201,6 +208,6 @@ Follow the responsible disclosure process described in [SECURITY.md](SECURITY.md
 
 Контрибутячи, ви погоджуєтесь, що ваш код буде під [MIT License](LICENSE.md).
 
-## 🙏 Дякуємо!
+## 🙏 Дякуємо
 
 Кожен внесок цінний, незалежно від розміру!
