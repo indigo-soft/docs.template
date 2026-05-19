@@ -74,6 +74,17 @@ If the project also uses Prettier or markdownlint, install them globally too:
 npm install -g prettier markdownlint-cli2
 ```
 
+### `.npmrc` (if missing)
+
+Create in the project root to suppress pnpm's interactive approval prompt for lefthook:
+
+```properties
+approve-builds=lefthook
+```
+
+Without this, pnpm v10+ asks for manual approval of lefthook's `postinstall` script
+on every fresh `pnpm install`.
+
 ### `package.json` (if missing)
 
 Create with the following structure, substituting project-specific values.
@@ -92,7 +103,8 @@ Do NOT add `commitlint`, `release-it` or `prettier` to `devDependencies` — the
   "license": "MIT",
   "author": "github.com/{org}",
   "scripts": {
-    "init": "pnpm exec lefthook install && find scripts -name '*.sh' -exec chmod +x {} +",
+    "start": "bash scripts/start/start.sh",
+    "init": "bash scripts/init/init.sh",
     "release": "bash scripts/release/release.sh",
     "release:dry": "bash scripts/release/release.sh --dry",
     "release:patch": "bash scripts/release/release.sh --type=patch",
@@ -104,7 +116,7 @@ Do NOT add `commitlint`, `release-it` or `prettier` to `devDependencies` — the
     "pnpm": ">=10.0.0"
   },
   "release-it": {
-    "extends": "./scripts/.release-it.json"
+    "extends": "./.release-it.json"
   },
   "devDependencies": {
     "lefthook": "^2.1.6"
@@ -181,7 +193,7 @@ Create or overwrite `docs/context/project.md`:
 
 **Stack:** {runtime} + {framework}
 **Deployment:** {target}
-**Node.js tooling:** created package.json / commitlint.config.mjs / lefthook.yml
+**Node.js tooling:** created package.json / commitlint.config.mjs / lefthook.yml / .npmrc
 **Notes:** {anything non-obvious about the project setup}
 ```
 
