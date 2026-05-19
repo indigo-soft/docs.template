@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.5.0](https://github.com/indigo-soft/docs/compare/v0.4.2...v0.5.0) (2026-05-19)
+
+### Features
+
+* **config:** add init script with functions and adr-0012 shell conventions ([7c5eefd](https://github.com/indigo-soft/docs/commit/7c5eefdce18bbeeffdb3525a456dda44e48df4bb))
+
+### Bug Fixes
+
+* **config:** correct release-it config path to root ([595ee29](https://github.com/indigo-soft/docs/commit/595ee29840e53ac3afefcc2a3c883fa05102f39c))
+
 ## [0.4.2](https://github.com/indigo-soft/docs/compare/v0.4.1...v0.4.2) (2026-05-19)
 
 ## [0.4.1](https://github.com/indigo-soft/docs/compare/v0.4.0...v0.4.1) (2026-05-19)
