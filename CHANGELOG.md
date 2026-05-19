@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/indigo-soft/docs/compare/v0.6.0...v0.6.1) (2026-05-19)
+
+### Bug Fixes
+
+* **config:** add npmrc approve-builds for lefthook and update onboarding prompt ([dc9833d](https://github.com/indigo-soft/docs/commit/dc9833de5751508b9531a147e3794e54eee16430))
+* **start:** align terminal output in checks.sh ([ad93d4c](https://github.com/indigo-soft/docs/commit/ad93d4c07f351c93c157c9d033df7e52ee110b48))
+
 ## [0.6.0](https://github.com/indigo-soft/docs/compare/v0.5.0...v0.6.0) (2026-05-19)
 
 ### Features
