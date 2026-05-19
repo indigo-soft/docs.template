@@ -31,9 +31,9 @@ pre-push:
     parallel: false
     commands:
         lint:
-            run: pnpm lint
+            run: pnpm run lint:check
             fail_text: '❌ LINT — markdownlint found issues. Run: pnpm lint:fix'
 
         format:
-            run: pnpm format:check
-            fail_text: '❌ FORMATTING — Prettier found issues. Run: pnpm format'
+            run: pnpm run format:check
+            fail_text: '❌ FORMATTING — Prettier found issues. Run: pnpm format:fix'
