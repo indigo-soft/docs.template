@@ -42,8 +42,10 @@ docs/
                            updating-dependencies
 
 scripts/
+    init/               ← project initialization script
+    start/              ← project status wizard
     release/            ← release automation scripts
-    libs/               ← shared shell utilities
+    libs/               ← shared shell utilities (colors.sh, env.sh)
 
 src/                    ← placeholder; not used in this template repo
 
@@ -52,6 +54,7 @@ CONTRIBUTING.md         ← contribution guide and git workflow summary
 commitlint.config.mjs   ← commit message and branch name validation rules
 lefthook.yml            ← git hooks: pre-commit, commit-msg, pre-push
 package.json            ← scripts and dev dependencies
+.pnpmrc                 ← pnpm config (approve-builds=lefthook)
 .editorconfig           ← formatting contract for all files
 ```
 
@@ -59,12 +62,15 @@ package.json            ← scripts and dev dependencies
 
 | Command                 | Description                                                      |
 | ----------------------- | ---------------------------------------------------------------- |
-| `pnpm install`          | Install dev dependencies (lefthook)                              |
-| `pnpm run init`         | Install lefthook git hooks + make scripts executable             |
-| `pnpm lint`             | Run markdownlint on all markdown files                           |
+| `pnpm start`            | Show project status and next recommended step                    |
+| `pnpm run init`         | Full project setup (global tools, hooks, .env, git template)     |
+| `pnpm install`          | Install local dev dependencies (lefthook only)                   |
 | `pnpm lint:fix`         | Auto-fix markdownlint issues                                     |
-| `pnpm format`           | Format all files with Prettier                                   |
+| `pnpm lint:check`       | Check markdown without fixing                                    |
+| `pnpm lint`             | Fix then check (combined)                                        |
+| `pnpm format:fix`       | Format all files with Prettier                                   |
 | `pnpm format:check`     | Check formatting without making changes                          |
+| `pnpm format`           | Fix then check (combined)                                        |
 | `npm run release:dry`   | Dry-run release — shows what would happen without making changes |
 | `npm run release:patch` | Release a patch version bump                                     |
 | `npm run release:minor` | Release a minor version bump                                     |
@@ -88,6 +94,15 @@ npm install -g prettier markdownlint-cli2
 > ⚠️ This is a WSL2 + pnpm v11 specific workaround. On native Linux or macOS with pnpm,
 > local installation may work correctly.
 
+## `.pnpmrc`
+
+The project root contains `.pnpmrc` with `approve-builds=lefthook`.
+This suppresses pnpm's interactive approval prompt for lefthook's `postinstall` script
+on every fresh `pnpm install`.
+
+> ⚠️ Use `.pnpmrc`, not `.npmrc` — `approve-builds` is pnpm-specific and causes
+> npm warnings if placed in `.npmrc`.
+
 ## Conventions agents must follow
 
 - **Formatting:** respect `.editorconfig` globally — UTF-8, LF endings, final newline,
@@ -108,9 +123,9 @@ npm install -g prettier markdownlint-cli2
 - **Lefthook** manages git hooks — configured in `lefthook.yml`:
   - `pre-commit`: formats staged files with Prettier, lints markdown with markdownlint
   - `commit-msg`: runs commitlint to validate message format
-  - `pre-push`: runs lint + format check
+  - `pre-push`: runs `lint:check` + `format:check`
 - **commitlint** validates commit messages and branch names — config in `commitlint.config.mjs`.
-- **release-it** handles versioning and changelog — config in `scripts/.release-it.json`.
+- **release-it** handles versioning and changelog — config in `.release-it.json`.
 - **markdownlint-cli2** lints all markdown files — config in `.markdownlint.jsonc`.
 - **Prettier** formats all files — config in `.prettierrc`.
 
@@ -140,4 +155,5 @@ npm install -g prettier markdownlint-cli2
 - Invent commit scopes — use only the scopes defined in `commitlint.config.mjs`.
 - Add commitlint, release-it, or prettier to `devDependencies` — they must be global.
 - Run `pnpm setup` to install hooks — use `pnpm run init` instead.
+- Put pnpm-specific config in `.npmrc` — use `.pnpmrc` instead.
 - Confuse AIR (ADR conflicts) with AID (AI interactions) — they are different document types.

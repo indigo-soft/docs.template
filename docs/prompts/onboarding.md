@@ -74,7 +74,7 @@ If the project also uses Prettier or markdownlint, install them globally too:
 npm install -g prettier markdownlint-cli2
 ```
 
-### `.npmrc` (if missing)
+### `.pnpmrc` (if missing)
 
 Create in the project root to suppress pnpm's interactive approval prompt for lefthook:
 
@@ -84,6 +84,9 @@ approve-builds=lefthook
 
 Without this, pnpm v10+ asks for manual approval of lefthook's `postinstall` script
 on every fresh `pnpm install`.
+
+> ⚠️ Use `.pnpmrc`, not `.npmrc` — `approve-builds` is a pnpm-specific option.
+> If placed in `.npmrc`, npm will warn about an unknown config key.
 
 ### `package.json` (if missing)
 
@@ -193,7 +196,7 @@ Create or overwrite `docs/context/project.md`:
 
 **Stack:** {runtime} + {framework}
 **Deployment:** {target}
-**Node.js tooling:** created package.json / commitlint.config.mjs / lefthook.yml / .npmrc
+**Node.js tooling:** created package.json / commitlint.config.mjs / lefthook.yml / .pnpmrc
 **Notes:** {anything non-obvious about the project setup}
 ```
 

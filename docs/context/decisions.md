@@ -9,6 +9,20 @@
 
 ---
 
+## 2026-05-19 — `.pnpmrc` instead of `.npmrc` for approve-builds
+
+**Decision:** Use `.pnpmrc` (not `.npmrc`) for pnpm-specific config options.
+
+**Problem:** `approve-builds=lefthook` in `.npmrc` caused npm warnings:
+`Unknown project config "approve-builds". This will stop working in the next major version of npm.`
+
+**Reason:** `approve-builds` is a pnpm-specific option. npm reads `.npmrc` too and warns
+about keys it doesn't recognize. `.pnpmrc` is read only by pnpm — no conflicts.
+
+**Rule:** All pnpm-specific options go in `.pnpmrc`, not `.npmrc`.
+
+---
+
 ## 2026-05-18 — pnpm + WSL2 + git hooks tooling decisions
 
 **Problem:** pnpm v11 on WSL2 creates text redirect files instead of real symlinks
