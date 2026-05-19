@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.0](https://github.com/indigo-soft/docs/compare/v0.5.0...v0.6.0) (2026-05-19)
+
+### Features
+
+* **config:** refactor package.json scripts and add adr-0013 naming conventions ([48edc69](https://github.com/indigo-soft/docs/commit/48edc695ffce24f973d39800f8b21958637fe12d))
+
 ## [0.5.0](https://github.com/indigo-soft/docs/compare/v0.4.2...v0.5.0) (2026-05-19)
 
 ### Features
