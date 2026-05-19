@@ -9,6 +9,32 @@
 
 ---
 
+## 2026-05-18 — pnpm + WSL2 + git hooks tooling decisions
+
+**Problem:** pnpm v11 on WSL2 creates text redirect files instead of real symlinks
+in `node_modules/@scope/pkg`. Node.js cannot resolve ESM imports through these files,
+causing commitlint, release-it, and prettier to fail when invoked from git hook subprocesses.
+
+**Decision:** Install commitlint, release-it, and prettier globally via npm. Do not add
+them to `devDependencies`. Keep only `lefthook` as a local pnpm dependency (it is a Go
+binary and does not have this issue).
+
+**Affected files:** `package.json`, `commitlint.config.mjs`, `lefthook.yml`, `AGENTS.md`,
+`docs/prompts/onboarding.md`
+
+**Related decisions:**
+
+- `commitlint.config.js` renamed to `commitlint.config.mjs` — Node.js v24 requires `.mjs`
+  extension for ESM modules when `"type": "module"` is absent from `package.json`
+- `extends: ['@commitlint/config-conventional']` removed from commitlint config — all rules
+  defined inline to avoid dependency on locally installed packages
+- `pnpm run init` used instead of `pnpm setup` — `pnpm setup` is a pnpm built-in that
+  configures pnpm itself (adds global bin to PATH), not a custom script
+- `.npmrc` with `node-linker=hoisted` was tried and rejected — it creates redirect files
+  too (different format, same problem)
+
+---
+
 ## 2026-05-11 — guides and foundational ADRs added
 
 **Guides written** (generic, no project-specific content):
