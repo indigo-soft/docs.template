@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.0](https://github.com/indigo-soft/docs/compare/v0.1.0...v0.2.0) (2026-05-19)
+
+### Bug Fixes
+
+* **commitlint:** convert config to esm and increase subject-max-length to 120 ([1768299](https://github.com/indigo-soft/docs/commit/1768299ae9c4cf0c6d9f994a07493336fbce6c4f))
+* **docs:** fix markdownlint errors across all docs — code block languages, list indentation, bare urls ([a937191](https://github.com/indigo-soft/docs/commit/a937191638b06bb8a81624e6ba37bfb71c3d954b))
+* **docs:** fix markdownlint errors in root documents — agents, code of conduct, contributing ([5f0f837](https://github.com/indigo-soft/docs/commit/5f0f8377810a43549ba418aa96d67d45ed9f6ad6))
+* **tooling:** align prettier tabWidth for markdown with markdownlint md007 rule ([b52c064](https://github.com/indigo-soft/docs/commit/b52c0644979c7b6c89a86ebbe5500a9836aacf82))
+
 ## 0.1.0 (2026-05-18)
 
 ### Features
