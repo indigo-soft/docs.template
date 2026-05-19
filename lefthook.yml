@@ -3,21 +3,20 @@
 
 colors: true
 
-# Pre-commit — format and lint only staged files
+# Pre-commit — format and lint staged files
 pre-commit:
     parallel: false
     commands:
         format:
-            glob: 'src/**/*.{ts,tsx,js,jsx,json,md,prisma,css,scss}'
-            run: node node_modules/@commitlint/cli/cli.js --edit {1} --verbose
+            glob: '**/*.{md,json,yml,yaml,ts,js,mjs}'
+            run: prettier --write {staged_files}
             stage_fixed: true
-            fail_text: '❌ FORMATTING — Prettier found issues. Run: node node_modules/prettier/bin/prettier.cjs --write .'
+            fail_text: '❌ FORMATTING — Prettier found issues. Run: pnpm format'
 
         lint:
-            glob: 'src/**/*.{ts,tsx,js,jsx}'
-            run: node node_modules/eslint/bin/eslint.js --fix {staged_files}
-            stage_fixed: true
-            fail_text: '❌ LINT — ESLint found issues. Run: node node_modules/eslint/bin/eslint.js --fix src/'
+            glob: '**/*.md'
+            run: markdownlint-cli2 {staged_files}
+            fail_text: '❌ LINT — markdownlint found issues. Run: pnpm lint:fix'
 
 # Commit-msg — validate commit message format
 commit-msg:
@@ -27,9 +26,14 @@ commit-msg:
             run: commitlint --edit {1} --verbose
             fail_text: "❌ COMMIT REJECTED — invalid commit message format.\n   Format: <type>(<scope>): <description>\n   Example: feat(auth): add JWT token refresh\n   See: docs/guides/git-workflow.md"
 
-# Pre-push — no tests in this repo
+# Pre-push — lint and format check
 pre-push:
     parallel: false
     commands:
-        typecheck:
-            run: echo "No typecheck configured yet"
+        lint:
+            run: pnpm lint
+            fail_text: '❌ LINT — markdownlint found issues. Run: pnpm lint:fix'
+
+        format:
+            run: pnpm format:check
+            fail_text: '❌ FORMATTING — Prettier found issues. Run: pnpm format'
