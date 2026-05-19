@@ -9,8 +9,8 @@
 - [ ] **Onboarding** — core project facts collected and saved to `docs/context/project.md`
       → prompt: `docs/prompts/onboarding.md`
 
-- [ ] **Commit scopes** — `commitlint.config.js` updated with project-specific scopes
-      → update manually after onboarding (scopes come from onboarding Q14)
+- [ ] **Commit scopes** — `commitlint.config.mjs` updated with project-specific scopes
+      → scopes come from onboarding Q14
 
 - [ ] **AGENTS.md** — generated and reflects actual project state
       → prompt: `docs/prompts/agents.md`
@@ -42,8 +42,8 @@
 - [ ] **README.md** — project intro, setup steps, links to docs
       → write manually or ask Claude with project context loaded
 
-- [ ] **CHANGELOG.md** — initialized (even if empty `## [Unreleased]` section)
-      → run `pnpm release:dry` or initialize manually
+- [ ] **CHANGELOG.md** — initialized
+      → run `npm run release:dry` or add placeholder line manually
 
 - [ ] **SECURITY.md** — security contact and disclosure process filled in
       → update template placeholders manually
@@ -53,9 +53,10 @@
 
 ## Phase 5 — Tooling verification
 
-- [ ] **Lefthook installed** — `pnpm prepare` run, hooks active
+- [ ] **Global tools installed** — commitlint, release-it, prettier installed globally via npm
+- [ ] **Lefthook installed** — `pnpm run init` run, hooks active
 - [ ] **commitlint working** — test commit rejected if format invalid
-- [ ] **release scripts working** — `pnpm release:dry` runs without errors
+- [ ] **release scripts working** — `npm run release:dry` runs without errors
 - [ ] **First ADR written** — at least one decision recorded
       → prompt: `docs/prompts/adr.md`
 

@@ -7,6 +7,9 @@ Unlike ADRs, AIRs are always **temporary**. The goal of an AIR is to document th
 analyse resolution paths, and reach a decision. Once the decision is made and reflected in the
 affected ADRs, the AIR is considered resolved.
 
+> **Looking for AI interaction records?** Those are [AID documents](../aid/README.md) —
+> a separate document type for capturing significant AI interactions and their project impact.
+
 There is no separate archive for AIRs. Resolved AIRs stay in this directory with a `done-`
 prefix in the filename — open ones always appear first in a sorted listing.
 

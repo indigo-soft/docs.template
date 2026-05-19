@@ -1,213 +1,80 @@
 # Contributing Guide
 
-Дякуємо за інтерес до проєкту! Цей гайд допоможе вам почати.
+Thank you for your interest in contributing!
 
-## 📋 Перед початком
+## Before you start
 
-1. ✅ Прочитайте [Git Workflow Guide](docs/guides/git-workflow.md)
-2. ✅ Налаштуйте середовище розробки (див. [README.md](README.md))
-3. ✅ Ознайомтесь з [Code of Conduct](CODE_OF_CONDUCT.md)
+1. Read [Git Workflow Guide](docs/guides/git-workflow.md)
+2. Set up your local environment (see [README.md](README.md))
+3. Review the [Code of Conduct](CODE_OF_CONDUCT.md)
 
-## 🔀 Git Workflow
-
-### TL;DR
+## Quick start
 
 ```bash
-# 1. Створити гілку (issue number ОБОВ'ЯЗКОВИЙ!)
-git checkout -b feature/0123-my-feature
+# 1. Create a branch (issue number is REQUIRED)
+git checkout -b feature/0123-my-change
 
-# 2. Робити коміти
+# 2. Make commits
 git commit -m "feat(scope): description"
 
-# 3. Push
-git push -u origin feature/0123-my-feature
-
-# 4. Відкрити PR на GitHub
+# 3. Push and open a PR
+git push -u origin feature/0123-my-change
 ```
 
-**⚠️ ВАЖЛИВО:** Номер issue є обов'язковим (мінімум 4 цифри). Створіть issue перед початком роботи!
+## Git workflow
 
-### Детальний процес
+See [docs/guides/git-workflow.md](docs/guides/git-workflow.md) for the full guide.
 
-1. **Fork та Clone** (для зовнішніх контриб'юторів)
+Key rules:
 
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/ai-workflow-assistant.git
-   cd ai-workflow-assistant
-   git remote add upstream https://github.com/ORIGINAL-OWNER/ai-workflow-assistant. git
-   ```
+- Branch format: `<type>/<issue-number>-<description>` (issue number min 4 digits)
+- Commit format: `<type>(<scope>): <description>` (scope is required)
+- Merge strategy: Squash and Merge
 
-2. **Створіть гілку від main**
+## PR checklist
 
-   ```bash
-   git checkout main
-   git pull origin main
-   git checkout -b feature/0123-descriptive-name
-   ```
+Before opening a PR:
 
-   **⚠️ ВАЖЛИВО:** Номер issue є обов'язковим (мінімум 4 цифри з нулями спереду, якщо потрібно).
+- [ ] Commit messages follow Conventional Commits
+- [ ] `pnpm lint` passes
+- [ ] `pnpm format:check` passes
+- [ ] Documentation updated if needed
+- [ ] PR title matches commit message format
 
-3. **Зробіть зміни**
-   - Пишіть код
-   - Додавайте тести
-   - Оновлюйте документацію
-
-4. **Коміт за Conventional Commits**
-
-   ```bash
-   git add .
-   git commit -m "feat(module): add new feature"
-   ```
-
-   **Формат:**
-
-   ```text
-   <type>(<scope>): <description>
-
-   [optional body]
-
-   [optional footer]
-   ```
-
-   **⚠️ ВАЖЛИВО: Scope є ОБОВ'ЯЗКОВИМ!**
-
-   **Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
-
-   **Scopes:** `architect`, `workflow`, `kanban`, `ui`, `database`, `api`, `deps`, `config`, тощо
-
-   **Приклади:**
-
-   ```bash
-   feat(architect): add draft creation service
-   fix(kanban): resolve drag and drop on mobile
-   docs(readme): update installation steps
-   test(workflow): add unit tests for branch creation
-   chore(deps): update prettier to 3.8.1
-   ```
-
-   **Назва гілки:**
-
-   ```bash
-   feature/0001-architect-agent
-   fix/0042-kanban-drag-drop
-   docs/0099-readme-update
-   ```
-
-5. **Push та створіть PR**
-
-   ```bash
-   git push -u origin feature/0123-descriptive-name
-   ```
-
-   Потім відкрийте PR на GitHub.
-
-## ✅ PR Checklist
-
-Перед створенням PR переконайтесь, що:
-
-- [ ] Код відповідає [Coding Standards](docs/guides/coding-standards.md)
-- [ ] Усі тести проходять (`pnpm test`)
-- [ ] Додано нові тести (якщо потрібно)
-- [ ] ESLint перевірка пройшла (`pnpm lint`)
-- [ ] Prettier форматування виконано (`pnpm format`)
-- [ ] Type check пройшов (`pnpm type-check`)
-- [ ] Оновлено документацію (якщо потрібно)
-- [ ] Commit messages відповідають Conventional Commits
-- [ ] PR має описовий title
-- [ ] PR description пояснює "що" та "чому"
-
-## 📝 PR Template
-
-GitHub автоматично підставить template (див. [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md)).
-
-Заповніть усі секції:
-
-- **Що змінено**
-- **Чому** (посилання на issue)
-- **Як тестувати**
-- **Screenshots** (для UI змін)
-- **Checklist**
-
-## 🧪 Testing
+## Local commands
 
 ```bash
-# Run all tests
-pnpm test
-
-# Run tests for specific module
-pnpm --filter @agent-flow/backend test
-
-# Run tests in watch mode
-pnpm test --watch
+pnpm install        # install dependencies
+pnpm run init       # install git hooks
+pnpm lint           # run markdownlint
+pnpm lint:fix       # auto-fix lint issues
+pnpm format         # format all files
+pnpm format:check   # check formatting
 ```
 
-## 🎨 Code Style
+## Adding documentation
 
-Проєкт використовує:
+When adding new guides or document types:
 
-- **ESLint** для лінтингу
-- **Prettier** для форматування
-- **Lefthook** для git hooks
+- Guides → `docs/guides/`
+- ADRs → `docs/adr/` (use prompt `docs/prompts/adr.md`)
+- AIRs → `docs/air/` (ADR conflicts only)
+- AIDs → `docs/aid/` (AI interactions)
+- Claude prompts → `docs/prompts/`
 
-Усе запускається автоматично при коміті.
+## Reporting bugs
 
-**Вручну:**
+Open a GitHub issue with:
 
-```bash
-pnpm lint          # Check
-pnpm lint:fix      # Fix
+- Steps to reproduce
+- Expected vs actual behavior
+- Environment (OS, Node version, pnpm version)
 
-pnpm format        # Format all
-pnpm format:check  # Check formatting
-```
+## Security vulnerabilities
 
-## 📚 Документація
+Do **not** open a public GitHub issue.
+Follow the process described in [SECURITY.md](SECURITY.md).
 
-При додаванні нової функціональності оновіть:
+## License
 
-- [ ] Code comments (JSDoc для публічних API)
-- [ ] README.md (якщо змінився setup/usage)
-- [ ] API документацію (`docs/api/`)
-- [ ] Гайди (`docs/guides/`) якщо потрібно
-- [ ] ADR (`docs/adr/`) для архітектурних рішень
-
-## 🐛 Bug Reports
-
-Використовуйте [Issue Template](.github/ISSUE_TEMPLATE/bug_report.md).
-
-Обов'язково включіть:
-
-- Кроки для відтворення
-- Очікувана поведінка
-- Фактична поведінка
-- Environment (OS, Node version, etc.)
-- Logs/screenshots
-
-## 💡 Feature Requests
-
-Використовуйте [Feature Request Template](.github/ISSUE_TEMPLATE/feature_request.md).
-
-Опишіть:
-
-- Use case (навіщо потрібна функція)
-- Запропоноване рішення
-- Альтернативи, які ви розглядали
-
-## ❓ Питання
-
-Є питання?
-
-- Перевірте [документацію](docs)
-
-## 🔒 Security
-
-If you discover a security vulnerability, **do not open a public GitHub issue**.
-Follow the responsible disclosure process described in [SECURITY.md](SECURITY.md).
-
-## 📜 License
-
-Контрибутячи, ви погоджуєтесь, що ваш код буде під [MIT License](LICENSE.md).
-
-## 🙏 Дякуємо
-
-Кожен внесок цінний, незалежно від розміру!
+By contributing, you agree that your code will be licensed under [MIT](LICENSE.md).
