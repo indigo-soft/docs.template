@@ -1,119 +1,80 @@
-# Prompt: Create an AI Interaction Record (AIR)
+# Prompt: Create an Architecture Issue Record (AIR)
 
 ## Purpose
 
 Help the user write a well-structured AIR and save it to `docs/air/`.
 
-An AIR documents a significant interaction with an AI system that produced a decision,
-artifact, or insight worth preserving — capturing what was asked, what the AI produced,
-how it was evaluated, and whether it was adopted.
+An AIR documents a **conflict between ADRs** — when a new decision contradicts an existing one,
+or when two existing ADRs conflict when applied together.
 
-AIRs are not about the AI tool itself (that belongs in an ADR) — they are about
-a specific AI-assisted outcome and its impact on the project.
+AIR is distinct from:
+
+- **ADR** — documents an architectural decision
+- **AID** — documents an AI interaction (what Claude/Copilot produced and what was adopted)
+- **AIR** — documents a conflict between ADRs that requires explicit resolution
 
 ## Prerequisites
 
-Read `docs/context/project.md` and `docs/air/INDEX.md` (if it exists) to understand
-project context and the next available AIR number.
+Read `docs/context/project.md` and `docs/air/INDEX.md` (if it exists) before asking anything.
 
 ## Questions to ask
 
-1. **What was the AI interaction about?**
+1. **What conflict needs to be documented?**
    Ask for a short title (will become the filename and heading).
 
-2. **What AI system and model was used?**
-   (e.g. Claude Sonnet 4.5, GPT-4o, Gemini 1.5 Pro, GitHub Copilot)
+2. **Which ADRs are in conflict?**
+   List them with a one-line description of what each requires.
 
-3. **What was the goal of the interaction?**
-   What problem were you trying to solve, or what were you trying to generate?
+3. **What is the exact point of conflict?**
+   Where do the two ADRs contradict each other in practice?
 
-4. **What was the prompt or task given to the AI?**
-   Summarize or paste the key parts of the prompt. Full prompt optional.
+4. **What is the severity?**
+   - **Critical** — blocks implementation; one cannot be applied without changing the other
+   - **Moderate** — both can be applied, but an explicit exception or clarification is needed
+   - **Low** — mostly theoretical; minimal practical impact
 
-5. **What did the AI produce?**
-   Describe the output: code, document, decision, analysis, design, etc.
+5. **What resolution paths exist?**
+   Describe at least 2 options with pros and cons.
 
-6. **How was the output evaluated?**
-   What criteria were used? Was it reviewed manually, tested, compared to alternatives?
-
-7. **What was adopted, modified, or rejected — and why?**
-   Be specific: "Used as-is", "Used with changes (describe)", "Rejected because...".
-
-8. **What is the impact on the project?**
-   What changed as a result of this interaction?
-
-9. **What was learned?**
-   Insights about the AI's strengths or limitations for this type of task.
-   Prompting strategies that worked or didn't.
+6. **What was decided?**
+   Which path was chosen and why?
 
 ## Output
 
-Determine the next AIR number from `docs/air/INDEX.md` or by listing `docs/air/`.
-Use zero-padded 4-digit numbers (e.g. `0001`, `0042`).
+Create `docs/air/air-00N-short-conflict-description.md` using
+`docs/air/template/AIR-TEMPLATE.md` as the base.
 
-Create the file `docs/air/AIR-{NUMBER}-{kebab-case-title}.md` using the template
-from `docs/air/template/AIR-TEMPLATE.md` if it exists, otherwise use this structure:
+File naming rules:
 
-```markdown
-# AIR-{NUMBER}: {Title}
+- Open AIRs: `air-00N-short-conflict-description.md`
+- Resolved AIRs: `done-air-00N-short-conflict-description.md`
 
-**Status:** {draft / accepted / archived}
-**Date:** {YYYY-MM-DD}
-**AI System:** {model name and version}
-**Author:** {who ran the interaction}
+After creating the file, add an entry to `docs/air/INDEX.md`.
 
-## Goal
+After resolution:
 
-{What problem or task this interaction was meant to address}
+1. Fill in the **Decision taken** section.
+2. Update each affected ADR — add to its Related section:
 
-## Prompt Summary
+   ```markdown
+   - Conflict resolved by: [AIR-00N](../air/done-air-00N-....md)
+   ```
 
-{Summary of what was asked. Include full prompt in a code block if relevant.}
-
-## AI Output Summary
-
-{What the AI produced — describe type and key content}
-
-## Evaluation
-
-{How the output was assessed and by whom}
-
-## Outcome
-
-{What was adopted / modified / rejected and why}
-
-## Project Impact
-
-{What changed in the project as a result}
-
-## Lessons Learned
-
-{What was learned about using AI for this type of task}
-
-## Related
-
-- Related ADR: ADR-{NUMBER} (if applicable)
-- Related AIR: AIR-{NUMBER} (if applicable)
-```
-
-After creating the file, add an entry to `docs/air/INDEX.md`:
-
-```text
-| AIR-{NUMBER} | {Title} | {status} | {date} | {AI system} |
-```
+3. Change status to `Resolved` and rename file with `done-` prefix.
+4. Update `docs/air/INDEX.md`.
 
 Rules:
 
-- Write in English (unless the project has a different language policy in `docs/context/project.md`).
+- Write in English.
 - Respect `.editorconfig` formatting rules.
-- Be honest about what was rejected and why — AIRs are a learning record, not a success log.
 
 ## After completion
 
 Append to `docs/context/decisions.md`:
 
-```text
-## {YYYY-MM-DD} — AIR-{NUMBER}: {Title}
-**Summary:** {one sentence on what was done and adopted}
-**Full record:** docs/air/AIR-{NUMBER}-{kebab-case-title}.md
+```markdown
+## {YYYY-MM-DD} — AIR-00N: {Title}
+
+**Summary:** {one sentence on the conflict and how it was resolved}
+**Full record:** docs/air/air-00N-{title}.md
 ```

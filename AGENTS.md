@@ -4,7 +4,7 @@
 
 This is a **documentation and tooling template** for software projects.
 It provides a ready-to-use structure for: commit conventions, release flow, git hooks,
-documentation guides, ADR/AIR processes, AI-assisted onboarding prompts, and project memory.
+documentation guides, ADR/AIR/AID processes, AI-assisted onboarding prompts, and project memory.
 
 The goal: clone this repo, run the onboarding prompt, and have a new project with consistent
 conventions and documentation from day one — without writing 20 documents from scratch.
@@ -25,16 +25,21 @@ docs/
         deployment.md
         testing.md
         adr.md          ← guides creation of a single ADR
-        air.md          ← guides creation of a single AIR
+        air.md          ← guides creation of a single AIR (ADR conflict)
+        aid.md          ← guides creation of a single AID (AI interaction)
     checklists/
         new-project.md  ← master checklist; Claude updates it after each step
-    adr/                ← Architecture Decision Records
+    adr/                ← Architecture Decision Records (ADR-XXXX)
         template/
         archive/
-    air/                ← AI Interaction Records
+    air/                ← Architecture Issue Records — ADR conflicts only
         template/
+    aid/                ← AI Interaction Documents (AID-XXXX)
+        template/
+        archive/
     architecture/       ← overview.md, components.md, modules.md
-    guides/             ← git-workflow, coding-standards, deployment, testing, etc.
+    guides/             ← git-workflow, release-flow, git-config, naming-conventions,
+                           updating-dependencies
 
 scripts/
     release/            ← release automation scripts
@@ -52,19 +57,20 @@ package.json            ← scripts and dev dependencies
 
 ## Available commands
 
-| Command              | Description                                                      |
-| -------------------- | ---------------------------------------------------------------- |
-| `pnpm install`       | Install dev dependencies (commitlint, lefthook)                  |
-| `pnpm run init`      | Install lefthook git hooks + make scripts executable             |
-| `pnpm lint`          | Run markdownlint on all markdown files                           |
-| `pnpm lint:fix`      | Auto-fix markdownlint issues                                     |
-| `pnpm format`        | Format all files with Prettier                                   |
-| `pnpm format:check`  | Check formatting without making changes                          |
-| `pnpm release`       | Interactive release (auto-detects bump type from commits)        |
-| `pnpm release:dry`   | Dry-run release — shows what would happen without making changes |
-| `pnpm release:patch` | Release a patch version bump                                     |
-| `pnpm release:minor` | Release a minor version bump                                     |
-| `pnpm release:major` | Release a major version bump                                     |
+| Command                 | Description                                                      |
+| ----------------------- | ---------------------------------------------------------------- |
+| `pnpm install`          | Install dev dependencies (lefthook)                              |
+| `pnpm run init`         | Install lefthook git hooks + make scripts executable             |
+| `pnpm lint`             | Run markdownlint on all markdown files                           |
+| `pnpm lint:fix`         | Auto-fix markdownlint issues                                     |
+| `pnpm format`           | Format all files with Prettier                                   |
+| `pnpm format:check`     | Check formatting without making changes                          |
+| `npm run release:dry`   | Dry-run release — shows what would happen without making changes |
+| `npm run release:patch` | Release a patch version bump                                     |
+| `npm run release:minor` | Release a minor version bump                                     |
+| `npm run release:major` | Release a major version bump                                     |
+
+> Use `npm run` for release commands (not `pnpm run`) to avoid ELIFECYCLE noise.
 
 ## Global tools required
 
@@ -95,6 +101,7 @@ npm install -g prettier markdownlint-cli2
 - **Context files are append-only** — never delete or rewrite existing entries in `decisions.md`.
 - **Checklists are updated after work** — mark items done in `docs/checklists/new-project.md`
   after completing the corresponding task.
+- **AID documents capture AI work** — after a significant AI interaction, create an AID in `docs/aid/`.
 
 ## Tooling and workflows
 
@@ -123,6 +130,7 @@ npm install -g prettier markdownlint-cli2
 - Use prompts in `docs/prompts/` as the source of truth for how to generate each document type.
 - Ask for the project's onboarding context before generating any project-specific document.
 - Install global tools (see above) before running git hooks or release scripts.
+- Create an AID in `docs/aid/` after any significant AI interaction.
 
 **DO NOT:**
 
@@ -131,5 +139,5 @@ npm install -g prettier markdownlint-cli2
 - Modify `pnpm-lock.yaml` manually.
 - Invent commit scopes — use only the scopes defined in `commitlint.config.mjs`.
 - Add commitlint, release-it, or prettier to `devDependencies` — they must be global.
-- Run `pnpm setup` to install hooks — use `pnpm run init` instead
-  (`pnpm setup` is a pnpm built-in command that configures pnpm itself).
+- Run `pnpm setup` to install hooks — use `pnpm run init` instead.
+- Confuse AIR (ADR conflicts) with AID (AI interactions) — they are different document types.
