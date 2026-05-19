@@ -23,6 +23,7 @@ Full list of Architecture Decision Records.
 | [ADR-0009](ADR-0009-documentation-structure.md)         | Documentation Structure                                 | Accepted | 2026-05-11 |
 | [ADR-0010](ADR-0010-ai-assisted-development.md)         | AI-Assisted Development and AID Records                 | Accepted | 2026-05-18 |
 | [ADR-0011](ADR-0011-versioning-semver.md)               | Versioning Strategy (SemVer + release-it)               | Accepted | 2026-05-11 |
+| [ADR-0012](ADR-0012-shell-script-conventions.md)        | Shell Script Conventions                                | Accepted | 2026-05-19 |
 
 ---
 

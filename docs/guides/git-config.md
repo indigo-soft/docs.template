@@ -4,9 +4,22 @@ Run these commands once after cloning the repository.
 They configure your local Git to match the project's workflow.
 
 ```bash
-# Use project commit message template (shows valid types and scopes)
-git config commit.template scripts/.gitmessage
+# Install dependencies and run full initialization
+bash scripts/init/init.sh
+```
 
+The init script handles automatically:
+
+- Installing required global npm tools (commitlint, release-it, prettier, markdownlint-cli2)
+- Installing local pnpm dependencies
+- Installing Lefthook git hooks
+- Making shell scripts executable
+- Creating `.env` from `.env.example`
+- Setting git commit message template
+
+## Additional git settings (optional)
+
+```bash
 # Rebase instead of merge when pulling (keeps linear history)
 git config --global pull.rebase true
 
@@ -20,10 +33,6 @@ git config --global color.ui auto
 git config --global core.editor "code --wait"   # VS Code
 git config --global core.editor "vim"
 git config --global core.editor "nano"
-
-# Install Node.js dependencies and git hooks
-pnpm install
-pnpm run init
 ```
 
 ## Verify your setup
@@ -32,4 +41,4 @@ pnpm run init
 git config --list --local
 ```
 
-You should see `commit.template` pointing to `scripts/.gitmessage` in the project root.
+You should see `commit.template` pointing to `.gitmessage` in the project root.
