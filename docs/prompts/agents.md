@@ -42,16 +42,18 @@ Ask the user only what is not already known from `docs/context/project.md` or th
 ## Node.js tooling — always included
 
 Every project uses Node.js dev tooling regardless of the primary language (PHP, Python, Go, etc.).
-The following pnpm commands are always present in `AGENTS.md`:
+The following commands are always present in `AGENTS.md`:
 
-| Command              | Description                                                         |
-| -------------------- | ------------------------------------------------------------------- |
-| `pnpm install`       | Install Node.js dev dependencies (commitlint, lefthook, release-it) |
-| `pnpm prepare`       | Install lefthook git hooks                                          |
-| `pnpm release:dry`   | Preview release — no changes made                                   |
-| `pnpm release:patch` | Release a patch version bump                                        |
-| `pnpm release:minor` | Release a minor version bump                                        |
-| `pnpm release:major` | Release a major version bump                                        |
+| Command                 | Description                                          |
+| ----------------------- | ---------------------------------------------------- |
+| `pnpm install`          | Install local Node.js dev dependencies (lefthook)    |
+| `pnpm run init`         | Install lefthook git hooks + make scripts executable |
+| `npm run release:dry`   | Preview release — no changes made                    |
+| `npm run release:patch` | Release a patch version bump                         |
+| `npm run release:minor` | Release a minor version bump                         |
+| `npm run release:major` | Release a major version bump                         |
+
+> ⚠️ Use `npm run` for release commands (not `pnpm run`) to avoid ELIFECYCLE noise.
 
 If `package.json` does not yet exist in the project, add a note:
 

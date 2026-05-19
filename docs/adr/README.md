@@ -6,7 +6,8 @@ architectural and technical decisions, why they were made, and what their conseq
 **Navigation:**
 
 - 📋 [INDEX.md](INDEX.md) — full list of all ADRs
-- ⚡ [air/](../air/) — AI Interaction Records
+- ⚡ [../air/](../air/) — Architecture Issue Records (ADR conflicts)
+- 🤖 [../aid/](../aid/) — AI Interaction Documents
 
 ---
 
@@ -48,7 +49,7 @@ ls docs/adr/*.md | sort | tail -1
 ### 2. Copy the template
 
 ```bash
-cp docs/adr/template/ADR-TEMPLATE.md docs/adr/ADR-0008-your-decision.md
+cp docs/adr/template/ADR-TEMPLATE.md docs/adr/ADR-0012-your-decision.md
 ```
 
 ### 3. Fill in the sections
