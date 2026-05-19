@@ -44,9 +44,9 @@ src/                    ← placeholder; not used in this template repo
 
 AGENTS.md               ← this file
 CONTRIBUTING.md         ← contribution guide and git workflow summary
-commitlint.config.js    ← commit message and branch name validation rules
+commitlint.config.mjs   ← commit message and branch name validation rules
 lefthook.yml            ← git hooks: pre-commit, commit-msg, pre-push
-package.json            ← release scripts and dev dependencies
+package.json            ← scripts and dev dependencies
 .editorconfig           ← formatting contract for all files
 ```
 
@@ -54,20 +54,40 @@ package.json            ← release scripts and dev dependencies
 
 | Command              | Description                                                      |
 | -------------------- | ---------------------------------------------------------------- |
-| `pnpm install`       | Install dev dependencies (commitlint, lefthook, release-it)      |
-| `pnpm prepare`       | Install lefthook git hooks + make scripts executable             |
+| `pnpm install`       | Install dev dependencies (commitlint, lefthook)                  |
+| `pnpm run init`      | Install lefthook git hooks + make scripts executable             |
+| `pnpm lint`          | Run markdownlint on all markdown files                           |
+| `pnpm lint:fix`      | Auto-fix markdownlint issues                                     |
+| `pnpm format`        | Format all files with Prettier                                   |
+| `pnpm format:check`  | Check formatting without making changes                          |
 | `pnpm release`       | Interactive release (auto-detects bump type from commits)        |
 | `pnpm release:dry`   | Dry-run release — shows what would happen without making changes |
 | `pnpm release:patch` | Release a patch version bump                                     |
 | `pnpm release:minor` | Release a minor version bump                                     |
 | `pnpm release:major` | Release a major version bump                                     |
 
+## Global tools required
+
+Due to pnpm's isolated linker behavior on WSL2, the following tools must be installed
+globally via npm. They are NOT in `devDependencies` — installing them locally via pnpm
+produces text redirect files instead of real symlinks, which Node.js cannot resolve
+in git hook subprocess context.
+
+```bash
+npm install -g commitlint @commitlint/cli @commitlint/config-conventional
+npm install -g release-it @release-it/conventional-changelog
+npm install -g prettier markdownlint-cli2
+```
+
+> ⚠️ This is a WSL2 + pnpm v11 specific workaround. On native Linux or macOS with pnpm,
+> local installation may work correctly.
+
 ## Conventions agents must follow
 
 - **Formatting:** respect `.editorconfig` globally — UTF-8, LF endings, final newline,
   trailing whitespace trimmed, 4-space indent (2-space for shell and JSON files), max 120 chars/line.
 - **Commit format:** `<type>(<scope>): <description>` — scope is required, type must be from
-  the allowed list in `commitlint.config.js`.
+  the allowed list in `commitlint.config.mjs`.
 - **Branch format:** `<type>/<issue-number>-<description>` — issue number is required,
   minimum 4 digits (e.g. `feature/0001-setup-docs`).
 - **Documentation lives in `docs/`** — do not create documentation files in the project root.
@@ -79,18 +99,19 @@ package.json            ← release scripts and dev dependencies
 ## Tooling and workflows
 
 - **Lefthook** manages git hooks — configured in `lefthook.yml`:
-  - `pre-commit`: formats and lints staged files
+  - `pre-commit`: formats staged files with Prettier, lints markdown with markdownlint
   - `commit-msg`: runs commitlint to validate message format
-  - `pre-push`: runs typecheck and tests
-- **commitlint** validates commit messages and branch names — config in `commitlint.config.js`.
+  - `pre-push`: runs lint + format check
+- **commitlint** validates commit messages and branch names — config in `commitlint.config.mjs`.
 - **release-it** handles versioning and changelog — config in `scripts/.release-it.json`.
+- **markdownlint-cli2** lints all markdown files — config in `.markdownlint.jsonc`.
+- **Prettier** formats all files — config in `.prettierrc`.
 
 ## Architecture and integration notes
 
 - This repo has no runtime application — it is a template, not a service.
 - `src/` is a placeholder for when this template is used as a base for an app repo.
 - No database, no API, no external service integrations in this repo itself.
-- The `.idea/php.xml` file reflects IDE configuration only — do not assume PHP runtime.
 
 ## Agent operating guidance
 
@@ -101,11 +122,14 @@ package.json            ← release scripts and dev dependencies
 - Update `docs/checklists/new-project.md` after completing a task.
 - Use prompts in `docs/prompts/` as the source of truth for how to generate each document type.
 - Ask for the project's onboarding context before generating any project-specific document.
+- Install global tools (see above) before running git hooks or release scripts.
 
 **DO NOT:**
 
 - Rewrite or delete existing entries in `docs/context/decisions.md`.
 - Create documentation files outside of `docs/`.
 - Modify `pnpm-lock.yaml` manually.
-- Invent commit scopes — use only the scopes defined in `commitlint.config.js` or listed in `docs/context/project.md`.
-- Assume this is a PHP project because `.idea/php.xml` exists — it is IDE configuration only.
+- Invent commit scopes — use only the scopes defined in `commitlint.config.mjs`.
+- Add commitlint, release-it, or prettier to `devDependencies` — they must be global.
+- Run `pnpm setup` to install hooks — use `pnpm run init` instead
+  (`pnpm setup` is a pnpm built-in command that configures pnpm itself).
