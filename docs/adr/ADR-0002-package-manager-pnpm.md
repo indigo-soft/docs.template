@@ -45,7 +45,8 @@ Use **pnpm** (v10+) as the package manager.
 **Cons:**
 
 - Developers must install pnpm separately (`npm install -g pnpm` or Corepack)
-- Occasional edge-case compatibility issues (rare)
+- Isolated linker on WSL2 creates text redirect files instead of real symlinks —
+  some tools (commitlint, release-it) must be installed globally to work in hook context
 
 ### npm
 
@@ -85,14 +86,9 @@ dependency issues early, and its workspace support is first-class.
   "engines": {
     "node": ">=24.0.0",
     "pnpm": ">=10.0.0"
-  },
-  "scripts": {
-    "preinstall": "npx only-allow pnpm"
   }
 }
 ```
-
-The `preinstall` script blocks accidental use of `npm install` or `yarn`.
 
 ### `pnpm-workspace.yaml` (for monorepos)
 
@@ -115,6 +111,7 @@ packages:
 
 - Developers must install pnpm once (`npm install -g pnpm` or `corepack enable`)
 - Lock file is `pnpm-lock.yaml`, not `package-lock.json`
+- On WSL2, isolated linker requires some tools to be installed globally via npm
 
 ### Neutral
 
@@ -124,5 +121,5 @@ packages:
 ## Related ADRs
 
 - [ADR-0001](ADR-0001-git-workflow-branching-strategy.md) — Git workflow (uses pnpm scripts)
-- [ADR-0005](ADR-0005-git-hooks-lefthook.md) — Lefthook installed via `pnpm prepare`
-- [ADR-0006](ADR-0006-changelog-release-it.md) — release-it installed as pnpm dev dependency
+- [ADR-0005](ADR-0005-git-hooks-lefthook.md) — Lefthook installed via `pnpm run init`
+- [ADR-0008](ADR-0008-commitlint-commit-validation.md) — WSL2 pnpm isolated linker issue explained

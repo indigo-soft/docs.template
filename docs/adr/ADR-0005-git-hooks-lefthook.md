@@ -14,7 +14,7 @@ Requirements for a git hooks solution:
 
 - Validate commit message format (commitlint)
 - Format and lint staged files on pre-commit
-- Run type-check and tests before push
+- Run checks before push
 - Fast execution — slow hooks get disabled by developers
 - Configuration in a single, readable file
 - No dependency on shell scripts for basic use cases
@@ -65,50 +65,50 @@ colors: true
 
 # pre-commit: format and lint staged files
 pre-commit:
-  parallel: false # sequential: format first, then lint
+  parallel: false
   commands:
     format:
-      glob: 'src/**/*.{ts,tsx,js,jsx,json,md,css,scss}'
-      run: npx prettier --write {staged_files}
+      glob: '**/*.{md,json,yml,yaml,ts,js,mjs}'
+      run: prettier --write {staged_files}
       stage_fixed: true
 
     lint:
-      glob: 'src/**/*.{ts,tsx,js,jsx}'
-      run: npx eslint --fix {staged_files}
-      stage_fixed: true
+      glob: '**/*.md'
+      run: markdownlint-cli2 {staged_files}
 
 # commit-msg: validate commit message
 commit-msg:
   commands:
     commitlint:
-      run: npx commitlint --edit {1}
+      run: commitlint --edit {1} --verbose
 
-# pre-push: full checks before pushing
+# pre-push: checks before pushing
 pre-push:
   commands:
-    typecheck:
-      run: pnpm type-check
+    lint:
+      run: pnpm lint
 
-    test:
-      run: pnpm test --bail --passWithNoTests
-      skip:
-        - merge
-        - rebase
+    format:
+      run: pnpm format:check
 ```
+
+> ⚠️ `commitlint`, `prettier`, and `markdownlint-cli2` must be installed globally via npm.
+> See [ADR-0008](ADR-0008-commitlint-commit-validation.md) for the full explanation.
 
 ### Installation
 
-Lefthook installs hooks via the `prepare` script in `package.json`:
+Lefthook hooks are installed via `pnpm run init` (not `pnpm install`):
 
 ```json
 {
   "scripts": {
-    "prepare": "lefthook install"
+    "init": "pnpm exec lefthook install && find scripts -name '*.sh' -exec chmod +x {} +"
   }
 }
 ```
 
-Running `pnpm install` after cloning automatically installs the hooks.
+> ⚠️ Do not use `pnpm setup` — that is a pnpm built-in command that configures pnpm itself,
+> not a custom script.
 
 ### Skipping hooks (when needed)
 
@@ -131,7 +131,7 @@ LEFTHOOK_EXCLUDE=pre-commit git commit -m "message"
 
 ### Negative
 
-- Developers must run `pnpm install` after cloning to activate hooks (documented in README)
+- Global tools (commitlint, prettier, markdownlint-cli2) must be installed manually
 - Binary is ~8 MB (vs a small Node.js script for Husky)
 
 ### Neutral
@@ -141,6 +141,7 @@ LEFTHOOK_EXCLUDE=pre-commit git commit -m "message"
 
 ## Related ADRs
 
-- [ADR-0001](ADR-0001-git-workflow-branching-strategy.md) — defines the commit format and branch naming that these hooks
-  enforce
-- [ADR-0002](ADR-0002-package-manager-pnpm.md) — Lefthook is installed via `pnpm prepare`
+- [ADR-0001](ADR-0001-git-workflow-branching-strategy.md) — defines the commit format and branch naming
+  that these hooks enforce
+- [ADR-0002](ADR-0002-package-manager-pnpm.md) — Lefthook is installed as a local pnpm dependency
+- [ADR-0008](ADR-0008-commitlint-commit-validation.md) — commitlint configuration and global install rationale

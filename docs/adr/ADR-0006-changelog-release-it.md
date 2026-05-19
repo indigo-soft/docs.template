@@ -26,7 +26,8 @@ Alternatives considered: release-it, semantic-release, commit-and-tag-version, m
 
 ## Decision
 
-Use **release-it** with the **@release-it/conventional-changelog** plugin.
+Use **release-it** with the **@release-it/conventional-changelog** plugin,
+installed globally via npm.
 
 ## Considered Options
 
@@ -45,6 +46,7 @@ Use **release-it** with the **@release-it/conventional-changelog** plugin.
 
 - `GITHUB_TOKEN` required for GitHub Release publishing
 - `CHANGELOG.md` must not be edited manually (it is overwritten on each release)
+- Must be installed globally (see rationale below)
 
 ### semantic-release
 
@@ -71,6 +73,17 @@ release-it provides the full release pipeline (version bump → changelog → ta
 with a single command, while keeping local use as the primary workflow.
 When CI automation is needed later, the `.release-it.json` config requires no changes —
 only a GitHub Actions workflow file needs to be added.
+
+**Why global install:** pnpm's isolated linker on WSL2 creates text redirect files instead
+of real symlinks, preventing Node.js from resolving release-it's dependencies in the hook
+subprocess context. Global install bypasses this entirely.
+See [ADR-0008](ADR-0008-commitlint-commit-validation.md) for the full explanation.
+
+**Installation:**
+
+```bash
+npm install -g release-it @release-it/conventional-changelog
+```
 
 ## Configuration
 
@@ -104,6 +117,16 @@ only a GitHub Actions workflow file needs to be added.
 }
 ```
 
+The config is referenced from `package.json`:
+
+```json
+{
+  "release-it": {
+    "extends": "./scripts/.release-it.json"
+  }
+}
+```
+
 ### npm scripts
 
 ```json
@@ -117,6 +140,9 @@ only a GitHub Actions workflow file needs to be added.
   }
 }
 ```
+
+> ⚠️ Use `npm run release:*`, not `pnpm run release:*` — pnpm's ELIFECYCLE error handling
+> adds noise on non-zero exit codes.
 
 The scripts delegate to a Bash wrapper that runs pre-release checks before calling release-it.
 See `docs/guides/release-flow.md` for the full guide.
@@ -147,6 +173,7 @@ See `docs/guides/release-flow.md` for the full guide.
 - Changelog quality depends on commit message quality
 - `CHANGELOG.md` must not be edited manually
 - `GITHUB_TOKEN` with `repo` scope is required
+- Global installation is a manual step not captured in `package.json`
 
 ### Neutral
 
@@ -155,11 +182,12 @@ See `docs/guides/release-flow.md` for the full guide.
 
 ## Future: GitHub Actions automation
 
-When ready, add a workflow file. The `.release-it.json` config requires no changes:
+When ready, add a workflow file:
 
 ```yaml
 # .github/workflows/release.yml
-- run: npx release-it --ci
+- run: npm install -g release-it @release-it/conventional-changelog
+- run: release-it --ci
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -167,5 +195,6 @@ When ready, add a workflow file. The `.release-it.json` config requires no chang
 ## Related ADRs
 
 - [ADR-0001](ADR-0001-git-workflow-branching-strategy.md) — Conventional Commits power the automatic version detection
-- [ADR-0002](ADR-0002-package-manager-pnpm.md) — release-it is installed as a pnpm dev dependency
 - [ADR-0005](ADR-0005-git-hooks-lefthook.md) — commitlint enforces the commit format that release-it depends on
+- [ADR-0008](ADR-0008-commitlint-commit-validation.md) — global install rationale (applies to release-it too)
+- [ADR-0011](ADR-0011-versioning-semver.md) — SemVer strategy implemented by release-it
