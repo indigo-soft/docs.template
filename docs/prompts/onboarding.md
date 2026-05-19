@@ -57,10 +57,28 @@ Every project uses Node.js dev tooling regardless of primary language.
 After saving `docs/context/project.md`, check whether these files exist.
 If any are missing — create them.
 
+### Global tools (must be installed once per machine)
+
+The following tools must be installed globally. Local pnpm installation does not work
+reliably with git hooks due to pnpm's isolated linker creating text redirect files
+instead of real symlinks in the hook subprocess context:
+
+```bash
+npm install -g commitlint @commitlint/cli @commitlint/config-conventional
+npm install -g release-it @release-it/conventional-changelog
+```
+
+If the project also uses Prettier or markdownlint, install them globally too:
+
+```bash
+npm install -g prettier markdownlint-cli2
+```
+
 ### `package.json` (if missing)
 
 Create with the following structure, substituting project-specific values.
 Do NOT include `"type": "module"` unless the project has JS/TS source files that use ESM imports.
+Do NOT add `commitlint`, `release-it` or `prettier` to `devDependencies` — they are global.
 
 ```json
 {
@@ -85,48 +103,35 @@ Do NOT include `"type": "module"` unless the project has JS/TS source files that
     "node": ">=24.0.0",
     "pnpm": ">=10.0.0"
   },
+  "release-it": {
+    "extends": "./scripts/.release-it.json"
+  },
   "devDependencies": {
-    "@commitlint/cli": "^21.0.0",
-    "@commitlint/config-conventional": "^21.0.0",
-    "@release-it/conventional-changelog": "^11.0.0",
-    "lefthook": "^2.1.6",
-    "release-it": "^20.0.1"
+    "lefthook": "^2.1.6"
   }
 }
 ```
 
 > ⚠️ Do NOT name the hook-install script `setup` — `pnpm setup` is a pnpm built-in command
-> that configures pnpm itself and will NOT run your script. Use `init` or another name,
-> and always call it as `pnpm run init`.
+> that configures pnpm itself. Use `init` and call it as `pnpm run init`.
 
-### `.npmrc`
+### `commitlint.config.mjs` (if missing)
 
-```properties
-shamefully-hoist=true
-node-linker=hoisted
-```
+Copy from `docs.template/commitlint.config.mjs` and update the `scope-enum` rule
+with the project scopes from Group 4, question 14.
 
-This makes pnpm install packages as real directories (not symlinks), which is required
-for Node.js to correctly resolve ESM dependencies of commitlint in git hook context.
-
-### `commitlint.config.js` (if missing)
-
-Copy from `docs.template/commitlint.config.js` and add the project-specific
-`scope-enum` rule using the scopes from Group 4, question 14:
-
-```js
-'scope-enum': [2, 'always', ['scope1', 'scope2', ...]],
-```
+Use `.mjs` extension (not `.js`) — required for Node.js v24 ESM compatibility.
+Do not use `extends: ['@commitlint/config-conventional']` — define all rules inline
+to avoid dependency on locally installed packages.
 
 ### `lefthook.yml` (if missing)
 
 Create adapted to the project's primary language.
-Use `node node_modules/@commitlint/cli/cli.js` for commitlint — direct node call
-works reliably in git hook context with `node-linker=hoisted`.
+Use `commitlint --edit {1} --verbose` — relies on the global installation.
 
 - **PHP projects:** `pre-commit` → `composer fix`; `pre-push` → `composer stan` + `composer test`
-- **JS/TS projects:** `pre-commit` → prettier + eslint; `pre-push` → typecheck + test
-- **All projects:** `commit-msg` → `node node_modules/@commitlint/cli/cli.js --edit {1} --verbose`
+- **JS/TS projects:** `pre-commit` → `prettier --write` + eslint; `pre-push` → typecheck + test
+- **All projects:** `commit-msg` → `commitlint --edit {1} --verbose`
 
 ## Output
 
@@ -176,7 +181,7 @@ Create or overwrite `docs/context/project.md`:
 
 **Stack:** {runtime} + {framework}
 **Deployment:** {target}
-**Node.js tooling:** created package.json / commitlint.config.js / lefthook.yml
+**Node.js tooling:** created package.json / commitlint.config.mjs / lefthook.yml
 **Notes:** {anything non-obvious about the project setup}
 ```
 

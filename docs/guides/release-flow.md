@@ -6,7 +6,7 @@ wrapped in a custom pre-release check script.
 
 ## What happens on each release
 
-1. Pre-release checks run (clean working directory, correct branch, commits pushed, lockfile in sync).
+1. Pre-release checks run (clean working directory, correct branch, commits pushed, lockfile exists).
 2. `release-it` determines the version bump from commit types (`feat` → minor, `fix` → patch, `feat!` → major).
 3. `package.json` version is updated.
 4. `CHANGELOG.md` is updated automatically from commit history.
@@ -16,11 +16,15 @@ wrapped in a custom pre-release check script.
 
 ## Prerequisites
 
-| Tool   | Minimum version |
-| ------ | --------------- |
-| `node` | ≥ 24.0.0        |
-| `pnpm` | ≥ 10.0.0        |
-| `git`  | any recent      |
+| Tool         | How to install                                                 |
+| ------------ | -------------------------------------------------------------- |
+| `node` ≥ 24  | [nodejs.org](https://nodejs.org) or nvm                        |
+| `pnpm` ≥ 10  | `npm install -g pnpm`                                          |
+| `git`        | any recent version                                             |
+| `release-it` | `npm install -g release-it @release-it/conventional-changelog` |
+
+> ⚠️ `release-it` must be installed **globally** — not as a local pnpm dependency.
+> See `AGENTS.md → Global tools required` for the full explanation.
 
 A `GITHUB_TOKEN` with **repo** scope is required for GitHub Releases:
 
@@ -73,7 +77,7 @@ The script validates the following before any release starts:
 | 2   | Clean working directory | No unstaged or staged changes           |
 | 3   | Correct branch          | You are on `main` or `master`           |
 | 4   | Commits pushed          | No local commits ahead of `origin`      |
-| 5   | Lockfile in sync        | Lock file matches `package.json`        |
+| 5   | Lockfile exists         | `pnpm-lock.yaml` is present             |
 | 6   | CHANGELOG exists        | `CHANGELOG.md` is present and non-empty |
 
 If any check fails, the script exits with a descriptive error. No changes are made.
@@ -96,17 +100,18 @@ If any check fails, the script exits with a descriptive error. No changes are ma
 
 ## Troubleshooting
 
-| Symptom                         | Cause                                  | Fix                              |
-| ------------------------------- | -------------------------------------- | -------------------------------- |
-| `Permission denied` on `.sh`    | Scripts not executable                 | `npm run prepare`                |
-| `CHANGELOG.md is empty`         | No content in file                     | Add at least a placeholder line  |
-| `pnpm-lock.yaml is out of sync` | `package.json` changed without install | `pnpm install`                   |
-| `Local commits not pushed`      | Forgot to push                         | `git push`                       |
-| `GITHUB_TOKEN not set`          | Missing env var                        | Add to `.env` or export in shell |
+| Symptom                         | Cause                      | Fix                                                            |
+| ------------------------------- | -------------------------- | -------------------------------------------------------------- |
+| `Permission denied` on `.sh`    | Scripts not executable     | `pnpm run init`                                                |
+| `CHANGELOG.md is empty`         | No content in file         | Add at least a placeholder line                                |
+| `pnpm-lock.yaml not found`      | Dependencies not installed | `pnpm install`                                                 |
+| `Local commits not pushed`      | Forgot to push             | `git push`                                                     |
+| `GITHUB_TOKEN not set`          | Missing env var            | Add to `.env` or export in shell                               |
+| `release-it: command not found` | Not installed globally     | `npm install -g release-it @release-it/conventional-changelog` |
 
-## Future: GitHub Actions
+## Future: GitHub Actions automation
 
-When ready to automate releases via CI, add a workflow file. The `.release-it.json` config requires no changes:
+When ready to automate releases via CI, add a workflow file:
 
 ```yaml
 # .github/workflows/release.yml
@@ -118,14 +123,19 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v4
         with:
-          node-version: 24
-      - run: npm ci
-      - run: npx release-it --ci
+          version: '10'
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: npm install -g release-it @release-it/conventional-changelog
+      - run: release-it --ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```

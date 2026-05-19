@@ -5,7 +5,7 @@ They configure your local Git to match the project's workflow.
 
 ```bash
 # Use project commit message template (shows valid types and scopes)
-git config commit.template .gitmessage
+git config commit.template scripts/.gitmessage
 
 # Rebase instead of merge when pulling (keeps linear history)
 git config --global pull.rebase true
@@ -21,8 +21,9 @@ git config --global core.editor "code --wait"   # VS Code
 git config --global core.editor "vim"
 git config --global core.editor "nano"
 
-# Install git hooks (Lefthook)
+# Install Node.js dependencies and git hooks
 pnpm install
+pnpm run init
 ```
 
 ## Verify your setup
@@ -31,4 +32,4 @@ pnpm install
 git config --list --local
 ```
 
-You should see `commit.template` pointing to `.gitmessage` in the project root.
+You should see `commit.template` pointing to `scripts/.gitmessage` in the project root.
