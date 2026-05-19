@@ -1,6 +1,6 @@
 {
     "name": "docs.template",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "description": "This project serves as a documentation template for other projects. It also contains essential foundational documents and instructions for creating them. Specifically, it includes files and folders for ADR, AIR, AGENTS.md, LICENSE, release cycle, commit cycle guides, and more.",
     "keywords": [
         "docs",
