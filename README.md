@@ -8,7 +8,7 @@ Claude prompts, decision records (ADR/AIR/AID), git conventions, and release aut
 ## What's included
 
 | Area               | What you get                                                                     |
-|--------------------|----------------------------------------------------------------------------------|
+| ------------------ | -------------------------------------------------------------------------------- |
 | **Git workflow**   | Branch naming rules, commit format (Conventional Commits), PR process            |
 | **Git hooks**      | Lefthook: pre-commit (format + lint), commit-msg (commitlint), pre-push (checks) |
 | **Release cycle**  | release-it: version bump, CHANGELOG generation, GitHub Release publishing        |
@@ -60,7 +60,7 @@ pnpm start
 ## Commands
 
 | Command                 | Description                                        |
-|-------------------------|----------------------------------------------------|
+| ----------------------- | -------------------------------------------------- |
 | `pnpm start`            | Show project status and next recommended step      |
 | `pnpm run init`         | Full project initialization (run once after clone) |
 | `pnpm run lint:fix`     | Auto-fix markdownlint issues                       |
@@ -81,7 +81,7 @@ pnpm start
 ## Packages
 
 | Package                                                                                    | Author                                                              | Purpose                          |
-|--------------------------------------------------------------------------------------------|---------------------------------------------------------------------|----------------------------------|
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- | -------------------------------- |
 | [lefthook](https://github.com/evilmartians/lefthook)                                       | [Evil Martians](https://evilmartians.com)                           | Git hooks manager                |
 | [commitlint](https://commitlint.js.org)                                                    | [conventional-changelog](https://github.com/conventional-changelog) | Commit message validation        |
 | [release-it](https://github.com/release-it/release-it)                                     | [webpro](https://github.com/webpro)                                 | Automated versioning and release |
@@ -95,7 +95,7 @@ pnpm start
 ## Documentation
 
 | Document                                                                     | Description                                                   |
-|------------------------------------------------------------------------------|---------------------------------------------------------------|
+| ---------------------------------------------------------------------------- | ------------------------------------------------------------- |
 | [AGENTS.md](AGENTS.md)                                                       | Guide for AI agents working in this repo                      |
 | [docs/guides/git-workflow.md](docs/guides/git-workflow.md)                   | Branch naming, commit format, PR flow                         |
 | [docs/guides/release-flow.md](docs/guides/release-flow.md)                   | Release process and commands                                  |
