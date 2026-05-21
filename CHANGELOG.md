@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.3](https://github.com/indigo-soft/docs/compare/v0.6.2...v0.6.3) (2026-05-21)
+
+### Bug Fixes
+
+* **ci:** rename lint job and consolidate format checks in CI configuration ([f45c34c](https://github.com/indigo-soft/docs/commit/f45c34cb2dbf5bb763faa329684bac7ec100f8c6))
+
 ## [0.6.2](https://github.com/indigo-soft/docs/compare/v0.6.0...v0.6.2) (2026-05-19)
 
 ### Bug Fixes
