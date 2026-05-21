@@ -57,22 +57,24 @@ Every project uses Node.js dev tooling regardless of primary language.
 After saving `docs/context/project.md`, check whether these files exist.
 If any are missing — create them.
 
-### Global tools (must be installed once per machine)
-
-The following tools must be installed globally. Local pnpm installation does not work
-reliably with git hooks due to pnpm's isolated linker creating text redirect files
-instead of real symlinks in the hook subprocess context:
+### Prerequisites (must be installed once per machine)
 
 ```bash
+# 1. Node.js v24+ — install via nvm (recommended) or https://nodejs.org
+nvm install 24 && nvm use 24
+
+# 2. Corepack — built into Node.js, enables managed package managers
+npm install -g corepack
+corepack enable pnpm
+
+# 3. Global tools — installed globally due to pnpm WSL2 isolated linker limitations
 npm install -g commitlint @commitlint/cli @commitlint/config-conventional
 npm install -g release-it @release-it/conventional-changelog
-```
-
-If the project also uses Prettier or markdownlint, install them globally too:
-
-```bash
 npm install -g prettier markdownlint-cli2
 ```
+
+> The `pnpm run init` script checks Node.js version, enables corepack, and installs
+> all global tools automatically — except Node.js itself which must be installed first.
 
 ### `.pnpmrc` (if missing)
 
@@ -81,9 +83,6 @@ Create in the project root to suppress pnpm's interactive approval prompt for le
 ```properties
 approve-builds=lefthook
 ```
-
-Without this, pnpm v10+ asks for manual approval of lefthook's `postinstall` script
-on every fresh `pnpm install`.
 
 > ⚠️ Use `.pnpmrc`, not `.npmrc` — `approve-builds` is a pnpm-specific option.
 > If placed in `.npmrc`, npm will warn about an unknown config key.

@@ -14,6 +14,30 @@ REQUIRED_GLOBAL_PACKAGES=(
     "markdownlint-cli2:markdownlint-cli2"
 )
 
+check_node() {
+    log_info "🟢 Checking Node.js..."
+
+    if ! command -v node &>/dev/null; then
+        log_error "Node.js not found."
+        log_text "  Install it via nvm: https://github.com/nvm-sh/nvm"
+        log_text "  Or download from:  https://nodejs.org"
+        exit 1
+    fi
+
+    local node_version
+    node_version=$(node --version)
+    local major
+    major=$(echo "$node_version" | sed 's/v//' | cut -d. -f1)
+
+    if [ "$major" -lt 24 ]; then
+        log_error "Node.js $node_version is too old. Required: v24 or newer."
+        log_text "  Upgrade via nvm: nvm install 24 && nvm use 24"
+        exit 1
+    fi
+
+    log_success "  Node.js $node_version — ok"
+}
+
 check_global_tools() {
     log_info "🔍 Checking global npm tools..."
 
@@ -33,9 +57,21 @@ check_global_tools() {
     done
 }
 
+check_corepack() {
+    log_info "📦 Checking corepack..."
+
+    if ! command -v corepack &>/dev/null; then
+        log_error "corepack not found. Install it: npm install -g corepack"
+        exit 1
+    fi
+
+    corepack enable pnpm &>/dev/null
+    log_success "  corepack — enabled for pnpm"
+}
+
 check_pnpm() {
     if ! command -v pnpm &>/dev/null; then
-        log_error "pnpm not found. Install it first: npm install -g pnpm"
+        log_error "pnpm not found. Run: corepack enable pnpm"
         exit 1
     fi
 }
