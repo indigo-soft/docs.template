@@ -78,35 +78,34 @@ pnpm start
 
 ---
 
-## Packages
+## Documentation
 
-| Package                                                                                    | Author                                                              | Purpose                          |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- | -------------------------------- |
-| [lefthook](https://github.com/evilmartians/lefthook)                                       | [Evil Martians](https://evilmartians.com)                           | Git hooks manager                |
-| [commitlint](https://commitlint.js.org)                                                    | [conventional-changelog](https://github.com/conventional-changelog) | Commit message validation        |
-| [release-it](https://github.com/release-it/release-it)                                     | [webpro](https://github.com/webpro)                                 | Automated versioning and release |
-| [@release-it/conventional-changelog](https://github.com/release-it/conventional-changelog) | [release-it](https://github.com/release-it)                         | Changelog generation plugin      |
-| [prettier](https://prettier.io)                                                            | [Prettier](https://github.com/prettier)                             | Code formatter                   |
-| [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)                       | [David Anson](https://github.com/DavidAnson)                        | Markdown linter                  |
-| [Renovate](https://docs.renovatebot.com)                                                   | [Mend](https://www.mend.io)                                         | Automated dependency updates     |
+| Document                                                                     | Description                                                |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| [AGENTS.md](AGENTS.md)                                                       | Guide for AI agents working in this repo                   |
+| [docs/guides/git-workflow.md](docs/guides/git-workflow.md)                   | Branch naming, commit format, PR flow                      |
+| [docs/guides/release-flow.md](docs/guides/release-flow.md)                   | Release process and commands                               |
+| [docs/guides/git-config.md](docs/guides/git-config.md)                       | One-time local git setup                                   |
+| [docs/guides/updating-dependencies.md](docs/guides/updating-dependencies.md) | Renovate + Dependabot                                      |
+| [docs/adr/INDEX.md](docs/adr/INDEX.md)                                       | ADR — Architecture Decision Records                        |
+| [docs/air/INDEX.md](docs/air/INDEX.md)                                       | AIR — Architecture Issue Records (conflicts between ADRs)  |
+| [docs/aid/INDEX.md](docs/aid/INDEX.md)                                       | AID — AI Interaction Documents (audit of AI-assisted work) |
+| [docs/prompts/](docs/prompts/)                                               | Claude prompts for generating project docs                 |
+| [CHANGELOG.md](CHANGELOG.md)                                                 | Release history                                            |
+| [ROADMAP.md](ROADMAP.md)                                                     | Planned milestones                                         |
 
 ---
 
-## Documentation
+## Built with
 
-| Document                                                                     | Description                                                   |
-| ---------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| [AGENTS.md](AGENTS.md)                                                       | Guide for AI agents working in this repo                      |
-| [docs/guides/git-workflow.md](docs/guides/git-workflow.md)                   | Branch naming, commit format, PR flow                         |
-| [docs/guides/release-flow.md](docs/guides/release-flow.md)                   | Release process and commands                                  |
-| [docs/guides/git-config.md](docs/guides/git-config.md)                       | One-time local git setup                                      |
-| [docs/guides/updating-dependencies.md](docs/guides/updating-dependencies.md) | Renovate + Dependabot                                         |
-| [docs/adr/INDEX.md](docs/adr/INDEX.md)                                       | ADR — Architecture Decision Records (13 records)              |
-| [docs/air/INDEX.md](docs/air/INDEX.md)                                       | AIR — Architecture Issue Records (conflicts between ADRs)     |
-| [docs/aid/INDEX.md](docs/aid/INDEX.md)                                       | AID — AI Interaction Documents (AI collaboration audit trail) |
-| [docs/prompts/](docs/prompts/)                                               | Claude prompts for generating project docs                    |
-| [CHANGELOG.md](CHANGELOG.md)                                                 | Release history                                               |
-| [ROADMAP.md](ROADMAP.md)                                                     | Planned milestones                                            |
+| Tool                                                                 | Author                                                               | Purpose                      |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | ---------------------------- |
+| [Lefthook](https://github.com/evilmartians/lefthook)                 | [Evil Martians](https://evilmartians.com)                            | Git hooks manager            |
+| [commitlint](https://commitlint.js.org)                              | [@conventional-changelog](https://github.com/conventional-changelog) | Commit message validation    |
+| [release-it](https://github.com/release-it/release-it)               | [@release-it](https://github.com/release-it)                         | Release automation           |
+| [Prettier](https://prettier.io)                                      | [@prettier](https://github.com/prettier)                             | Code formatter               |
+| [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) | [@DavidAnson](https://github.com/DavidAnson)                         | Markdown linter              |
+| [Renovate](https://docs.renovatebot.com)                             | [@renovatebot](https://github.com/renovatebot)                       | Automated dependency updates |
 
 ---
 
