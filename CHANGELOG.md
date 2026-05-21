@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.4](https://github.com/indigo-soft/docs/compare/v0.6.3...v0.6.4) (2026-05-21)
+
+### Features
+
+* **config:** add node.js and corepack checks to init script ([820d73d](https://github.com/indigo-soft/docs/commit/820d73d810313e5fc52d1c4c4dc9e2ed6e61a667))
+
 ## [0.6.3](https://github.com/indigo-soft/docs/compare/v0.6.2...v0.6.3) (2026-05-21)
 
 ### Bug Fixes
