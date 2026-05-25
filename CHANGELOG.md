@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.0](https://github.com/indigo-soft/docs/compare/v0.7.0...v0.8.0) (2026-05-25)
+
+### Features
+
+* **config:** add github token validation to release script ([121527e](https://github.com/indigo-soft/docs/commit/121527ef9f2fe99f3a7719a9b6e513defb227e63))
+
 ## [0.7.0](https://github.com/indigo-soft/docs/compare/v0.6.8...v0.7.0) (2026-05-25)
 
 ### Features
