@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.8](https://github.com/indigo-soft/docs/compare/v0.6.7...v0.6.8) (2026-05-25)
+
+### Bug Fixes
+
+* **config:** translate commit-format-info.sh to english and generalize scopes ([acc970e](https://github.com/indigo-soft/docs/commit/acc970e2e752839ae9c7306fd8aa0e9ea8a049cf))
+
 ## [0.6.7](https://github.com/indigo-soft/docs/compare/v0.6.6...v0.6.7) (2026-05-25)
 
 ### Bug Fixes
