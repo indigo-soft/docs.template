@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.6](https://github.com/indigo-soft/docs/compare/v0.6.5...v0.6.6) (2026-05-25)
+
+### Bug Fixes
+
+* **config:** translate release-it hooks to english ([960e56d](https://github.com/indigo-soft/docs/commit/960e56d657b8184adf0d46094ffecb51e2e6201a))
+
 ## [0.6.5](https://github.com/indigo-soft/docs/compare/v0.6.3...v0.6.5) (2026-05-21)
 
 ### Features
