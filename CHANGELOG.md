@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.0](https://github.com/indigo-soft/docs/compare/v0.6.8...v0.7.0) (2026-05-25)
+
+### Features
+
+* **docs:** add aid-0001, readme and roadmap prompts, node check in start wizard ([994f6f6](https://github.com/indigo-soft/docs/commit/994f6f6f5396db7142c4f619ebe59a15609938c0))
+
 ## [0.6.8](https://github.com/indigo-soft/docs/compare/v0.6.7...v0.6.8) (2026-05-25)
 
 ### Bug Fixes
