@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.7](https://github.com/indigo-soft/docs/compare/v0.6.6...v0.6.7) (2026-05-25)
+
+### Bug Fixes
+
+* **config:** remove duplicate release-it hooks output ([7551340](https://github.com/indigo-soft/docs/commit/7551340808e8d11699801c852ad0fd5abc153011))
+
 ## [0.6.6](https://github.com/indigo-soft/docs/compare/v0.6.5...v0.6.6) (2026-05-25)
 
 ### Bug Fixes
