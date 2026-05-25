@@ -12,6 +12,12 @@ Full list of AI Interaction Documents.
 | --- | ----------- | --------- | ------ | ---- |
 | —   | —           | —         | —      | —    |
 
+## Accepted
+
+| #                                                          | Description                        | AI System         | Status   | Date       |
+| ---------------------------------------------------------- | ---------------------------------- | ----------------- | -------- | ---------- |
+| [AID-0001](AID-0001-building-docs-template-with-claude.md) | Building docs.template with Claude | Claude Sonnet 4.6 | Accepted | 2026-05-25 |
+
 ## Archived
 
 | #   | Description | AI System | Date |

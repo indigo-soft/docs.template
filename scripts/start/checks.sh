@@ -5,18 +5,10 @@
 # shellcheck source=../libs/colors.sh
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../libs/colors.sh"
 
-# ------------------------------------------------
-#  Helpers
-# ------------------------------------------------
-
 status_ok()   { printf "  ✅  %s\n" "$1"; }
 status_warn() { printf "  ⚠️  %s\n" "$1"; }
 status_fail() { printf "  ❌  %s\n" "$1"; }
 status_info() { printf "  ℹ️  %s\n" "$1"; }
-
-# ------------------------------------------------
-#  Initialization checks
-# ------------------------------------------------
 
 check_init_status() {
     local root_dir="${1:-$(pwd)}"
@@ -24,6 +16,22 @@ check_init_status() {
 
     echo ""
     log_info "🔧 Initialization"
+
+    # Node.js version
+    if command -v node &>/dev/null; then
+        local node_version major
+        node_version=$(node --version)
+        major=$(echo "$node_version" | sed 's/v//' | cut -d. -f1)
+        if [ "$major" -lt 24 ]; then
+            status_warn "Node.js $node_version — too old, required v24+"
+            all_ok=false
+        else
+            status_ok "Node.js $node_version"
+        fi
+    else
+        status_fail "Node.js — not found"
+        all_ok=false
+    fi
 
     # Global tools
     local tools=("commitlint" "release-it" "prettier" "markdownlint-cli2")
@@ -60,10 +68,6 @@ check_init_status() {
     $all_ok && return 0 || return 1
 }
 
-# ------------------------------------------------
-#  Onboarding checks
-# ------------------------------------------------
-
 check_onboarding_status() {
     local root_dir="${1:-$(pwd)}"
 
@@ -78,23 +82,17 @@ check_onboarding_status() {
         return 1
     fi
 
-    # Check if it still has placeholders
     if grep -q "{project name}" "$project_file" 2>/dev/null; then
         status_warn "docs/context/project.md — exists but not filled in"
         status_info "Run the onboarding prompt: docs/prompts/onboarding.md"
         return 1
     fi
 
-    # Extract project name for display
     local project_name
     project_name=$(grep "^\*\*Name:\*\*" "$project_file" | sed 's/.*\*\*Name:\*\* //' | head -1)
     status_ok "docs/context/project.md — filled in${project_name:+ (${project_name})}"
     return 0
 }
-
-# ------------------------------------------------
-#  Checklist progress
-# ------------------------------------------------
 
 check_checklist_progress() {
     local root_dir="${1:-$(pwd)}"
@@ -121,7 +119,6 @@ check_checklist_progress() {
     done < "$checklist"
 
     local pending=$(( total - done_count ))
-
     status_ok "$done_count / $total items complete"
 
     if [ "$pending" -gt 0 ]; then
@@ -138,10 +135,6 @@ check_checklist_progress() {
         fi
     fi
 }
-
-# ------------------------------------------------
-#  Next step recommendation
-# ------------------------------------------------
 
 print_next_step() {
     local init_ok="${1:-false}"
