@@ -96,6 +96,7 @@ check_branch
 check_pushed
 check_lockfile
 check_changelog
+check_github_token
 
 # -----------------------------
 #  Run release
