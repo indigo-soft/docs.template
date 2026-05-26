@@ -5,6 +5,7 @@ Full list of Architecture Decision Records.
 → [README.md](README.md) — what ADRs are, lifecycle, rules
 → [../air/README.md](../air/README.md) — Architecture Issue Records (ADR conflicts)
 → [../aid/README.md](../aid/README.md) — AI Interaction Documents
+→ [../rfc/README.md](../rfc/README.md) — Requests for Comments (pre-decision proposals)
 
 ---
 
@@ -25,6 +26,7 @@ Full list of Architecture Decision Records.
 | [ADR-0011](ADR-0011-versioning-semver.md)               | Versioning Strategy (SemVer + release-it)               | Accepted | 2026-05-11 |
 | [ADR-0012](ADR-0012-shell-script-conventions.md)        | Shell Script Conventions                                | Accepted | 2026-05-19 |
 | [ADR-0013](ADR-0013-package-json-script-conventions.md) | package.json Script Naming Conventions                  | Accepted | 2026-05-19 |
+| [ADR-0014](ADR-0014-rfc-process.md)                     | RFC Process for Pre-Decision Proposals                  | Accepted | 2026-05-26 |
 
 ---
 
