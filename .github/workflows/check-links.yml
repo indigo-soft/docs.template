@@ -30,6 +30,7 @@ jobs:
                   args: >
                       --offline
                       --include-fragments
-                      --exclude-path "node_modules/**" "**/*.md"
+                      --exclude-path "node_modules/**"
+                      "**/*.md"
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
