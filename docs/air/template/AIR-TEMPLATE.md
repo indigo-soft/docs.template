@@ -20,12 +20,13 @@ Open
 <!--
 List all ADRs involved in the conflict. Use relative paths
 (AIR files live in air/, ADRs are one level up in adr/).
+Replace ADR-XXXX and ADR-YYYY with real links once known.
 -->
 
-| ADR                                            | Title            | Status after resolution                      |
-| ---------------------------------------------- | ---------------- | -------------------------------------------- |
-| [ADR-XXXX](../adr/ADR-XXXX-first-decision.md)  | First ADR title  | Accepted — unchanged / clarified             |
-| [ADR-YYYY](../adr/ADR-YYYY-second-decision.md) | Second ADR title | Accepted — updated to account for constraint |
+| ADR      | Title            | Status after resolution                      |
+| -------- | ---------------- | -------------------------------------------- |
+| ADR-XXXX | First ADR title  | Accepted — unchanged / clarified             |
+| ADR-YYYY | Second ADR title | Accepted — updated to account for constraint |
 
 ## Conflict Description
 
@@ -140,9 +141,9 @@ What changes for each affected ADR and for the team.
 Actions to complete after resolution. Leave checkboxes open until done.
 -->
 
-- [ ] Update ADR-XXXX — add `Conflict resolved by: [AIR-00N](../air/done-air-00N-....md)`
-- [ ] Update ADR-YYYY — add `Conflict resolved by: [AIR-00N](../air/done-air-00N-....md)`
-- [ ] Update [INDEX.md](INDEX.md) — move to Resolved table
+- [ ] Update ADR-XXXX — add `Conflict resolved by: AIR-00N` to Related ADRs section
+- [ ] Update ADR-YYYY — add `Conflict resolved by: AIR-00N` to Related ADRs section
+- [ ] Update [INDEX.md](../INDEX.md) — move to Resolved table
 - [ ] Rename file: `air-00N-...md` → `done-air-00N-...md`
 
 ## Date Opened
