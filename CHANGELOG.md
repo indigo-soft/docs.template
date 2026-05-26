@@ -1,5 +1,7 @@
 # Changelog
 
+## [1.0.1](https://github.com/indigo-soft/docs/compare/v1.0.0...v1.0.1) (2026-05-26)
+
 ## [1.0.0](https://github.com/indigo-soft/docs/compare/v0.8.2...v1.0.0) (2026-05-26)
 
 ## [0.8.2](https://github.com/indigo-soft/docs/compare/v0.8.1...v0.8.2) (2026-05-26)
