@@ -9,6 +9,24 @@
 
 ---
 
+## 2026-05-26 — v1.0 release candidate session
+
+**Added:** RFC process, glossary, new guides, new checklists, CI split, ADR-0014,
+security and contributing prompts. Full session summary: `docs/context/sessions/2026-05-26-v1-release-candidate.md`
+
+**Key decisions below ADR threshold:**
+
+- Glossary terms use `###` headings (not bold) to enable direct anchor links (`glossary.md#adr`)
+- Self-referential `### Glossary` entry removed — circular and triggers MD024 duplicate heading rule
+- RFC "Parked" status added to handle "good idea, wrong time" case without forcing a decision
+- Checklists for release and new-feature are human + AI combined — AI executes, human confirms blocks
+- CI split into `lint.yml` + `check-links.yml` (separate files) rather than one `ci.yml` with jobs
+- `MD040` (fenced-code-language) disabled in markdownlint — language tag not required on code blocks
+
+**State:** docs.template ready for `npm run release:major` → v1.0.0
+
+---
+
 ## 2026-05-19 — `.pnpmrc` instead of `.npmrc` for approve-builds
 
 **Decision:** Use `.pnpmrc` (not `.npmrc`) for pnpm-specific config options.
