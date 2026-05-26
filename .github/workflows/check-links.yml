@@ -1,0 +1,36 @@
+name: Check Links
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+    schedule:
+        # Run weekly on Monday at 09:00 UTC to catch externally broken links
+        - cron: '0 9 * * 1'
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    check-links:
+        name: Check markdown links
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Check internal links
+              uses: lycheeverse/lychee-action@v2
+              with:
+                  # Check only internal links on push/PR; include external on schedule
+                  args: >
+                      --offline
+                      --include-fragments
+                      --glob-ignore "node_modules/**"
+                      "**/*.md"
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
