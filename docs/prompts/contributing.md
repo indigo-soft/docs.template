@@ -85,8 +85,8 @@ Generate `CONTRIBUTING.md` with the following sections (skip what doesn't apply)
 
 ## Glossary linking
 
-After generating, scan for terms defined in `docs/glossary.md` and link the first
-occurrence of each: `[ADR](docs/glossary.md#adr)`, `[RFC](docs/glossary.md#rfc)`, etc.
+After generating, scan for terms defined in `docs/glossary/glossary.md` and link the first
+occurrence of each: `[ADR](docs/glossary/glossary.md#adr)`, `[RFC](docs/glossary/glossary.md#rfc)`, etc.
 
 ## After completion
 

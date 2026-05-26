@@ -1,25 +1,25 @@
 # docs.template
 
 A documentation and tooling template for software projects with AI-assisted onboarding —
-Claude prompts, decision records ([ADR](docs/glossary.md#adr)/[AIR](docs/glossary.md#air)/[AID](docs/glossary.md#aid)/[RFC](docs/glossary.md#rfc)),
+Claude prompts, decision records ([ADR](docs/glossary/glossary.md#adr)/[AIR](docs/glossary/glossary.md#air)/[AID](docs/glossary/glossary.md#aid)/[RFC](docs/glossary/glossary.md#rfc)),
 git conventions, and release automation ready to use.
 
 ---
 
 ## What's included
 
-| Area                 | What you get                                                                                                                        |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **Git workflow**     | Branch naming rules, commit format ([Conventional Commits](docs/glossary.md#conventional-commits)), PR process                      |
-| **Git hooks**        | [Lefthook](docs/glossary.md#lefthook): pre-commit (format + lint), commit-msg ([commitlint](docs/glossary.md#commitlint)), pre-push |
-| **Release cycle**    | [Release-it](docs/glossary.md#release-it): version bump, CHANGELOG generation, GitHub Release publishing                            |
-| **Decision records** | ADR, AIR, AID, RFC — all with templates, indexes, and archive                                                                       |
-| **Documentation**    | Architecture, guides, checklists, [glossary](docs/glossary.md) — structured and linked                                              |
-| **AI prompts**       | Claude prompts for generating project-specific docs from a single onboarding run                                                    |
-| **Project memory**   | `docs/context/` — persistent context readable by Claude and humans                                                                  |
-| **Init wizard**      | `pnpm run init` — installs tools, hooks, .env, git template in one command                                                          |
-| **Status wizard**    | `pnpm start` — shows project status and recommends the next step                                                                    |
-| **CI/CD**            | GitHub Actions: lint, format check, link check, Renovate, Dependabot                                                                |
+| Area                 | What you get                                                                                                                                          |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Git workflow**     | Branch naming rules, commit format ([Conventional Commits](docs/glossary/glossary.md#conventional-commits)), PR process                               |
+| **Git hooks**        | [Lefthook](docs/glossary/glossary.md#lefthook): pre-commit (format + lint), commit-msg ([commitlint](docs/glossary/glossary.md#commitlint)), pre-push |
+| **Release cycle**    | [Release-it](docs/glossary/glossary.md#release-it): version bump, CHANGELOG generation, GitHub Release publishing                                     |
+| **Decision records** | ADR, AIR, AID, RFC — all with templates, indexes, and archive                                                                                         |
+| **Documentation**    | Architecture, guides, checklists, [glossary](docs/glossary/glossary.md) — structured and linked                                                       |
+| **AI prompts**       | Claude prompts for generating project-specific docs from a single onboarding run                                                                      |
+| **Project memory**   | `docs/context/` — persistent context readable by Claude and humans                                                                                    |
+| **Init wizard**      | `pnpm run init` — installs tools, hooks, .env, git template in one command                                                                            |
+| **Status wizard**    | `pnpm start` — shows project status and recommends the next step                                                                                      |
+| **CI/CD**            | GitHub Actions: lint, format check, link check, Renovate, Dependabot                                                                                  |
 
 ---
 
@@ -85,7 +85,7 @@ pnpm start
 | Document                                                                     | Description                                          |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------- |
 | [AGENTS.md](AGENTS.md)                                                       | Guide for AI agents working in this repo             |
-| [docs/glossary.md](docs/glossary.md)                                         | Definitions of all terms used across the project     |
+| [docs/glossary/glossary.md](docs/glossary/glossary.md)                       | Definitions of all terms used across the project     |
 | [docs/guides/onboarding.md](docs/guides/onboarding.md)                       | Getting started for new team members                 |
 | [docs/guides/git-workflow.md](docs/guides/git-workflow.md)                   | Branch naming, commit format, PR flow                |
 | [docs/guides/code-review.md](docs/guides/code-review.md)                     | Code review principles and what to check             |

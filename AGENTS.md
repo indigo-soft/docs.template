@@ -48,7 +48,8 @@ docs/
     architecture/       ← overview.md, components.md, modules.md, diagrams/
     guides/             ← git-workflow, release-flow, git-config, naming-conventions,
                            updating-dependencies, onboarding, code-review, docs-style-guide
-    glossary.md         ← definitions of all terms used across the project
+    glossary/
+        glossary.md     ← definitions of all terms used across the project
 
 scripts/
     init/               ← project initialization script
@@ -127,11 +128,11 @@ on every fresh `pnpm install`.
   after completing the corresponding task.
 - **AID documents capture AI work** — after a significant AI interaction, create an AID in `docs/aid/`.
 - **Glossary maintenance** — when adding new concepts, process types, document types, or tooling
-  to the project, check `docs/glossary.md` and add any terms that are not yet defined.
+  to the project, check `docs/glossary/glossary.md` and add any terms that are not yet defined.
   New terms go under the correct alphabetical section using a `###` heading.
 - **Glossary linking in READMEs** — in every `README.md` file (root and within `docs/`),
-  link the **first occurrence** of each term that is defined in `docs/glossary.md`.
-  Use the format `[term](docs/glossary.md#term-anchor)` (adjust relative path as needed).
+  link the **first occurrence** of each term that is defined in `docs/glossary/glossary.md`.
+  Use the format `[term](docs/glossary/glossary.md#term-anchor)` (adjust relative path as needed).
   Subsequent occurrences of the same term in the same file do not need a link.
 
 ## Tooling and workflows
@@ -162,7 +163,7 @@ on every fresh `pnpm install`.
 - Ask for the project's onboarding context before generating any project-specific document.
 - Install global tools (see above) before running git hooks or release scripts.
 - Create an AID in `docs/aid/` after any significant AI interaction.
-- Check `docs/glossary.md` when adding new content — add any missing terms before committing.
+- Check `docs/glossary/glossary.md` when adding new content — add any missing terms before committing.
 - Link the first occurrence of every glossary term in each README file you create or edit.
 
 **DO NOT:**
@@ -175,4 +176,4 @@ on every fresh `pnpm install`.
 - Run `pnpm setup` to install hooks — use `pnpm run init` instead.
 - Put pnpm-specific config in `.npmrc` — use `.pnpmrc` instead.
 - Confuse AIR (ADR conflicts) with AID (AI interactions) — they are different document types.
-- Add a term to a README without first checking if it belongs in `docs/glossary.md`.
+- Add a term to a README without first checking if it belongs in `docs/glossary/glossary.md`.

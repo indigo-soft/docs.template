@@ -77,16 +77,16 @@ Generate `README.md` with the following sections (skip sections that don't apply
 
 ## Glossary linking
 
-After generating the README, scan it for terms defined in `docs/glossary.md`.
+After generating the README, scan it for terms defined in `docs/glossary/glossary.md`.
 
 For each term found:
 
 - Link its **first occurrence** in the file using a relative path to the glossary anchor.
-  Example: `[ADR](docs/glossary.md#adr)`, `[RFC](docs/glossary.md#rfc)`.
+  Example: `[ADR](docs/glossary/glossary.md#adr)`, `[RFC](docs/glossary/glossary.md#rfc)`.
 - Leave subsequent occurrences of the same term unlinked.
 - If the term is inside a code block or a heading, do not link it.
 
-After linking, check whether any terms used in the README are missing from `docs/glossary.md`.
+After linking, check whether any terms used in the README are missing from `docs/glossary/glossary.md`.
 If yes, add them to the glossary before committing (correct alphabetical section, `###` heading).
 
 ## After completion
