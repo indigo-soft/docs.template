@@ -8,18 +8,18 @@ git conventions, and release automation ready to use.
 
 ## What's included
 
-| Area                  | What you get                                                                          |
-| --------------------- | ------------------------------------------------------------------------------------- |
-| **Git workflow**      | Branch naming rules, commit format ([Conventional Commits](docs/glossary.md#conventional-commits)), PR process |
-| **Git hooks**         | [Lefthook](docs/glossary.md#lefthook): pre-commit (format + lint), commit-msg ([commitlint](docs/glossary.md#commitlint)), pre-push |
-| **Release cycle**     | [Release-it](docs/glossary.md#release-it): version bump, CHANGELOG generation, GitHub Release publishing |
-| **Decision records**  | ADR, AIR, AID, RFC — all with templates, indexes, and archive                        |
-| **Documentation**     | Architecture, guides, checklists, [glossary](docs/glossary.md) — structured and linked |
-| **AI prompts**        | Claude prompts for generating project-specific docs from a single onboarding run     |
-| **Project memory**    | `docs/context/` — persistent context readable by Claude and humans                   |
-| **Init wizard**       | `pnpm run init` — installs tools, hooks, .env, git template in one command           |
-| **Status wizard**     | `pnpm start` — shows project status and recommends the next step                     |
-| **CI/CD**             | GitHub Actions: lint, format check, link check, Renovate, Dependabot                 |
+| Area                 | What you get                                                                                                                        |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| **Git workflow**     | Branch naming rules, commit format ([Conventional Commits](docs/glossary.md#conventional-commits)), PR process                      |
+| **Git hooks**        | [Lefthook](docs/glossary.md#lefthook): pre-commit (format + lint), commit-msg ([commitlint](docs/glossary.md#commitlint)), pre-push |
+| **Release cycle**    | [Release-it](docs/glossary.md#release-it): version bump, CHANGELOG generation, GitHub Release publishing                            |
+| **Decision records** | ADR, AIR, AID, RFC — all with templates, indexes, and archive                                                                       |
+| **Documentation**    | Architecture, guides, checklists, [glossary](docs/glossary.md) — structured and linked                                              |
+| **AI prompts**       | Claude prompts for generating project-specific docs from a single onboarding run                                                    |
+| **Project memory**   | `docs/context/` — persistent context readable by Claude and humans                                                                  |
+| **Init wizard**      | `pnpm run init` — installs tools, hooks, .env, git template in one command                                                          |
+| **Status wizard**    | `pnpm start` — shows project status and recommends the next step                                                                    |
+| **CI/CD**            | GitHub Actions: lint, format check, link check, Renovate, Dependabot                                                                |
 
 ---
 
@@ -82,28 +82,28 @@ pnpm start
 
 ## Documentation
 
-| Document                                                                     | Description                                            |
-| ---------------------------------------------------------------------------- | ------------------------------------------------------ |
-| [AGENTS.md](AGENTS.md)                                                       | Guide for AI agents working in this repo               |
-| [docs/glossary.md](docs/glossary.md)                                         | Definitions of all terms used across the project       |
-| [docs/guides/onboarding.md](docs/guides/onboarding.md)                       | Getting started for new team members                   |
-| [docs/guides/git-workflow.md](docs/guides/git-workflow.md)                   | Branch naming, commit format, PR flow                  |
-| [docs/guides/code-review.md](docs/guides/code-review.md)                     | Code review principles and what to check               |
-| [docs/guides/release-flow.md](docs/guides/release-flow.md)                   | Release process and commands                           |
-| [docs/guides/docs-style-guide.md](docs/guides/docs-style-guide.md)           | How to write documentation in this project             |
-| [docs/guides/git-config.md](docs/guides/git-config.md)                       | One-time local git setup                               |
-| [docs/guides/updating-dependencies.md](docs/guides/updating-dependencies.md) | Renovate + Dependabot workflow                         |
-| [docs/adr/INDEX.md](docs/adr/INDEX.md)                                       | ADR — Architecture Decision Records                    |
-| [docs/air/INDEX.md](docs/air/INDEX.md)                                       | AIR — Architecture Issue Records                       |
-| [docs/aid/INDEX.md](docs/aid/INDEX.md)                                       | AID — AI Interaction Documents                         |
-| [docs/rfc/INDEX.md](docs/rfc/INDEX.md)                                       | RFC — Requests for Comments (pre-decision proposals)   |
-| [docs/checklists/new-project.md](docs/checklists/new-project.md)             | Master checklist for setting up a new project          |
-| [docs/checklists/code-review.md](docs/checklists/code-review.md)             | Pre-approve checklist for reviewers                    |
-| [docs/checklists/release.md](docs/checklists/release.md)                     | Combined human + AI release checklist                  |
-| [docs/checklists/new-feature.md](docs/checklists/new-feature.md)             | Combined human + AI new feature checklist              |
-| [docs/prompts/](docs/prompts/)                                               | Claude prompts for generating project docs             |
-| [CHANGELOG.md](CHANGELOG.md)                                                 | Release history                                        |
-| [ROADMAP.md](ROADMAP.md)                                                     | Planned milestones                                     |
+| Document                                                                     | Description                                          |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------- |
+| [AGENTS.md](AGENTS.md)                                                       | Guide for AI agents working in this repo             |
+| [docs/glossary.md](docs/glossary.md)                                         | Definitions of all terms used across the project     |
+| [docs/guides/onboarding.md](docs/guides/onboarding.md)                       | Getting started for new team members                 |
+| [docs/guides/git-workflow.md](docs/guides/git-workflow.md)                   | Branch naming, commit format, PR flow                |
+| [docs/guides/code-review.md](docs/guides/code-review.md)                     | Code review principles and what to check             |
+| [docs/guides/release-flow.md](docs/guides/release-flow.md)                   | Release process and commands                         |
+| [docs/guides/docs-style-guide.md](docs/guides/docs-style-guide.md)           | How to write documentation in this project           |
+| [docs/guides/git-config.md](docs/guides/git-config.md)                       | One-time local git setup                             |
+| [docs/guides/updating-dependencies.md](docs/guides/updating-dependencies.md) | Renovate + Dependabot workflow                       |
+| [docs/adr/INDEX.md](docs/adr/INDEX.md)                                       | ADR — Architecture Decision Records                  |
+| [docs/air/INDEX.md](docs/air/INDEX.md)                                       | AIR — Architecture Issue Records                     |
+| [docs/aid/INDEX.md](docs/aid/INDEX.md)                                       | AID — AI Interaction Documents                       |
+| [docs/rfc/INDEX.md](docs/rfc/INDEX.md)                                       | RFC — Requests for Comments (pre-decision proposals) |
+| [docs/checklists/new-project.md](docs/checklists/new-project.md)             | Master checklist for setting up a new project        |
+| [docs/checklists/code-review.md](docs/checklists/code-review.md)             | Pre-approve checklist for reviewers                  |
+| [docs/checklists/release.md](docs/checklists/release.md)                     | Combined human + AI release checklist                |
+| [docs/checklists/new-feature.md](docs/checklists/new-feature.md)             | Combined human + AI new feature checklist            |
+| [docs/prompts/](docs/prompts/)                                               | Claude prompts for generating project docs           |
+| [CHANGELOG.md](CHANGELOG.md)                                                 | Release history                                      |
+| [ROADMAP.md](ROADMAP.md)                                                     | Planned milestones                                   |
 
 ---
 
