@@ -3,6 +3,16 @@
 All notable changes to this project are documented in this file.
 Generated automatically by [release-it](https://github.com/release-it/release-it) on each release — do not edit manually.
 
+## [1.1.0](https://github.com/indigo-soft/docs/compare/v1.0.3...v1.1.0) (2026-06-12)
+
+### Features
+
+* **docs:** add requirements and system-design prompts with guide placeholders ([06dfaa5](https://github.com/indigo-soft/docs/commit/06dfaa5f18e1fdac6496668a14a5f851eb33615c))
+
+### Bug Fixes
+
+* **release:** handle missing upstream and rename lockfile check to match behavior ([236132d](https://github.com/indigo-soft/docs/commit/236132d6f69b401202c06501257ab2f7ea33fabb))
+
 ## [1.0.3](https://github.com/indigo-soft/docs.template/compare/v1.0.2...v1.0.3) (2026-05-26)
 
 ## [1.0.2](https://github.com/indigo-soft/docs.template/compare/v1.0.1...v1.0.2) (2026-05-26)
