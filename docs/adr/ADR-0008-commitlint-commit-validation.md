@@ -74,7 +74,9 @@ eliminates this dependency entirely.
 Key rules enforced:
 
 - `scope-empty: [2, 'never']` — scope is **required** (non-standard, stricter than default)
-- `scope-enum` — only project-defined scopes are allowed (updated per project)
+- `scope-case: [2, 'always', 'kebab-case']` — scope format is enforced; the allowed scope **list**
+  is maintained in `docs/context/project.md` and may optionally be enforced by adding a
+  `scope-enum` rule per project
 - `type-enum` — standard Conventional Commits types
 - `branch-name-format` — custom plugin enforcing `<type>/<4-digit-issue>-<description>`
 

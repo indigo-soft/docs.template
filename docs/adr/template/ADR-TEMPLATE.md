@@ -101,5 +101,5 @@ Explain in detail WHY this specific decision was made:
 - Superseded by: [ADR-YYYY](ADR-YYYY-new-decision.md)
 - Related to: [ADR-ZZZZ](ADR-ZZZZ-related.md)
 - Depends on: [ADR-AAAA](ADR-AAAA-dependency.md)
-- Conflict resolved by: [AIR-00N](../air/done-air-00N-....md)
+- Conflict resolved by: [AIR-XXXX](../air/archive/AIR-XXXX-....md)
 -->

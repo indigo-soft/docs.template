@@ -43,13 +43,13 @@ Create an ADR when making decisions about:
 ### 1. Find the next number
 
 ```bash
-ls docs/adr/*.md | sort | tail -1
+ls docs/adr/ADR-*.md | sort | tail -1
 ```
 
 ### 2. Copy the template
 
 ```bash
-cp docs/adr/template/ADR-TEMPLATE.md docs/adr/ADR-0012-your-decision.md
+cp docs/adr/template/ADR-TEMPLATE.md docs/adr/ADR-XXXX-your-decision.md
 ```
 
 ### 3. Fill in the sections
