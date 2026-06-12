@@ -2,8 +2,10 @@
 
 <!--
 File name:  AIR-XXXX-short-conflict-description.md  (4-digit zero-padded number, same as ADR/AID/RFC)
+After copying out of template/, fix the INDEX link (the template lives one level deeper):
+  sed -i 's|](\.\./INDEX\.md)|](INDEX.md)|' docs/air/AIR-XXXX-short-conflict-description.md
 After resolution move the file to:  archive/AIR-XXXX-short-conflict-description.md
-(adjust relative links inside — ADR links become ../../adr/...)
+(adjust relative links inside — ADR links become ../../adr/..., INDEX becomes ../INDEX.md)
 
 Title examples:
   AIR-0002: Redis cluster requirement conflicts with single-node policy from ADR-0003
@@ -144,7 +146,8 @@ Actions to complete after resolution. Leave checkboxes open until done.
 
 - [ ] Update ADR-XXXX — add `Conflict resolved by: AIR-XXXX` to Related ADRs section
 - [ ] Update ADR-YYYY — add `Conflict resolved by: AIR-XXXX` to Related ADRs section
-- [ ] Update [INDEX.md](INDEX.md) — move the entry to the Resolved table
+- [ ] Update [INDEX.md](../INDEX.md) — move the entry to the Resolved table
+      <!-- after copying out of template/, this link must point to INDEX.md (see header comment) -->
 - [ ] Move the file to archive: `mv docs/air/AIR-XXXX-...md docs/air/archive/`
 - [ ] Adjust relative links inside the moved file (`../adr/...` → `../../adr/...`)
 

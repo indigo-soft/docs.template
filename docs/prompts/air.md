@@ -44,6 +44,13 @@ Read `docs/context/project.md` and `docs/air/INDEX.md` (if it exists) before ask
 Create `docs/air/AIR-XXXX-short-conflict-description.md` using
 `docs/air/template/AIR-TEMPLATE.md` as the base.
 
+After copying, fix the INDEX link — in the template it points to `../INDEX.md`
+(valid from `template/`); in the real AIR it must be `INDEX.md`:
+
+```bash
+sed -i 's|](\.\./INDEX\.md)|](INDEX.md)|' docs/air/AIR-XXXX-short-conflict-description.md
+```
+
 File naming rules:
 
 - 4-digit zero-padded number, same convention as ADR, AID, and RFC: `AIR-0002-...`

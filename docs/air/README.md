@@ -65,6 +65,9 @@ Open → Resolved → archive/
 
 ```bash
 cp docs/air/template/AIR-TEMPLATE.md docs/air/AIR-XXXX-short-conflict-description.md
+
+# Fix the INDEX link — the template lives one level deeper than the real AIR:
+sed -i 's|](\.\./INDEX\.md)|](INDEX.md)|' docs/air/AIR-XXXX-short-conflict-description.md
 ```
 
 ### 2. Fill in the sections

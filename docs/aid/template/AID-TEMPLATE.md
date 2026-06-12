@@ -89,5 +89,5 @@ What did this interaction teach you?
 <!--
 - Related ADR: [ADR-XXXX](../adr/ADR-XXXX-title.md)
 - Related AID: [AID-XXXX](AID-XXXX-title.md)
-- Related AIR: [AIR-XXX](../air/air-XXX-title.md)
+- Related AIR: [AIR-XXXX](../air/AIR-XXXX-title.md)
 -->
