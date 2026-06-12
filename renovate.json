@@ -1,23 +1,23 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
-  "enabledManagers": ["npm"],
-  "schedule": ["every 3 days"],
-  "labels": ["dependencies"],
-  "rangeStrategy": "bump",
-  "packageRules": [
-    {
-      "description": "Group all non-major npm updates and auto-merge after CI passes",
-      "matchUpdateTypes": ["patch", "minor"],
-      "groupName": "npm dependencies (non-major)",
-      "automerge": true,
-      "minimumReleaseAge": "3 days"
-    },
-    {
-      "description": "Major updates always require manual review",
-      "matchUpdateTypes": ["major"],
-      "automerge": false,
-      "labels": ["dependencies", "major-update", "needs-review"]
-    }
-  ]
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": ["config:recommended"],
+    "enabledManagers": ["npm"],
+    "schedule": ["every 3 days"],
+    "labels": ["dependencies"],
+    "rangeStrategy": "bump",
+    "packageRules": [
+        {
+            "description": "Group all non-major npm updates and auto-merge after CI passes",
+            "matchUpdateTypes": ["patch", "minor"],
+            "groupName": "npm dependencies (non-major)",
+            "automerge": true,
+            "minimumReleaseAge": "3 days"
+        },
+        {
+            "description": "Major updates always require manual review",
+            "matchUpdateTypes": ["major"],
+            "automerge": false,
+            "labels": ["dependencies", "major-update", "needs-review"]
+        }
+    ]
 }
