@@ -30,10 +30,11 @@ before the first `##` heading.
 
 ## Formatting
 
-**Headings:** sentence case, no trailing punctuation.
-`## Getting started` ✓ — `## Getting Started` ✗ — `## Getting started:` ✗
+**Headings:** Title Case, no trailing punctuation.
+`## Getting Started` ✓ — `## Getting started:` ✗
 
-**Code:** always use fenced code blocks with a language tag.
+**Code:** use fenced code blocks; a language tag is **recommended** for syntax
+highlighting, but not required (markdownlint rule MD040 is disabled).
 
 ````markdown
 ```bash

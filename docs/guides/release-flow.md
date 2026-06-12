@@ -71,14 +71,15 @@ GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx
 
 The script validates the following before any release starts:
 
-| #   | Check                   | What it verifies                        |
-| --- | ----------------------- | --------------------------------------- |
-| 1   | Dependencies            | `git`, `node`, `pnpm` are installed     |
-| 2   | Clean working directory | No unstaged or staged changes           |
-| 3   | Correct branch          | You are on `main` or `master`           |
-| 4   | Commits pushed          | No local commits ahead of `origin`      |
-| 5   | Lockfile exists         | `pnpm-lock.yaml` is present             |
-| 6   | CHANGELOG exists        | `CHANGELOG.md` is present and non-empty |
+| #   | Check                   | What it verifies                           |
+| --- | ----------------------- | ------------------------------------------ |
+| 1   | Dependencies            | `git`, `node`, `pnpm` are installed        |
+| 2   | Clean working directory | No unstaged or staged changes              |
+| 3   | Correct branch          | You are on `main` or `master`              |
+| 4   | Commits pushed          | No local commits ahead of `origin`         |
+| 5   | Lockfile exists         | `pnpm-lock.yaml` is present                |
+| 6   | CHANGELOG exists        | `CHANGELOG.md` is present and non-empty    |
+| 7   | GITHUB_TOKEN            | Set, well-formed, and valid via GitHub API |
 
 If any check fails, the script exits with a descriptive error. No changes are made.
 
@@ -90,13 +91,13 @@ If any check fails, the script exits with a descriptive error. No changes are ma
 
 ## Configuration Files
 
-| File                         | Purpose                        |
-| ---------------------------- | ------------------------------ |
-| `scripts/.release-it.json`   | `release-it` configuration     |
-| `scripts/release/release.sh` | Main release entry-point       |
-| `scripts/release/checks.sh`  | Pre-release check functions    |
-| `scripts/libs/colors.sh`     | Colored console output helpers |
-| `scripts/libs/env.sh`        | `.env` file loader             |
+| File                         | Purpose                                      |
+| ---------------------------- | -------------------------------------------- |
+| `.release-it.json`           | `release-it` configuration (repository root) |
+| `scripts/release/release.sh` | Main release entry-point                     |
+| `scripts/release/checks.sh`  | Pre-release check functions                  |
+| `scripts/libs/colors.sh`     | Colored console output helpers               |
+| `scripts/libs/env.sh`        | `.env` file loader                           |
 
 ## Troubleshooting
 

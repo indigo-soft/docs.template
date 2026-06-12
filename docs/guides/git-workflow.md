@@ -20,18 +20,18 @@ main (protected)
 
 ## Branch Naming
 
-### Format
+### Branch Format
 
 ```text
 <type>/<issue-number>-<short-description>
 ```
 
-| Rule          | Detail                                                          |
-| ------------- | --------------------------------------------------------------- |
-| Issue number  | **Required.** Minimum 4 digits (pad with zeros: `0001`, `0042`) |
-| Type          | `feature`, `fix`, `docs`, `refactor`, `test`, `chore`, `perf`   |
-| Description   | kebab-case, lowercase, English, 3–5 words                       |
-| No issue yet? | Create one before creating the branch                           |
+| Rule          | Detail                                                                                                                                                        |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Issue number  | **Required.** Minimum 4 digits (pad with zeros: `0001`, `0042`)                                                                                               |
+| Type          | Same list as commit types (with `feature` instead of `feat`): `feature`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`, `ci`, `build`, `revert` |
+| Description   | kebab-case, lowercase, English, 3–5 words                                                                                                                     |
+| No issue yet? | Create one before creating the branch                                                                                                                         |
 
 **✅ Valid:**
 
@@ -63,7 +63,7 @@ git checkout -b feature/0001-my-feature
 
 We follow [Conventional Commits](https://www.conventionalcommits.org/).
 
-### Format (Body)
+### Message Format
 
 ```text
 <type>(<scope>): <subject>
@@ -79,7 +79,7 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/).
 | --------- | -------------------------------------------------------------------------------------------------------------- |
 | `type`    | Required. One of: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`, `ci`, `build`, `revert` |
 | `scope`   | **Required.** kebab-case. Must match project scopes from `docs/context/project.md`                             |
-| `subject` | Required. Max 72 chars. Lowercase. Imperative mood. No trailing period                                         |
+| `subject` | Required. Max 120 chars. Lowercase. Imperative mood. No trailing period                                        |
 | `body`    | Optional. Explain _why_, not _what_. Blank line before                                                         |
 | `footer`  | Optional. `Closes #123`, `BREAKING CHANGE: ...`                                                                |
 

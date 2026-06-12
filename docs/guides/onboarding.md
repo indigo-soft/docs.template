@@ -22,7 +22,8 @@ npm install -g prettier markdownlint-cli2
 ```
 
 > These tools are installed globally rather than locally due to a pnpm + WSL2 symlink
-> issue. See `docs/adr/ADR-0002-package-manager-pnpm.md` for background.
+> issue. See `docs/air/archive/AIR-0001-pnpm-wsl2-global-tools-conflict.md` for the full
+> analysis and `docs/adr/ADR-0002-package-manager-pnpm.md` for background.
 
 ## Setup steps
 
@@ -43,17 +44,11 @@ Follow `docs/guides/git-config.md` for one-time git setup (name, email, commit t
 pnpm run init
 ```
 
-This installs dependencies, sets up git hooks, and configures your local environment.
+This installs dependencies, sets up git hooks, creates `.env` from `.env.example`,
+and configures your local environment. Edit `.env` with your local values —
+see the project README for required variables.
 
-### 4. Copy and fill in the environment file
-
-```bash
-cp .env.example .env
-```
-
-Edit `.env` with your local values. See the project README for required variables.
-
-### 5. Verify the setup
+### 4. Verify the setup
 
 ```bash
 pnpm run start
@@ -66,6 +61,7 @@ This shows the project status and confirms that hooks, tools, and environment ar
 - Read `docs/context/project.md` — core project facts, stack, and team conventions
 - Read `docs/guides/git-workflow.md` — branching, commit format, PR process
 - Read `docs/guides/coding-standards.md` — language and style conventions
+  (generated during onboarding via `docs/prompts/coding-standards.md`)
 - Browse `docs/adr/` — understand the key decisions already made
 
 ## Making your first contribution

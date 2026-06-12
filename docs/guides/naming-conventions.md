@@ -10,11 +10,11 @@
 <type>/<issue-number>-<short-description>
 ```
 
-| Rule         | Detail                                                             |
-| ------------ | ------------------------------------------------------------------ |
-| Issue number | **Required.** Min 4 digits. Pad with zeros: `0001`, `0042`, `0123` |
-| Type         | `feature`, `fix`, `docs`, `refactor`, `test`, `chore`, `perf`      |
-| Description  | kebab-case, lowercase, English, 3–5 words                          |
+| Rule         | Detail                                                                                          |
+| ------------ | ----------------------------------------------------------------------------------------------- |
+| Issue number | **Required.** Min 4 digits. Pad with zeros: `0001`, `0042`, `0123`                              |
+| Type         | `feature`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`, `ci`, `build`, `revert` |
+| Description  | kebab-case, lowercase, English, 3–5 words                                                       |
 
 ```bash
 # ✅ Valid
