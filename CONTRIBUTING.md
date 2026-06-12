@@ -11,6 +11,9 @@ Thank you for your interest in contributing!
 ## Quick start
 
 ```bash
+# 0. One-time setup after cloning (tools, hooks, .env, git template)
+pnpm run init
+
 # 1. Create a branch (issue number is REQUIRED)
 git checkout -b feature/0123-my-change
 
@@ -28,7 +31,7 @@ See [docs/guides/git-workflow.md](docs/guides/git-workflow.md) for the full guid
 Key rules:
 
 - Branch format: `<type>/<issue-number>-<description>` (issue number min 4 digits)
-- Commit format: `<type>(<scope>): <description>` (scope is required)
+- Commit format: `<type>(<scope>): <description>` (scope is required, subject max 120 chars)
 - Merge strategy: Squash and Merge
 
 ## PR checklist
@@ -36,20 +39,23 @@ Key rules:
 Before opening a PR:
 
 - [ ] Commit messages follow Conventional Commits
-- [ ] `pnpm lint` passes
-- [ ] `pnpm format:check` passes
-- [ ] Documentation updated if needed
+- [ ] `pnpm run lint:check` passes
+- [ ] `pnpm run format:check` passes
+- [ ] Documentation updated if needed — config, scripts, and docs must stay in sync
+      (see `AGENTS.md → Keep config, scripts, and docs in sync`)
 - [ ] PR title matches commit message format
 
 ## Local commands
 
 ```bash
-pnpm install        # install dependencies
-pnpm run init       # install git hooks
-pnpm lint           # run markdownlint
-pnpm lint:fix       # auto-fix lint issues
-pnpm format         # format all files
-pnpm format:check   # check formatting
+pnpm run init         # one-time setup: global tools, dependencies, git hooks, .env
+pnpm start            # show project status and the next recommended step
+pnpm run lint:check   # check markdown without fixing
+pnpm run lint:fix     # auto-fix markdownlint issues
+pnpm run lint         # fix then check (combined — modifies files)
+pnpm run format:check # check formatting without making changes
+pnpm run format:fix   # format all files with Prettier
+pnpm run format       # fix then check (combined — modifies files)
 ```
 
 ## Adding documentation
@@ -58,9 +64,12 @@ When adding new guides or document types:
 
 - Guides → `docs/guides/`
 - ADRs → `docs/adr/` (use prompt `docs/prompts/adr.md`)
-- AIRs → `docs/air/` (ADR conflicts only)
-- AIDs → `docs/aid/` (AI interactions)
+- AIRs → `docs/air/` (ADR conflicts only; use prompt `docs/prompts/air.md`)
+- AIDs → `docs/aid/` (AI interactions; use prompt `docs/prompts/aid.md`)
+- RFCs → `docs/rfc/` (pre-decision proposals)
 - Claude prompts → `docs/prompts/`
+
+When adding new terms or tools, check `docs/glossary/glossary.md` and add missing definitions.
 
 ## Reporting bugs
 

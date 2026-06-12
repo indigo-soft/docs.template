@@ -4,9 +4,9 @@ A documentation and tooling template that keeps getting better with each real pr
 
 ---
 
-## Current — v1.0 (status: ready to release)
+## Current — v1.0 (released; latest v1.0.3)
 
-Template is functional and battle-tested on music-resort (PHP CLI tool). Core workflow works:
+Template is functional and battle-tested on music.local (PHP CLI tool). Core workflow works:
 clone → `pnpm run init` → onboarding prompt → docs generation → release cycle.
 
 - ✅ 14 ADRs covering all major tooling and process decisions
@@ -28,7 +28,10 @@ clone → `pnpm run init` → onboarding prompt → docs generation → release 
 
 - [ ] All prompts verified on a TypeScript/Node.js project
 - [ ] All prompts verified on a Python project
-- [ ] `docs/prompts/roadmap.md` — prompt for generating ROADMAP.md
+- [x] `docs/prompts/roadmap.md` — prompt for generating ROADMAP.md
+- [x] `docs/prompts/requirements.md` and `docs/prompts/system-design.md` — prompts for the optional guides
+- [x] `renovate.json` — Renovate configuration matching ADR-0007 (was documented but missing)
+- [x] AIR process aligned with ADR/AID/RFC — 4-digit numbering, `archive/` folder instead of `done-` prefix
 
 ---
 

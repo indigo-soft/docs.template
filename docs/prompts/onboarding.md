@@ -76,16 +76,20 @@ npm install -g prettier markdownlint-cli2
 > The `pnpm run init` script checks Node.js version, enables corepack, and installs
 > all global tools automatically — except Node.js itself which must be installed first.
 
-### `.pnpmrc` (if missing)
+### `pnpm-workspace.yaml` (if missing)
 
-Create in the project root to suppress pnpm's interactive approval prompt for lefthook:
+Create in the project root to approve lefthook's `postinstall` build script
+(pnpm requires explicit approval before running dependency build scripts):
 
-```properties
-approve-builds=lefthook
+```yaml
+allowBuilds:
+  lefthook: true
 ```
 
-> ⚠️ Use `.pnpmrc`, not `.npmrc` — `approve-builds` is a pnpm-specific option.
-> If placed in `.npmrc`, npm will warn about an unknown config key.
+> ⚠️ Since pnpm v11, pnpm-specific settings live **only** in `pnpm-workspace.yaml`
+> (or the global `~/.config/pnpm/config.yaml`) — `.npmrc` and `.pnpmrc` are not read
+> for non-auth settings. During install, pnpm auto-adds unlisted build-script
+> dependencies with a placeholder of `false`; make sure `lefthook` is set to `true`.
 
 ### `package.json` (if missing)
 
@@ -131,8 +135,13 @@ Do NOT add `commitlint`, `release-it` or `prettier` to `devDependencies` — the
 
 ### `commitlint.config.mjs` (if missing)
 
-Copy from `docs.template/commitlint.config.mjs` and update the `scope-enum` rule
-with the project scopes from Group 4, question 14.
+Copy from `docs.template/commitlint.config.mjs`. Record the project scopes from
+Group 4, question 14 in `docs/context/project.md` — they are the source of truth.
+Optionally, add a `scope-enum` rule to enforce the list strictly:
+
+```javascript
+'scope-enum': [2, 'always', ['auth', 'api', 'ui', 'db', 'config', 'deps']],
+```
 
 Use `.mjs` extension (not `.js`) — required for Node.js v24 ESM compatibility.
 Do not use `extends: ['@commitlint/config-conventional']` — define all rules inline
@@ -195,7 +204,7 @@ Create or overwrite `docs/context/project.md`:
 
 **Stack:** {runtime} + {framework}
 **Deployment:** {target}
-**Node.js tooling:** created package.json / commitlint.config.mjs / lefthook.yml / .pnpmrc
+**Node.js tooling:** created package.json / commitlint.config.mjs / lefthook.yml / pnpm-workspace.yaml
 **Notes:** {anything non-obvious about the project setup}
 ```
 

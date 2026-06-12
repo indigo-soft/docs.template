@@ -27,9 +27,9 @@ unresolved issue with an existing ADR. Stored in `docs/air/`. See `docs/air/READ
 
 ### Archive
 
-A subfolder (`archive/`) within ADR, AID, and RFC directories that holds superseded,
-rejected, or obsolete documents. Archived documents are kept for historical reference
-and are not deleted.
+A subfolder (`archive/`) within ADR, AIR, AID, and RFC directories that holds superseded,
+resolved, rejected, or obsolete documents. Archived documents are kept for historical
+reference and are not deleted.
 
 ## C
 
@@ -50,6 +50,12 @@ See `docs/guides/git-workflow.md` for the types and scopes used in this project.
 The file `docs/context/decisions.md`. An append-only journal of decisions made
 during the project — both ADR-level decisions and smaller choices that don't warrant
 a full ADR. Newest entries are at the top. Never rewrite or delete existing entries.
+
+### Dependabot
+
+A GitHub-native tool for automated dependency updates. In this project it handles
+**GitHub Actions versions only** (npm dependencies are handled by Renovate).
+Configuration is in `.github/dependabot.yml`.
 
 ## G
 
@@ -99,6 +105,12 @@ Read by AI assistants at the start of each session.
 A tool for automating versioning and changelog generation. Configuration is in
 `.release-it.json`. Run via `npm run release:patch|minor|major`.
 
+### Renovate
+
+A tool for automated dependency updates. In this project it handles **npm packages**
+(GitHub Actions are handled by Dependabot). Configuration is in `renovate.json`;
+it runs nightly via `.github/workflows/renovate.yml`.
+
 ### RFC
 
 Request for Comments. A document that captures an idea or proposal **before** a
@@ -112,6 +124,12 @@ things that need a decision later. Stored in `docs/rfc/`. See `docs/rfc/README.m
 The part of a commit message in parentheses that identifies what area of the project
 was changed: `feat(auth): add login`. Project-specific scopes are defined in
 `commitlint.config.mjs` and listed in `docs/context/project.md`.
+
+### SemVer
+
+Semantic Versioning — a versioning scheme of the form `MAJOR.MINOR.PATCH`, where
+breaking changes bump major, new features bump minor, and bug fixes bump patch.
+This project follows SemVer via release-it; see `docs/adr/ADR-0011-versioning-semver.md`.
 
 ### Session summary
 

@@ -57,14 +57,13 @@ scripts/
     release/            ← release automation scripts
     libs/               ← shared shell utilities (colors.sh, env.sh)
 
-src/                    ← placeholder; not used in this template repo
-
 AGENTS.md               ← this file
 CONTRIBUTING.md         ← contribution guide and git workflow summary
 commitlint.config.mjs   ← commit message and branch name validation rules
 lefthook.yml            ← git hooks: pre-commit, commit-msg, pre-push
 package.json            ← scripts and dev dependencies
-.pnpmrc                 ← pnpm config (approve-builds=lefthook)
+renovate.json           ← Renovate config (npm dependency updates)
+pnpm-workspace.yaml     ← pnpm settings (allowBuilds approval for lefthook)
 .editorconfig           ← formatting contract for all files
 ```
 
@@ -104,32 +103,51 @@ npm install -g prettier markdownlint-cli2
 > ⚠️ This is a WSL2 + pnpm v11 specific workaround. On native Linux or macOS with pnpm,
 > local installation may work correctly.
 
-## `.pnpmrc`
+## Build approvals (`pnpm-workspace.yaml`)
 
-The project root contains `.pnpmrc` with `approve-builds=lefthook`.
-This suppresses pnpm's interactive approval prompt for lefthook's `postinstall` script
-on every fresh `pnpm install`.
+pnpm requires explicit approval before running dependency build scripts.
+The approval lives in `pnpm-workspace.yaml`:
 
-> ⚠️ Use `.pnpmrc`, not `.npmrc` — `approve-builds` is pnpm-specific and causes
-> npm warnings if placed in `.npmrc`.
+```yaml
+allowBuilds:
+  lefthook: true
+```
+
+This allows lefthook's `postinstall` script to run on `pnpm install` without an
+interactive prompt.
+
+> ⚠️ Since pnpm v11, pnpm reads its settings **only** from `pnpm-workspace.yaml`
+> (or the global `~/.config/pnpm/config.yaml`) — not from `.npmrc` or `.pnpmrc`.
+> During install, pnpm auto-adds unlisted build-script dependencies to `allowBuilds`
+> with a placeholder value of `false` — if hooks stop installing, check this value first.
 
 ## Conventions agents must follow
 
 - **Formatting:** respect `.editorconfig` globally — UTF-8, LF endings, final newline,
   trailing whitespace trimmed, 4-space indent (2-space for shell and JSON files), max 120 chars/line.
 - **Commit format:** `<type>(<scope>): <description>` — scope is required, type must be from
-  the allowed list in `commitlint.config.mjs`.
+  the allowed list in `commitlint.config.mjs`. The allowed scope **list** is project-specific
+  and maintained in `docs/context/project.md`; it may optionally be enforced by adding a
+  `scope-enum` rule to `commitlint.config.mjs`.
 - **Branch format:** `<type>/<issue-number>-<description>` — issue number is required,
   minimum 4 digits (e.g. `feature/0001-setup-docs`).
 - **Documentation lives in `docs/`** — do not create documentation files in the project root.
 - **Prompts live in `docs/prompts/`** — one file per document type, English only.
 - **Context files are append-only** — never delete or rewrite existing entries in `decisions.md`.
+- **Keep config, scripts, and docs in sync** — whenever a configuration value, script behaviour,
+  or convention changes, update every document that references it in the same change — and vice
+  versa: when a documented standard changes, update the related config files and scripts.
+  Examples of coupled pairs: `commitlint.config.mjs` ↔ `git-workflow.md` / `.gitmessage` /
+  `.lefthook/commit-format-info.sh`; `scripts/release/*` ↔ `release-flow.md`;
+  workflow files ↔ `updating-dependencies.md`.
 - **Checklists are updated after work** — mark items done in `docs/checklists/new-project.md`
   after completing the corresponding task.
 - **AID documents capture AI work** — after a significant AI interaction, create an AID in `docs/aid/`.
 - **Glossary maintenance** — when adding new concepts, process types, document types, or tooling
   to the project, check `docs/glossary/glossary.md` and add any terms that are not yet defined.
-  New terms go under the correct alphabetical section using a `###` heading.
+  This includes **adjacent terms** introduced indirectly — tools, services, and standards that
+  appear in docs or configs (e.g. a new CI tool, a versioning scheme) — not only the primary
+  subject of the change. New terms go under the correct alphabetical section using a `###` heading.
 - **Glossary linking in READMEs** — in every `README.md` file (root and within `docs/`),
   link the **first occurrence** of each term that is defined in `docs/glossary/glossary.md`.
   Use the format `[term](docs/glossary/glossary.md#term-anchor)` (adjust relative path as needed).
@@ -149,7 +167,6 @@ on every fresh `pnpm install`.
 ## Architecture and integration notes
 
 - This repo has no runtime application — it is a template, not a service.
-- `src/` is a placeholder for when this template is used as a base for an app repo.
 - No database, no API, no external service integrations in this repo itself.
 
 ## Agent operating guidance
@@ -169,11 +186,14 @@ on every fresh `pnpm install`.
 **DO NOT:**
 
 - Rewrite or delete existing entries in `docs/context/decisions.md`.
+- Change a config value, script, or documented convention without updating its coupled
+  counterparts (see "Keep config, scripts, and docs in sync" above).
 - Create documentation files outside of `docs/`.
 - Modify `pnpm-lock.yaml` manually.
-- Invent commit scopes — use only the scopes defined in `commitlint.config.mjs`.
+- Invent commit scopes — use the project scopes listed in `docs/context/project.md`.
 - Add commitlint, release-it, or prettier to `devDependencies` — they must be global.
 - Run `pnpm setup` to install hooks — use `pnpm run init` instead.
-- Put pnpm-specific config in `.npmrc` — use `.pnpmrc` instead.
+- Put pnpm-specific config in `.npmrc` or `.pnpmrc` — since pnpm v11 these are not read;
+  pnpm settings live in `pnpm-workspace.yaml`.
 - Confuse AIR (ADR conflicts) with AID (AI interactions) — they are different document types.
 - Add a term to a README without first checking if it belongs in `docs/glossary/glossary.md`.
