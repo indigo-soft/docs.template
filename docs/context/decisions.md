@@ -9,6 +9,45 @@
 
 ---
 
+## 2026-06-12 — full audit session: sync fixes, pnpm v11 config, AIR unification
+
+**Trigger:** full project audit found ~23 inconsistencies between configs, scripts, and docs.
+Full session summary: `docs/context/sessions/2026-06-12-audit-fixes.md`
+
+**Key decisions:**
+
+- **pnpm v11 config:** `.pnpmrc` is not read by pnpm v11 (non-auth settings live only in
+  `pnpm-workspace.yaml`); build approval moved to `allowBuilds: lefthook: true`.
+  Supersedes the 2026-05-19 `.pnpmrc` decision — the auto-added `lefthook: false` placeholder
+  in `pnpm-workspace.yaml` was evidence `.pnpmrc` was ineffective. `.pnpmrc` removed.
+- **Commit subject/body max length unified to 120** everywhere (commitlint, `.gitmessage`,
+  guides, hook info script) — docs previously claimed 72 while commitlint enforced 120.
+- **Branch types = commit types** (with `feature` instead of `feat`): added `style`, `ci`,
+  `build`, `revert` to the branch-name pattern and all related docs.
+- **Scopes source of truth is `docs/context/project.md`** — `commitlint.config.mjs` enforces
+  format only (kebab-case, required); `scope-enum` is optional per project. AGENTS.md,
+  onboarding prompt, and ADR-0008 reworded accordingly.
+- **AIR unified with ADR/AID/RFC:** 4-digit numbering (`AIR-XXXX`), resolved AIRs move to
+  `docs/air/archive/` instead of the `done-` filename prefix. AIR-0001 migrated.
+- **`renovate.json` created** — it was documented in ADR-0007 and the dependency guide but
+  never actually created; config matches the documented behaviour (every 3 days, auto-merge
+  patch/minor after 3-day release age, majors labeled for review).
+- **Empty guide stubs** (`coding-standards`, `testing`, `deployment`, `requirements`,
+  `system-design`) now carry a placeholder note pointing to their generating prompt;
+  new prompts added: `docs/prompts/requirements.md`, `docs/prompts/system-design.md`.
+- **New AGENTS.md rule:** config ↔ scripts ↔ docs must be updated together (sync rule);
+  glossary maintenance extended to adjacent terms.
+- **check-links workflow:** push/PR run offline (internal links); weekly schedule runs the
+  full check including external links — previously `--offline` applied to all triggers.
+- **CHANGELOG:** preamble moved to the top via the `header` option of
+  `@release-it/conventional-changelog`; compare links fixed to `indigo-soft/docs.template`;
+  duplicate 0.6.1/0.6.4 entries removed.
+- **`check_lockfile` renamed honestly** ("exists", not "in sync") — the sync check was
+  removed earlier because `pnpm install --frozen-lockfile` hangs on WSL2.
+- **`check_pushed` hardened** — now fails explicitly when the branch has no upstream.
+
+---
+
 ## 2026-05-26 — v1.0 release candidate session
 
 **Added:** RFC process, glossary, new guides, new checklists, CI split, ADR-0014,
