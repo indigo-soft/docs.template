@@ -65,8 +65,17 @@ check_branch() {
 
 check_pushed() {
   log_step "Checking all commits are pushed..."
-  if git status --porcelain --branch | grep -q "ahead"; then
-    log_error "There are local commits that have not been pushed. Run: git push"
+
+  if ! git rev-parse --abbrev-ref --symbolic-full-name "@{u}" &>/dev/null; then
+    log_error "Current branch has no upstream configured. Run: git push -u origin <branch>"
+    exit 1
+  fi
+
+  local ahead
+  ahead=$(git rev-list --count "@{u}..HEAD")
+
+  if [ "$ahead" -gt 0 ]; then
+    log_error "There are $ahead local commit(s) that have not been pushed. Run: git push"
     exit 1
   fi
   log_success "All commits are pushed."
@@ -86,7 +95,7 @@ check_changelog() {
 }
 
 check_lockfile() {
-  log_step "Checking pnpm-lock.yaml is in sync..."
+  log_step "Checking pnpm-lock.yaml exists..."
 
   if [ ! -f pnpm-lock.yaml ]; then
     log_error "pnpm-lock.yaml not found. Run: pnpm install"
