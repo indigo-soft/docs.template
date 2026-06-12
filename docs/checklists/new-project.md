@@ -37,6 +37,12 @@
 - [ ] **Testing guide** — `docs/guides/testing.md` written
       → prompt: `docs/prompts/testing.md`
 
+- [ ] **Requirements** _(optional)_ — `docs/guides/requirements.md` written
+      → prompt: `docs/prompts/requirements.md`
+
+- [ ] **System design** _(optional)_ — `docs/guides/system-design.md` written
+      → prompt: `docs/prompts/system-design.md`
+
 ## Phase 4 — Project meta
 
 - [ ] **README.md** — project intro, setup steps, links to docs
