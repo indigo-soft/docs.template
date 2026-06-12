@@ -20,7 +20,6 @@
     "license": "MIT",
     "author": "github.com/indigo-soft",
     "type": "module",
-    "main": "./src/index.ts",
     "directories": {
         "doc": "docs"
     },
