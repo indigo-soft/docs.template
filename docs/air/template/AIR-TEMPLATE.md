@@ -1,12 +1,13 @@
-# AIR-00N: [Short conflict description]
+# AIR-XXXX: [Short conflict description]
 
 <!--
-File name:  air-00N-short-conflict-description.md
-After resolution rename to:  done-air-00N-short-conflict-description.md
+File name:  AIR-XXXX-short-conflict-description.md  (4-digit zero-padded number, same as ADR/AID/RFC)
+After resolution move the file to:  archive/AIR-XXXX-short-conflict-description.md
+(adjust relative links inside — ADR links become ../../adr/...)
 
 Title examples:
-  AIR-002: Redis cluster requirement conflicts with single-node policy from ADR-003
-  AIR-003: Log retention requirement conflicts with privacy rules from ADR-004
+  AIR-0002: Redis cluster requirement conflicts with single-node policy from ADR-0003
+  AIR-0003: Log retention requirement conflicts with privacy rules from ADR-0004
 -->
 
 ## Status
@@ -19,7 +20,7 @@ Open
 
 <!--
 List all ADRs involved in the conflict. Use relative paths
-(AIR files live in air/, ADRs are one level up in adr/).
+(open AIR files live in air/, ADRs live in the sibling adr/ directory — use ../adr/...).
 Replace ADR-XXXX and ADR-YYYY with real links once known.
 -->
 
@@ -141,10 +142,11 @@ What changes for each affected ADR and for the team.
 Actions to complete after resolution. Leave checkboxes open until done.
 -->
 
-- [ ] Update ADR-XXXX — add `Conflict resolved by: AIR-00N` to Related ADRs section
-- [ ] Update ADR-YYYY — add `Conflict resolved by: AIR-00N` to Related ADRs section
-- [ ] Update [INDEX.md](../INDEX.md) — move to Resolved table
-- [ ] Rename file: `air-00N-...md` → `done-air-00N-...md`
+- [ ] Update ADR-XXXX — add `Conflict resolved by: AIR-XXXX` to Related ADRs section
+- [ ] Update ADR-YYYY — add `Conflict resolved by: AIR-XXXX` to Related ADRs section
+- [ ] Update [INDEX.md](INDEX.md) — move the entry to the Resolved table
+- [ ] Move the file to archive: `mv docs/air/AIR-XXXX-...md docs/air/archive/`
+- [ ] Adjust relative links inside the moved file (`../adr/...` → `../../adr/...`)
 
 ## Date Opened
 

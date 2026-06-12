@@ -41,13 +41,14 @@ Read `docs/context/project.md` and `docs/air/INDEX.md` (if it exists) before ask
 
 ## Output
 
-Create `docs/air/air-00N-short-conflict-description.md` using
+Create `docs/air/AIR-XXXX-short-conflict-description.md` using
 `docs/air/template/AIR-TEMPLATE.md` as the base.
 
 File naming rules:
 
-- Open AIRs: `air-00N-short-conflict-description.md`
-- Resolved AIRs: `done-air-00N-short-conflict-description.md`
+- 4-digit zero-padded number, same convention as ADR, AID, and RFC: `AIR-0002-...`
+- Open AIRs live in `docs/air/`
+- Resolved AIRs are moved to `docs/air/archive/`
 
 After creating the file, add an entry to `docs/air/INDEX.md`.
 
@@ -57,10 +58,11 @@ After resolution:
 2. Update each affected ADR — add to its Related section:
 
    ```markdown
-   - Conflict resolved by: [AIR-00N](../air/done-air-00N-....md)
+   - Conflict resolved by: [AIR-XXXX](../air/archive/AIR-XXXX-....md)
    ```
 
-3. Change status to `Resolved` and rename file with `done-` prefix.
+3. Change status to `Resolved` and move the file to `docs/air/archive/`
+   (adjust relative links inside — ADR links become `../../adr/...`).
 4. Update `docs/air/INDEX.md`.
 
 Rules:
@@ -73,8 +75,8 @@ Rules:
 Append to `docs/context/decisions.md`:
 
 ```markdown
-## {YYYY-MM-DD} — AIR-00N: {Title}
+## {YYYY-MM-DD} — AIR-XXXX: {Title}
 
 **Summary:** {one sentence on the conflict and how it was resolved}
-**Full record:** docs/air/air-00N-{title}.md
+**Full record:** docs/air/AIR-XXXX-{title}.md
 ```

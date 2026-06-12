@@ -5,13 +5,11 @@ or when two existing ADRs conflict when applied together.
 
 Unlike ADRs, AIRs are always **temporary**. The goal of an AIR is to document the conflict,
 analyse resolution paths, and reach a decision. Once the decision is made and reflected in the
-affected ADRs, the AIR is considered resolved.
+affected ADRs, the AIR is considered resolved and moved to `archive/` — every AIR must
+eventually be resolved; there is no "permanently open" state.
 
 > **Looking for AI interaction records?** Those are [AID documents](../aid/README.md) —
 > a separate document type for capturing significant AI interactions and their project impact.
-
-There is no separate archive for AIRs. Resolved AIRs stay in this directory with a `done-`
-prefix in the filename — open ones always appear first in a sorted listing.
 
 ---
 
@@ -21,11 +19,11 @@ prefix in the filename — open ones always appear first in a sorted listing.
 
 _No open AIRs._
 
-### Resolved
+### Resolved (archive)
 
-| #                                                          | Conflict                                                              | Affected ADRs      | Resolved   |
-| ---------------------------------------------------------- | --------------------------------------------------------------------- | ------------------ | ---------- |
-| [AIR-001](done-air-001-pnpm-wsl2-global-tools-conflict.md) | pnpm isolated linker on WSL2 conflicts with native development policy | ADR-0002, ADR-0003 | 2026-05-18 |
+| #                                                               | Conflict                                                              | Affected ADRs      | Resolved   |
+| --------------------------------------------------------------- | --------------------------------------------------------------------- | ------------------ | ---------- |
+| [AIR-0001](archive/AIR-0001-pnpm-wsl2-global-tools-conflict.md) | pnpm isolated linker on WSL2 conflicts with native development policy | ADR-0002, ADR-0003 | 2026-05-18 |
 
 ---
 
@@ -49,14 +47,14 @@ Create an AIR when:
 ## AIR Lifecycle
 
 ```text
-Open → Resolved
+Open → Resolved → archive/
      ↘ Deferred
 ```
 
 | Status       | Meaning                                                                  |
 | ------------ | ------------------------------------------------------------------------ |
 | **Open**     | Conflict identified; resolution not yet decided — needs attention        |
-| **Resolved** | Decision made, reflected in affected ADRs, file renamed to `done-`       |
+| **Resolved** | Decision made, reflected in affected ADRs, file moved to `archive/`      |
 | **Deferred** | Resolution deliberately postponed, with an explicit condition to revisit |
 
 ---
@@ -66,7 +64,7 @@ Open → Resolved
 ### 1. Copy the template
 
 ```bash
-cp docs/air/template/AIR-TEMPLATE.md docs/air/air-00N-short-conflict-description.md
+cp docs/air/template/AIR-TEMPLATE.md docs/air/AIR-XXXX-short-conflict-description.md
 ```
 
 ### 2. Fill in the sections
@@ -88,11 +86,12 @@ An AIR is a prompt for the team to discuss the conflict explicitly, not resolve 
 2. Update each **affected ADR** — add to its Related section:
 
    ```markdown
-   - Conflict resolved by: [AIR-00N](../air/done-air-00N-....md) — one-line summary
+   - Conflict resolved by: [AIR-XXXX](../air/archive/AIR-XXXX-....md) — one-line summary
    ```
 
 3. Change the AIR status to `Resolved`.
-4. Rename the file: `air-00N-...md` → `done-air-00N-...md`
+4. Move the file to `archive/`: `mv docs/air/AIR-XXXX-...md docs/air/archive/`
+   (remember to adjust relative links inside the file — ADR links become `../../adr/...`).
 5. Update the **Resolved** table above and in [INDEX.md](INDEX.md).
 
 ---
@@ -100,15 +99,17 @@ An AIR is a prompt for the team to discuss the conflict explicitly, not resolve 
 ## File naming
 
 ```text
-air-00N-short-conflict-description.md       ← open
-done-air-00N-short-conflict-description.md  ← resolved
+AIR-XXXX-short-conflict-description.md
 ```
 
-Resolved AIRs get the `done-` prefix — alphabetical sorting keeps open ones above resolved ones
-in any file listing.
+- `XXXX` — zero-padded 4-digit number (`0001`, `0042`) — same convention as ADR, AID, and RFC
+- `short-conflict-description` — kebab-case, English
+
+Open AIRs live in `docs/air/`; resolved AIRs are moved to `docs/air/archive/`,
+so the main folder always shows only what still needs attention.
 
 **Examples:**
 
-- ✅ `air-002-redis-cluster-vs-single-instance.md`
-- ✅ `done-air-001-docker-requirement-vs-no-docker-policy.md`
-- ❌ `AIR-002.md` (wrong format)
+- ✅ `AIR-0002-redis-cluster-vs-single-instance.md`
+- ✅ `archive/AIR-0001-docker-requirement-vs-no-docker-policy.md` (resolved)
+- ❌ `air-002.md` (wrong format — lowercase, no description)
