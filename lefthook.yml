@@ -23,8 +23,9 @@ commit-msg:
     parallel: false
     commands:
         commitlint:
-            run: commitlint --edit {1} --verbose
-            fail_text: "❌ COMMIT REJECTED — invalid commit message format.\n   Format: <type>(<scope>): <description>\n   Example: feat(auth): add JWT token refresh\n   See: docs/guides/git-workflow.md"
+            # On failure, .lefthook/commit-format-info.sh prints the full format reference
+            run: commitlint --edit {1} --verbose || { bash .lefthook/commit-format-info.sh; exit 1; }
+            fail_text: '❌ COMMIT REJECTED — invalid commit message format. See format reference above and docs/guides/git-workflow.md'
 
 # Pre-push — lint and format check
 pre-push:

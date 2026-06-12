@@ -45,6 +45,13 @@
 # ---- IDE — VS Code ----
 .vscode/
 
+# ---- Claude Code (local settings) ----
+.claude/
+
+# ---- Generated reports ----
+/reports/*
+!/reports/.gitkeep
+
 # ---- OS ----
 .DS_Store
 Thumbs.db

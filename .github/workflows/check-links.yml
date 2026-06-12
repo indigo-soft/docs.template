@@ -26,14 +26,28 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v6
 
-            - name: Check internal links
+            # On push and pull_request: fast offline check of internal links only
+            - name: Check internal links (push / PR)
+              if: github.event_name != 'schedule'
               uses: lycheeverse/lychee-action@v2
               with:
-                  # Check only internal links on push/PR; include external on schedule
                   args: >
                       --offline
                       --include-fragments
                       --exclude-path "node_modules/**"
+                      "**/*.md"
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            # On weekly schedule: full check including external links
+            - name: Check all links incl. external (schedule)
+              if: github.event_name == 'schedule'
+              uses: lycheeverse/lychee-action@v2
+              with:
+                  args: >
+                      --include-fragments
+                      --exclude-path "node_modules/**"
+                      --max-retries 3
                       "**/*.md"
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

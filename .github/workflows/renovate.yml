@@ -26,7 +26,7 @@ jobs:
               uses: renovatebot/github-action@v46.1.15
               with:
                   # Requires a GitHub PAT (classic) with repo scope stored as RENOVATE_TOKEN secret.
-                  # See docs/guides/dependency-updates.md for setup instructions.
+                  # See docs/guides/updating-dependencies.md for setup instructions.
                   token: ${{ secrets.RENOVATE_TOKEN }}
               env:
                   # Enable debug logging for troubleshooting (set to "info" in production)

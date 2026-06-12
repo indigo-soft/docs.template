@@ -35,7 +35,7 @@ export default {
 
         // Body validation
         'body-leading-blank': [1, 'always'],
-        'body-max-line-length': [2, 'always', 100],
+        'body-max-line-length': [2, 'always', 120],
 
         // Footer validation
         'footer-leading-blank': [1, 'always'],
@@ -61,7 +61,8 @@ export default {
                         return [true];
                     }
 
-                    const branchPattern = /^(feature|fix|docs|refactor|test|chore|perf)\/[0-9]{4,}-[a-z0-9-]+$/;
+                    const branchPattern =
+                        /^(feature|fix|docs|style|refactor|perf|test|chore|ci|build|revert)\/[0-9]{4,}-[a-z0-9-]+$/;
                     const isValid = branchPattern.test(branchName);
 
                     if (!isValid) {
@@ -72,7 +73,7 @@ export default {
 Expected format: <type>/<issue-number>-<short-description>
 
 Rules:
-  • Type: feature, fix, docs, refactor, test, chore, perf
+  • Type: feature, fix, docs, style, refactor, perf, test, chore, ci, build, revert
   • Issue number: REQUIRED, minimum 4 digits (e.g., 0001, 0042, 1234)
   • Description: kebab-case (lowercase, words separated by hyphens)
 
